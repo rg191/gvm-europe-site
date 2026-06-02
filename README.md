@@ -28,6 +28,8 @@ A `.claude/` konfigurációt a Claude Code CLI és az Anthropic Agent SDK is bet
 projekt gyökeréből indítod. Az Orchestrator a kérés domainje szerint delegál a megfelelő
 alügynöknek; a subagentek a Skilleket csak szükség esetén töltik be (Progressive Disclosure).
 
+Részletes használati útmutató (CLI, web, mérés, GYIK): [`docs/HASZNALAT.md`](docs/HASZNALAT.md).
+
 ## Mérés
 ```bash
 python3 evals/run_evals.py --validate            # case-fájl ellenőrzése
