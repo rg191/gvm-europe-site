@@ -127,36 +127,39 @@ nem szabad a tiltott kategóriával összemosni.
 
 ---
 
-## Midjourney v7 borító-prompt
+## Midjourney v7 borító-prompt — dokumentarista (B regiszter)
 
-**Fő variáns — absztrakt compliance-borító (banner/web-hero, 16:9).** Az „arc = adat = jogi
-tét" feszültség visszafogott, anyagközpontú megjelenítése; nincs valódi arc, nincs
-szenzációhajhászás.
+Az „arc = adat = jogi tét" feszültséget valós felvételi pillanatban fotózzuk; az arc szándékosan
+nem a kameráé, hanem a gépé — a jelölt szemszögéből.
 
+**Elsődleges (borító, 16:9) — a megfigyelt jelölt:**
 ```
-Abstract still life, a blank polished obsidian mask resting on honed Calacatta marble,
-fine grid of light projected across its surface, a single blackened steel scale beam in the
-background, draped raw silk in greige, low-key lighting, one beam of soft directional light,
-deep controlled shadows, desaturated charcoal and bone palette, shot on Phase One XF IQ4 150MP,
-editorial minimalism, vast negative space
---v 7 --ar 16:9 --style raw --stylize 230
-```
-
-**Alternatív variáns — vezetői portré (cikk-nyitókép, 4:5).** A döntéshozó nézőpontja;
-tekintély, nem fenyegetés. Social/portré-felhasználásra optimális.
-
-```
-Confident HR executive in tailored charcoal wool suit, standing in a minimalist travertine
-lobby beside a dark glass screen showing faint abstract facial-recognition gridlines,
-honed marble surface, soft directional window light, deep controlled shadows, muted tonal
-palette of greige and charcoal, shot on Phase One XF IQ4, Schneider 80mm, editorial composition,
-slightly low angle, generous negative space
---v 7 --ar 4:5 --style raw --stylize 250
+Documentary shot over a laptop in a corporate interview room, a job candidate seen from behind
+facing a webcam, faint green tracking dots mapped across their half-visible profile on the screen,
+an HR interviewer blurred across the table, cold screen light against warm window light, candid
+unposed, shot on Leica M6, Kodak Portra 400, fine grain, photojournalism, Magnum documentary style
+--v 7 --ar 16:9 --style raw --stylize 120
 ```
 
-Sorozat-arculathoz rögzíts közös `--sref` seedet mindkét variánson. A `--style raw` / `--sref`
-/ `--stylize` szintaxisát verifikáld a Midjourney aktuális dokumentációján, mert verziónként
-változhat.
+**Variáns — a detektálás pillanata (közeli, 4:5):**
+```
+Reportage close shot, a webcam lens and a sliver of a candidate's face reflected in a dark monitor,
+subtle facial-landmark dots overlaid, an "enthusiasm score" gauge faintly visible at screen edge,
+low available light, fine grain, candid, shot on 35mm, Cinestill 800T, Magnum documentary style
+--v 7 --ar 4:5 --style raw --stylize 120
+```
+
+**Fogalmi alternatíva — obszidián maszk csendélet (A regiszter, ha absztraktabb kell):**
+```
+Abstract still life, a blank polished obsidian mask on honed Calacatta marble, a fine grid of light
+projected across its surface, blackened steel scale beam behind, draped raw silk in greige, low-key
+single beam, desaturated charcoal and bone palette, shot on Phase One XF IQ4, editorial minimalism,
+vast negative space --v 7 --ar 16:9 --style raw --stylize 230
+```
+
+Az **elsődleges** a riport-erő (a jelölt háttal, az arcot a gép „olvassa" — biztonságos és pontosan
+a tézis). A **csendélet** a steril fallback. Sorozathoz közös `--sref` (riportnál Portra 400 / éjszakai
+darabhoz Cinestill 800T mint „ház-stock").
 
 ---
 

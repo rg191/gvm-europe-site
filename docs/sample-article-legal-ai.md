@@ -159,34 +159,39 @@ nem hatályos jog.
 
 ---
 
-## Midjourney v7 borító-prompt
+## Midjourney v7 borító-prompt — dokumentarista (B regiszter)
 
-**Fő variáns — absztrakt compliance/koncentráció koncepció (borító, 16:9).** A vizuális metafora:
-jogi tekintély (mérleg) találkozik a gépi infrastruktúrával, koncentrált, visszafogott
-kompozícióban.
+A „jogi munka találkozik a gépi infrastruktúrával" feszültséget valós ügyvédi térben, riportstílusban
+fotózzuk — a tekintély a környezetből jön, nem a beállításból.
 
+**Elsődleges (borító, 16:9) — az ügyvéd és a gép:**
 ```
-Abstract still life, a single blackened steel scale of justice partially fused with fine
-brushed-brass circuit lines, resting on honed Calacatta marble, one taut draped raw silk
-ribbon, low-key lighting, single beam of soft directional light, deep controlled shadows,
-desaturated greige and charcoal palette, deep forest accent, shot on Phase One XF IQ4 150MP,
+Documentary shot in a law-firm library at dusk, a general counsel seen from the side reviewing a
+contract on a laptop, the screen glow lighting their face, tall shelves of legal volumes blurred
+behind, a second monitor showing faint AI chat interface, mixed warm desk lamp and cold screen
+light, candid unposed, shot on Leica M6, Kodak Portra 400, fine grain, photojournalism, Magnum
+documentary style --v 7 --ar 16:9 --style raw --stylize 120
+```
+
+**Variáns — a függőség (server-folyosó, 4:5):**
+```
+Wide documentary shot, a single lawyer in a suit standing small at the end of a cold data-center
+aisle of glowing server racks, looking up, dwarfed by the infrastructure, available light, long
+perspective, fine grain, shot on 35mm, Cinestill 800T, Magnum documentary style
+--v 7 --ar 4:5 --style raw --stylize 130
+```
+
+**Fogalmi alternatíva — mérleg+áramkör csendélet (A regiszter, ha absztraktabb kell):**
+```
+Abstract still life, a blackened steel scale of justice partially fused with fine brushed-brass
+circuit lines on honed Calacatta marble, one taut draped raw silk ribbon, low-key single beam,
+desaturated greige and charcoal palette with deep forest accent, shot on Phase One XF IQ4,
 editorial minimalism, vast negative space --v 7 --ar 16:9 --style raw --stylize 230
 ```
 
-**Alternatív variáns — vezetői jelenléti kép (portré / social, 4:5).** Ha a borító inkább
-emberközpontú, döntéshozói tekintélyt sugároz.
-
-```
-Confident general counsel in tailored charcoal wool suit, standing in a minimalist travertine
-law-firm lobby, honed marble surface, faint reflection of abstract data lines on the stone,
-soft directional window light, deep controlled shadows, muted tonal palette of bone and
-charcoal, shot on Phase One XF IQ4, Schneider 80mm, editorial composition, generous negative
-space --v 7 --ar 4:5 --style raw --stylize 250
-```
-
-Sorozatos arculathoz rögzíts egy `--sref` értéket mindkét variánson a konzisztenciáért. A
-`--style raw` és a paraméter-szintaxis a Midjourney aktuális kiadásához kötött — verifikáld a
-hivatalos dokumentáción.
+Az **elsődleges** a riport (ügyvéd + gép valós térben). A **server-folyosó** a beszállítói függőség /
+koncentráció vizuális tézise. A **csendélet** a steril fallback. Sorozathoz közös `--sref` (Portra 400
+nappali / Cinestill 800T éjszakai „ház-stock").
 
 ---
 
