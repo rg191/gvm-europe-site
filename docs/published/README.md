@@ -19,3 +19,4 @@ keretek) a `docs/` alatti munkapéldányokban maradnak, ide nem kerülnek.
 |---|---|---|
 | [`gen-spektrum.md`](gen-spektrum.md) | Gen spektrum | [`../sample-article-gen-spektrum.md`](../sample-article-gen-spektrum.md) |
 | [`forditott-mentoralas.md`](forditott-mentoralas.md) | Gen spektrum | [`../sample-article-forditott-mentoralas.md`](../sample-article-forditott-mentoralas.md) |
+| [`token-helyett-ertek.md`](token-helyett-ertek.md) | AI vezetőknek | [`../sample-article-token-helyett-ertek.md`](../sample-article-token-helyett-ertek.md) |
