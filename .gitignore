@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.pyc
+
+# Generált eval-pontozók (a baseline-t verziózzuk, a kísérleteket nem)
+evals/*.csv
+!evals/baseline.csv
