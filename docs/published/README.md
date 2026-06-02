@@ -15,6 +15,7 @@ keretek) a `docs/` alatti munkapéldányokban maradnak, ide nem kerülnek.
 2. **Korrektúra.** Egy emberi átolvasás.
 3. **Byline és felület.** Szerző és megjelenési platform rögzítése.
 
-| Publikálásra kész cikk | Munkapéldány (forrás) |
-|---|---|
-| [`gen-spektrum.md`](gen-spektrum.md) | [`../sample-article-gen-spektrum.md`](../sample-article-gen-spektrum.md) |
+| Publikálásra kész cikk | Rovat | Munkapéldány (forrás) |
+|---|---|---|
+| [`gen-spektrum.md`](gen-spektrum.md) | Gen spektrum | [`../sample-article-gen-spektrum.md`](../sample-article-gen-spektrum.md) |
+| [`forditott-mentoralas.md`](forditott-mentoralas.md) | Gen spektrum | [`../sample-article-forditott-mentoralas.md`](../sample-article-forditott-mentoralas.md) |
