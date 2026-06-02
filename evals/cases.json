@@ -1,0 +1,149 @@
+{
+  "suite": "GVM Europe AI Ágens — Eval Suite v1",
+  "scoring": "Esetenként 0..1 a teljesített rubrikapontok arányában. Sikeres eset: score >= 0.8.",
+  "cases": [
+    {
+      "id": "compliance-01",
+      "domain": "compliance",
+      "expected_route": "compliance-audit",
+      "input": "Egy HR-tech ügyfél önéletrajz-szűrő MI-t használ, ami a jelölt arckifejezéséből 'lelkesedés-pontszámot' ad videointerjún. Megfelelő ez az AI Act szerint?",
+      "rubric": [
+        "Felismeri az érzelemfelismerést munkahelyi/kiválasztási kontextusban (5. cikk (f))",
+        "Jelzi a lehetséges TILTOTT besorolást, nem csak 'nagy kockázatút'",
+        "Az 5. cikk szövegét/kivételeit verifikálandóként kezeli, nem fejből idéz",
+        "Záró jogi disclaimert tartalmaz"
+      ]
+    },
+    {
+      "id": "compliance-02",
+      "domain": "compliance",
+      "expected_route": "compliance-audit",
+      "input": "Egy 300 fős magyar energiakereskedő cég. NIS2 hatálya alá esik? Milyen kötelezettségek a legsürgősebbek?",
+      "rubric": [
+        "Először hatály-szűrőt futtat (szektor + méret → essential/important)",
+        "A küszöböket a tagállami átültetésen verifikálandónak jelöli",
+        "Kiemeli az incidensbejelentési határidőket mint sürgős kötelezettséget",
+        "Megemlíti a vezetői felelősséget"
+      ]
+    },
+    {
+      "id": "compliance-03",
+      "domain": "compliance",
+      "expected_route": "compliance-audit",
+      "input": "Ellenőrizd ezt a NIS2 megfelelőségi jelentést: 'Van tűzfalunk és évente mentünk. Kész vagyunk.' Mi hiányzik?",
+      "rubric": [
+        "Hiányelemzést ad a 10 kockázatkezelési intézkedés-blokk mentén",
+        "Konkrétan hiányol: incidenskezelési folyamat, ellátási lánc, MFA, kriptográfia, kockázatmérés",
+        "Nem fogadja el a 'kész vagyunk' állítást, strukturált gap-listát ad",
+        "Forráshoz köti vagy verifikálandónak jelöli a követelményeket"
+      ]
+    },
+    {
+      "id": "compliance-04",
+      "domain": "compliance",
+      "expected_route": "compliance-audit",
+      "input": "Egy marketing-platform internetről gyűjt arcképeket, hogy bővítse az arcfelismerő adatbázisát. Jogszerű?",
+      "rubric": [
+        "Azonosítja az 5. cikk (e) célzatlan arckép-scraping tilalmat",
+        "Tiltott gyakorlatként kezeli, eszkalálja jogi felülvizsgálatra",
+        "Megkülönbözteti a GDPR-jogalap kérdésétől",
+        "Disclaimer"
+      ]
+    },
+    {
+      "id": "compliance-05",
+      "domain": "compliance",
+      "expected_route": "compliance-audit",
+      "input": "Az ügyfél azt állítja, az AI Act minden kötelezettsége már ma hatályos. Igaz ez?",
+      "rubric": [
+        "Korrigálja: lépcsőzetes alkalmazás, nem egyszerre lép minden hatályba",
+        "Megemlíti, hogy az 5. cikk tilalmai 2025-02-02-től alkalmazandók",
+        "Nem ad hamis bizonyosságot a többi határidőről, verifikálandónak jelöli",
+        "Megkülönbözteti tiltott / nagy kockázatú / korlátozott kategóriát"
+      ]
+    },
+    {
+      "id": "finance-01",
+      "domain": "finance",
+      "expected_route": "financial-risk-calculator",
+      "input": "120 millió EUR éves árbevételű cég. Mekkora a maximális AI Act bírság-kitettsége egy tiltott gyakorlat miatt, forintban?",
+      "rubric": [
+        "A bírság-felső határt jogszabályi forráshoz köti (nem fejből)",
+        "Explicit listázza a feltevéseket (árbevétel, EUR→HUF árfolyam + dátum)",
+        "Nem éget be árfolyamot, bemenetként kezeli",
+        "Reprodukálható számítást ad (script-kimenet), tartománnyal"
+      ]
+    },
+    {
+      "id": "finance-02",
+      "domain": "finance",
+      "expected_route": "financial-risk-calculator",
+      "input": "Megérheti-e 800 ezer EUR-t költeni a megfelelőségi programra, ha a becsült bírság-kitettség 20 millió EUR?",
+      "rubric": [
+        "Remediációs ROI-t számol (elkerült várható veszteség − beruházás)",
+        "A bekövetkezési valószínűséget indokolja vagy 'illusztratívnak' jelöli",
+        "Alacsony/közép/magas forgatókönyvet ad",
+        "Üzleti döntés-előkészítő disclaimer"
+      ]
+    },
+    {
+      "id": "finance-03",
+      "domain": "finance",
+      "expected_route": "financial-risk-calculator",
+      "input": "Add meg pontosan, hány forint lesz a bírság. Egy szám kell, feltevések nélkül.",
+      "rubric": [
+        "Visszautasítja a hamis pontosságot, ragaszkodik a feltevés-listához",
+        "Tartományt ad egyetlen 'biztos' szám helyett",
+        "Megmagyarázza, miért nem adható forrás nélküli egzakt szám"
+      ]
+    },
+    {
+      "id": "editorial-01",
+      "domain": "editorial",
+      "expected_route": "editorial-creative",
+      "input": "Írj Forbes-szintű cikk-leadet és 5 címvariánst arról, hogy a tiltott MI-gyakorlatok milyen rejtett kockázatot jelentenek a prémium HR-tech piacnak.",
+      "rubric": [
+        "Erős, állító nyitómondat töltelék nélkül",
+        "5+ címvariáns eltérő szögből (kockázat/lehetőség/szám/kontraszt)",
+        "Quiet Luxury tónus, nincs üres szuperlatívusz",
+        "Konkrét tényállítást nem talál ki forrás nélkül"
+      ]
+    },
+    {
+      "id": "editorial-02",
+      "domain": "editorial",
+      "expected_route": "editorial-creative",
+      "input": "Készíts Midjourney v7 promptot egy cikk borítójához, ami a 'megfelelőség mint mérleg' témát viszi, prémium, visszafogott stílusban.",
+      "rubric": [
+        "Betölti a midjourney-v7-aesthetic Skillt a paraméterekért",
+        "Helyes v7 szintaxis (--v 7, --ar, --style raw, --stylize)",
+        "Anyag/fény a 'High-Fashion Business' szótárból (márvány, low-key, Phase One)",
+        "Kerüli a telített színt / zsúfolt hátteret, negatív teret használ"
+      ]
+    },
+    {
+      "id": "editorial-03",
+      "domain": "editorial",
+      "expected_route": "editorial-creative",
+      "input": "Foglald össze egy NIS2 gap-elemzés eredményét vezetői Action Plan-ben, döntésre kész lépésekkel.",
+      "rubric": [
+        "Számozott, priorizált lépések, mindegyikhez felelős és tét",
+        "Quiet Luxury, lényegre törő próza",
+        "Ha hiányzik a forrásolt compliance-input, jelzi, hogy előbb az kell",
+        "Nem talál ki konkrét határidőt/bírságszámot forrás nélkül"
+      ]
+    },
+    {
+      "id": "orchestration-01",
+      "domain": "orchestration",
+      "expected_route": "compliance-audit + financial-risk-calculator",
+      "input": "Teljes körű kockázati anyagot kérek egy social-scoring MI-ről: jogi minősítés ÉS forintosított kitettség egyben.",
+      "rubric": [
+        "Felismeri, hogy két subagent kell, és párhuzamosan delegál",
+        "A compliance adja a tényállást/jogalapot a pénzügyi modulnak",
+        "A végén egységes, Quiet Luxury tónusú szintézist ad",
+        "Mindkét rész forrásolt, mindkét disclaimer szerepel"
+      ]
+    }
+  ]
+}
