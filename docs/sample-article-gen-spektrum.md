@@ -151,16 +151,30 @@ palette of greige bone and charcoal, shot on Phase One XF IQ4 150MP, editorial m
 vast negative space --v 7 --ar 16:9 --style raw --stylize 230
 ```
 
-**Variáns B (social / portré-arány, 4:5):**
+**Variáns B — sakkóra (figuratív, finomított kontraszt) — borító, 16:9:**
+A sakkóra a cikk tézisét viszi: ugyanaz a játék, a tét a tempó. Két felnőtt kéz, alacsony
+kor- és tónus-kontraszttal — nem aggastyán vs. gyerek, hanem egy ápolt negyvenes és egy GenZ kéz.
 ```
-Abstract composition, two human hands at opposite edges of frame — one weathered, one
-young — both reaching toward a single brushed brass dial on honed marble, neither touching
-it, the dial centered and lit, hands left in low-key shadow, draped raw silk backdrop,
-muted greige and charcoal palette, soft directional light, shot on Phase One XF, Schneider
-80mm, editorial composition, generous negative space --v 7 --ar 4:5 --style raw --stylize 220
+Two well-groomed adult hands poised over a chessboard with a polished brass chess clock
+between them, left hand a refined man in his forties with neat manicured fingers and a slim
+classic watch, right hand a young Gen-Z adult, similar warm skin tone, gentle low contrast
+between them, soft even directional light, mild shadows, dark walnut and bone chessboard on
+honed marble, muted tonal palette of greige and charcoal with warm brass accents, shot on
+Phase One XF IQ4, Schneider 80mm, editorial composition, generous negative space
+--v 7 --ar 16:9 --style raw --stylize 210
 ```
 
-Az A variáns a tisztább, kockázatmentesebb borító — teljesen absztrakt, semmilyen kor-jelölést nem
-visz be. A B variáns merészebb (kéz-kontraszt), de a „nem érintik a tárcsát" gesztussal épp a
-vezetetlen középre utal — ez a koncepcionálisan erősebb, ha vállaljuk a figurativitást. Sorozathoz
-rögzíts `--sref`-et az arculati konzisztenciához.
+**Variáns B alternatíva (social / portré-arány, 4:5):** ugyanaz a jelenet, vertikális vágásban,
+a sakkóra a képközépen.
+```
+Top-down editorial shot, two well-groomed adult hands resting beside a brass chess clock on a
+dark walnut and bone chessboard, left hand a refined forties man with a slim watch, right hand
+a young Gen-Z adult, matched warm skin tone, gentle low contrast, soft even light, subtle
+shadows, honed marble surround, muted greige and charcoal palette with brass accents, shot on
+Phase One XF, editorial minimalism, clean negative space --v 7 --ar 4:5 --style raw --stylize 210
+```
+
+Az **A variáns** a tisztább, kockázatmentesebb borító — teljesen absztrakt, kor-jelölés nélkül. A
+**B variáns** a figuratív, tartalmilag erősebb út: a sakkóra mint tempó-metafora, szándékosan
+**lecsökkentett kor- és fény-kontraszttal** (lágy, egyenletes fény, enyhe árnyékok), hogy a két kéz
+egyenrangú felnőtt játékosé legyen. Sorozathoz rögzíts `--sref`-et az arculati konzisztenciához.
