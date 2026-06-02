@@ -98,31 +98,35 @@ idézetet nem használtam; a trend végig megfigyelésként, nem adatként szere
 
 ---
 
-## Midjourney v7 borító-prompt
+## Midjourney v7 borító-prompt — dokumentarista (B regiszter)
 
-A „hiányzó híd" gondolatot nem kézfogással, hanem két különálló anyag-objektum + szándékos negatív
-térrel ragadom meg: egy selyemszalag (eszköz: lágy, mozgékony, gyorsan változó) és egy gravírozott
-sárgaréz súly (tét: nehéz, lassú, következménnyel bír) ugyanazon a márványfelületen, de a kettő közt
-egy tiszta, üres rés — a megnyitatlan csatorna. Az alakok ápolt felnőtt kezek, kor-kontraszt nélkül.
+A cikk magja a **csend** — ezt fotózzuk, valós pillanatban, riportstílusban; nem kézfogást.
 
-**Borító (elsődleges):**
+**Elsődleges (borító, 16:9) — a meg nem szólalás pillanata:**
+```
+Documentary close shot, a young hand resting on a laptop keyboard, an older colleague leaning in
+beside but turned slightly away in thought, looking off-frame, not at the screen, soft directional
+window light, fine grain, candid unposed, shot on Leica M6, Kodak Portra 400, photojournalism,
+Magnum documentary style --v 7 --ar 16:9 --style raw --stylize 120
+```
+
+**Variáns — a részlet, ami mindent elmond (üres szék, fekete-fehér):**
+```
+Reportage detail, two coffee cups and an empty rolling chair pushed back from a desk with a glowing
+screen, late afternoon light raking across, dust in the air, Ilford HP5 black and white, fine grain,
+candid documentary, Magnum style --v 7 --ar 3:2 --style raw --stylize 100
+```
+
+**Figuratív alternatíva — „hiányzó híd" csendélet (A regiszter, ha absztraktabb kell):** selyemszalag
+(eszköz) és gravírozott rézsúly (tét) egy márványfelületen, közöttük szándékos üres rés.
 ```
 Abstract editorial still life, two well-groomed adult hands of similar age resting apart on honed
 Calacatta marble, between them a draped raw silk ribbon and a small engraved brushed-brass balance
-weight, a deliberate empty gap of negative space separating the two objects, no contact, low-key
-soft directional window light, single controlled beam, muted tonal palette of greige bone and
-charcoal, shot on Phase One XF IQ4 150MP, Schneider 80mm, editorial minimalism, vast negative space
---v 7 --ar 16:9 --style raw --stylize 230
+weight, a deliberate empty gap of negative space, no contact, low-key soft directional light,
+muted greige and charcoal palette, shot on Phase One XF IQ4, editorial minimalism, vast negative
+space --v 7 --ar 16:9 --style raw --stylize 230
 ```
 
-**Alternatív (portré-arányú, social):**
-```
-Two well-groomed adult hands of indistinct similar age on honed Calacatta marble, one resting near
-draped raw silk, the other near a blackened steel weight, an unbridged empty channel of marble
-between them, soft directional window light, deep controlled shadows, desaturated greige and
-charcoal palette, shot on Phase One XF, editorial composition, generous negative space
---v 7 --ar 4:5 --style raw --stylize 220
-```
-
-Ha a rovat sorozatot épít a „Gen spektrum" cikkekre, rögzíts egy közös `--sref` magot az első
-megjelent borítóból, és a többi promptot arra fűzd — így a vizuális arculat konzisztens marad.
+Az **elsődleges** a csendet kapja el (arc off-frame, biztonságos és erős). A **fekete-fehér üres szék**
+a hiányt teszi tárggyá. A **csendélet** a steril fallback. Sorozathoz közös `--sref` (riportnál a
+Portra 400 a „ház-stock").

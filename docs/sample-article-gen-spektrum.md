@@ -135,46 +135,38 @@ a következő pillérben érdemes egyetlen jelenetet mélyebbre vinni, nem újab
 
 ---
 
-## Midjourney v7 borító-prompt
+## Midjourney v7 borító-prompt — dokumentarista (B regiszter)
 
-Koncepció: a generációs spektrumot ne két szembenálló arccal ragadjuk meg (klisé), hanem egyetlen
-folytonos görbeként — egy fény-gradiensben átmenő anyagfelület, amelynek nincs „két oldala", csak egy
-vezetetlen közepe.
+A tézist — a *vezetetlen közép* — fizikai távolságként fotózzuk, valós térben, riportstílusban.
 
-**Elsődleges variáns (borító, 16:9):**
+**Elsődleges (borító, 16:9) — környezeti tabló:**
 ```
-Abstract still life, a single continuous strip of draped raw silk transitioning from deep
-charcoal at one end to bone white at the other, laid across honed Calacatta marble, the
-midpoint left in soft shadow and unlit, one faint beam of directional window light grazing
-the gradient, brushed brass marker resting precisely at the center, desaturated tonal
-palette of greige bone and charcoal, shot on Phase One XF IQ4 150MP, editorial minimalism,
-vast negative space --v 7 --ar 16:9 --style raw --stylize 230
+Wide environmental shot of an open-plan office at dusk, a lone older executive in shirtsleeves
+standing apart reading a paper printout, while three younger colleagues huddle around a single
+glowing monitor across the room, empty desks between them, warm tungsten and cold screen light
+mixing, shot on Leica M6, Kodak Portra 400, available light, candid reportage, fine grain,
+Magnum documentary style --v 7 --ar 16:9 --style raw --stylize 120
 ```
 
-**Variáns B — sakkóra (figuratív, finomított kontraszt) — borító, 16:9:**
-A sakkóra a cikk tézisét viszi: ugyanaz a játék, a tét a tempó. Két felnőtt kéz, alacsony
-kor- és tónus-kontraszttal — nem aggastyán vs. gyerek, hanem egy ápolt negyvenes és egy GenZ kéz.
+**Variáns — decisive moment (portré/social, 4:5):**
 ```
-Two well-groomed adult hands poised over a chessboard with a polished brass chess clock
-between them, left hand a refined man in his forties with neat manicured fingers and a slim
-classic watch, right hand a young Gen-Z adult, similar warm skin tone, gentle low contrast
-between them, soft even directional light, mild shadows, dark walnut and bone chessboard on
-honed marble, muted tonal palette of greige and charcoal with warm brass accents, shot on
-Phase One XF IQ4, Schneider 80mm, editorial composition, generous negative space
---v 7 --ar 16:9 --style raw --stylize 210
+Candid over-the-shoulder, a senior manager mid-listening as a young analyst gestures at a laptop,
+the older face caught in a half-second of doubt, soft window light, blurred office background,
+35mm reportage, Kodak Portra 400, fine grain, Magnum documentary style
+--v 7 --ar 4:5 --style raw --stylize 110
 ```
 
-**Variáns B alternatíva (social / portré-arány, 4:5):** ugyanaz a jelenet, vertikális vágásban,
-a sakkóra a képközépen.
+**Figuratív alternatíva — sakkóra (csendélet/A regiszter, ha absztraktabb kell):** a tempó-metafora,
+alacsony kor-kontraszttal (ápolt negyvenes + GenZ kéz, sakkóra a tábla fölött).
 ```
-Top-down editorial shot, two well-groomed adult hands resting beside a brass chess clock on a
-dark walnut and bone chessboard, left hand a refined forties man with a slim watch, right hand
-a young Gen-Z adult, matched warm skin tone, gentle low contrast, soft even light, subtle
-shadows, honed marble surround, muted greige and charcoal palette with brass accents, shot on
-Phase One XF, editorial minimalism, clean negative space --v 7 --ar 4:5 --style raw --stylize 210
+Two well-groomed adult hands poised over a chessboard with a polished brass chess clock between
+them, left hand a refined man in his forties with a slim classic watch, right hand a young Gen-Z
+adult, matched warm skin tone, gentle low contrast, soft even light, mild shadows, dark walnut
+and bone chessboard on honed marble, muted greige and charcoal palette with brass accents, shot
+on Phase One XF IQ4, Schneider 80mm, editorial composition --v 7 --ar 16:9 --style raw --stylize 210
 ```
 
-Az **A variáns** a tisztább, kockázatmentesebb borító — teljesen absztrakt, kor-jelölés nélkül. A
-**B variáns** a figuratív, tartalmilag erősebb út: a sakkóra mint tempó-metafora, szándékosan
-**lecsökkentett kor- és fény-kontraszttal** (lágy, egyenletes fény, enyhe árnyékok), hogy a két kéz
-egyenrangú felnőtt játékosé legyen. Sorozathoz rögzíts `--sref`-et az arculati konzisztenciához.
+Az **elsődleges** a legelevenebb (riport, valós tér, a rés = a vezetetlen közép). A **decisive
+moment** a kétkedő tekintetet kapja el (arc oldalról/over-the-shoulder, biztonságos). A **sakkóra**
+a steril, absztrakt fallback. Sorozathoz rögzíts közös `--sref`-et (riportnál a Portra 400 a
+„ház-stock").

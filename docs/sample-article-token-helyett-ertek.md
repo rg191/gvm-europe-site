@@ -129,39 +129,41 @@ Forbes-cikkből származnak.
 
 ---
 
-## Midjourney v7 — borító-prompt
+## Midjourney v7 — borító-prompt — dokumentarista (B regiszter)
 
-**Koncepció:** „nyers fogyasztás vs. valódi érték" — egy túlcsorduló halom apró, jelentéktelen
-token-korong szemben egyetlen, súlyos, megmunkált értéktárggyal; Quiet Luxury paletta, csendes
-drámaiság.
+A forrás Zheng-hasonlatát fotózzuk le: „este 10-kor a parkolóban áll-e az autó". A költség és a
+kifáradás valós, éjszakai pillanatban — nem absztrakt korong-halom.
 
-**Elsődleges (borító, 16:9):**
+**Elsődleges (borító, 16:9) — a parkoló-metafora:**
 ```
-Abstract still life, an overflowing scattered heap of tiny dull brass tokens spilling
-across honed Calacatta marble, contrasted with a single heavy polished gold ingot resting
-in a beam of soft directional light, deep controlled shadows, low-key lighting, muted
-desaturated greige charcoal and bone palette, shot on Phase One XF IQ4 150MP, editorial
-minimalism, vast negative space --v 7 --ar 16:9 --style raw --stylize 230
+Wide documentary night shot, a vast empty corporate parking lot under sodium lights, a single car
+left alone near a glass office tower with a few windows still lit, long shadows, wet asphalt
+reflections, shot on 35mm, Kodak Portra 800, available light, photojournalism, fine grain,
+melancholic --v 7 --ar 16:9 --style raw --stylize 130
 ```
 
-**Variáns A (portré / social, 4:5) — mérleg-motívum:**
+**Variáns — a költség, ami fizikai (CFO éjszaka, 4:5):**
 ```
-Abstract still life, blackened steel balance scale on honed Calacatta marble, one pan
-overflowing with countless small brass discs, the other holding a single solid gold cube,
-weighted toward the cube, single beam of soft window light, deep shadows, desaturated
-tonal greige and charcoal palette, shot on Phase One XF, editorial composition, generous
-negative space --v 7 --ar 4:5 --style raw --stylize 220
+Candid reportage, a tired finance executive lit only by a glowing dashboard on a monitor in a dark
+office at night, reflection of charts in their glasses, loosened tie, late hour, Kodak Portra 800,
+available light, fine grain, Magnum documentary style --v 7 --ar 4:5 --style raw --stylize 120
 ```
 
-**Variáns B (banner, 16:9) — pénzügyi nézőpont:**
+**Variáns — a „divathóbort" iróniája (fejlesztői asztal hajnali 2-kor, 16:9):**
 ```
-Minimalist still life, a stream of glowing brass tokens dissolving into a single luminous
-gold coin on travertine surface, draped raw silk in background, soft directional light,
-low-key, muted bone and deep forest palette, shot on Phase One XF IQ4, Schneider 35mm,
-clean sightlines, abundant negative space --v 7 --ar 16:9 --style raw --stylize 230
+Documentary still, a developer's desk at 2am, three glowing monitors, empty energy drink cans, a
+forgotten sandwich, blue screen glow on an empty chair, nobody present, candid, shot on 35mm,
+Cinestill 800T, neon-tinged available light, fine grain --v 7 --ar 16:9 --style raw --stylize 130
 ```
 
-Az **elsődleges** a leghűbb a „fogyasztás vs. érték" gondolathoz és a leadhez. A **Variáns A** (mérleg)
-a legszemléletesebb a döntés/súlyozás üzenetre, social-formátumban. A **Variáns B** a „pénzügyi
-igazgató irányítópultja" szögre hangol, banner-arányban. Sorozatként ajánlott egy közös `--sref`
-rögzítése a konzisztens arculathoz.
+**Fogalmi alternatíva — „fogyasztás vs. érték" csendélet (A regiszter, ha absztraktabb kell):**
+```
+Abstract still life, an overflowing heap of tiny dull brass tokens spilling across honed Calacatta
+marble, contrasted with a single heavy polished gold ingot in a beam of soft light, low-key, muted
+greige and charcoal palette, shot on Phase One XF IQ4, editorial minimalism, vast negative space
+--v 7 --ar 16:9 --style raw --stylize 230
+```
+
+Az **elsődleges** (üres éjszakai parkoló) a leghűbb a forrás hasonlatához és a legerősebb hangulatilag.
+A **CFO** és a **hajnali asztal** a pénzügyi, illetve a „divathóbort" szögre hangol. A **csendélet** a
+steril fallback. Sorozathoz közös `--sref` (riportnál a Portra 800 a „ház-stock" az éjszakai darabokhoz).
