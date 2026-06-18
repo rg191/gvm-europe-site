@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Megrendelés menete – GVM Haus</title>
+  <meta
+    name="description"
+    content="A GVM Haus mobil, moduláris precíziós házak megrendelésének lépésről lépésre bemutatott folyamata: az érdeklődéstől a kulcsrakész átadásig."
+  />
+  <style>
+    :root {
+      --c-bg: #f6f7f5;
+      --c-surface: #ffffff;
+      --c-ink: #1d2521;
+      --c-muted: #5c6b63;
+      --c-accent: #2f6b4f;
+      --c-accent-soft: #e4efe8;
+      --c-line: #e1e6e2;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(29, 37, 33, 0.08);
+      --maxw: 980px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--c-ink);
+      background: var(--c-bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--c-accent); }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #234d3a 0%, #2f6b4f 60%, #3c8a64 100%);
+      color: #fff;
+      padding: 72px 0 88px;
+    }
+    .hero .wrap { text-align: center; }
+    .eyebrow {
+      display: inline-block;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 600;
+      opacity: 0.9;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      line-height: 1.15;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .badge {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Intro */
+    .intro { margin-top: -48px; }
+    .intro .card {
+      background: var(--c-surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+    .intro h2 { margin-top: 0; }
+
+    section { padding: 56px 0; }
+    section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin: 0 0 8px;
+    }
+    .section-lead { color: var(--c-muted); max-width: 680px; margin: 0 0 36px; }
+
+    /* Steps */
+    .steps { display: grid; gap: 20px; }
+    .step {
+      position: relative;
+      background: var(--c-surface);
+      border: 1px solid var(--c-line);
+      border-radius: var(--radius);
+      padding: 26px 28px 26px 88px;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .step:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 38px rgba(29, 37, 33, 0.12);
+    }
+    .step .num {
+      position: absolute;
+      left: 24px;
+      top: 26px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--c-accent-soft);
+      color: var(--c-accent);
+      font-weight: 700;
+      font-size: 1.15rem;
+      display: grid;
+      place-items: center;
+    }
+    .step h3 { margin: 0 0 6px; font-size: 1.2rem; }
+    .step .who {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      background: var(--c-accent-soft);
+      border-radius: 6px;
+      padding: 3px 9px;
+      margin-bottom: 10px;
+    }
+    .step p { margin: 0 0 12px; color: var(--c-muted); }
+    .step ul { margin: 0; padding-left: 18px; color: var(--c-muted); }
+    .step li { margin-bottom: 4px; }
+    .step .timing {
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: var(--c-ink);
+      font-weight: 600;
+    }
+    .step .timing::before { content: "⏱ "; }
+
+    /* Doc list */
+    .docs {
+      background: var(--c-accent-soft);
+    }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .doc-grid .item {
+      background: var(--c-surface);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--c-line);
+    }
+    .doc-grid h4 { margin: 0 0 6px; font-size: 1.02rem; }
+    .doc-grid p { margin: 0; color: var(--c-muted); font-size: 0.94rem; }
+
+    /* FAQ */
+    details {
+      background: var(--c-surface);
+      border: 1px solid var(--c-line);
+      border-radius: 12px;
+      padding: 4px 20px;
+      margin-bottom: 12px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 14px 0;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--c-accent); font-weight: 700; }
+    details[open] summary::after { content: "–"; }
+    details p { margin: 0 0 16px; color: var(--c-muted); }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, #234d3a, #2f6b4f);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 48px 28px;
+      margin: 24px 0;
+    }
+    .cta h2 { color: #fff; }
+    .cta p { opacity: 0.95; max-width: 560px; margin: 0 auto 24px; }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--c-accent);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 999px;
+      transition: transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    footer {
+      text-align: center;
+      color: var(--c-muted);
+      font-size: 0.9rem;
+      padding: 32px 20px 48px;
+    }
+
+    @media (max-width: 540px) {
+      .step { padding: 64px 22px 24px; }
+      .step .num { top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">GVM Haus &middot; Mobil precíziós házak</span>
+      <h1>Megrendelés menete</h1>
+      <p>
+        Az első érdeklődéstől a kulcsrakész átadásig – átlátható, kiszámítható
+        folyamat, amelynek minden lépésénél tudja, mi következik és mi a teendője.
+      </p>
+      <div class="badges">
+        <span class="badge">Kulcsrakész átadás</span>
+        <span class="badge">30–90 nap gyártási idő</span>
+        <span class="badge">Egyedi konfiguráció</span>
+        <span class="badge">Fix, transzparens ár</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="intro wrap">
+    <div class="card">
+      <h2>Hogyan dolgozunk?</h2>
+      <p>
+        A GVM Haz modul- és mobilházai üzemi körülmények között, precíziós
+        technológiával készülnek, így a gyártás ideje és minősége egyaránt
+        kiszámítható. A megrendelés alábbi protokollja végigvezeti Önt a teljes
+        folyamaton: tudni fogja, melyik lépés mennyi időt vesz igénybe, milyen
+        dokumentumra van szükség és mikor esedékesek a fizetések. A folyamat
+        <strong>10 jól elhatárolható szakaszból</strong> áll.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>A folyamat lépésről lépésre</h2>
+      <p class="section-lead">
+        Minden szakasznál jelöljük, hogy az adott teendő elsősorban az Ön
+        (Megrendelő) vagy a GVM Haus oldalán merül fel.
+      </p>
+
+      <div class="steps">
+        <article class="step">
+          <span class="num">1</span>
+          <span class="who">Megrendelő</span>
+          <h3>Érdeklődés és kapcsolatfelvétel</h3>
+          <p>
+            Töltse ki weboldalunk kapcsolati űrlapját, írjon e-mailt vagy hívjon
+            telefonon. Néhány alapadat segít, hogy a megfelelő ajánlattal
+            készülhessünk.
+          </p>
+          <ul>
+            <li>Tervezett felhasználás (állandó lakhatás, vendégház, iroda, stb.)</li>
+            <li>Hozzávetőleges méret / szobaszám igény</li>
+            <li>Telepítés tervezett helyszíne (irányítószám, ország)</li>
+            <li>Tervezett ütemezés és keretösszeg</li>
+          </ul>
+          <div class="timing">Visszajelzés általában 1–2 munkanapon belül</div>
+        </article>
+
+        <article class="step">
+          <span class="num">2</span>
+          <span class="who">GVM Haus + Megrendelő</span>
+          <h3>Ingyenes konzultáció és igényfelmérés</h3>
+          <p>
+            Személyes, telefonos vagy online megbeszélésen áttekintjük az
+            igényeit, bemutatjuk a típusmodelleket, az anyag- és felszereltségi
+            csomagokat, valamint a reális költség- és időkeretet.
+          </p>
+          <ul>
+            <li>Modellek és alaprajzok bemutatása</li>
+            <li>Felszereltségi szintek (pl. alap / komfort) ismertetése</li>
+            <li>Finanszírozási lehetőségek, banki háttér egyeztetése</li>
+          </ul>
+          <div class="timing">A konzultáció díjmentes és kötelezettség nélküli</div>
+        </article>
+
+        <article class="step">
+          <span class="num">3</span>
+          <span class="who">GVM Haus</span>
+          <h3>Helyszíni felmérés</h3>
+          <p>
+            A pontos ajánlat és a hibamentes telepítés érdekében felmérjük a
+            telepítés helyszínét: megközelíthetőség, talajviszonyok, daru- és
+            szállítási feltételek, közmű-csatlakozási pontok.
+          </p>
+          <ul>
+            <li>Megközelítés és daruzás feltételeinek vizsgálata</li>
+            <li>Alapozás / teherbírás tisztázása</li>
+            <li>Közmű (víz, csatorna, áram) csatlakozási pontok</li>
+          </ul>
+          <div class="timing">Időpont előre egyeztetett; nagyobb távolságnál kiszállási díj merülhet fel</div>
+        </article>
+
+        <article class="step">
+          <span class="num">4</span>
+          <span class="who">GVM Haus + Megrendelő</span>
+          <h3>Modellválasztás és egyedi konfiguráció</h3>
+          <p>
+            Kiválasztjuk a megfelelő típusmodellt, és testre szabjuk: nyílászárók
+            elrendezése, burkolatok, homlokzat, konyha- és fürdőszobacsomag,
+            bútorozott vagy bútorozatlan kivitel.
+          </p>
+          <ul>
+            <li>Nyílászárók száma, mérete, elhelyezkedése szabadon választható</li>
+            <li>Külső homlokzat, hőszigetelés, tetőhajlásszög helyi előírás szerint</li>
+            <li>Belső anyagok, gépészet és beépített bútorzat összeállítása</li>
+          </ul>
+        </article>
+
+        <article class="step">
+          <span class="num">5</span>
+          <span class="who">GVM Haus</span>
+          <h3>Látványterv és részletes árajánlat</h3>
+          <p>
+            A véglegesített konfiguráció alapján látványtervet és tételes,
+            transzparens árajánlatot készítünk, amely tartalmazza a ház árát, a
+            szállítást és a telepítést is.
+          </p>
+          <ul>
+            <li>3D látványterv / vizualizáció</li>
+            <li>Tételes árajánlat rejtett költségek nélkül</li>
+            <li>Szállítás és telepítés feltételeinek rögzítése</li>
+          </ul>
+          <div class="timing">Az ajánlat meghatározott ideig (pl. 30 nap) érvényes</div>
+        </article>
+
+        <article class="step">
+          <span class="num">6</span>
+          <span class="who">Megrendelő + GVM Haus</span>
+          <h3>Szerződéskötés és előleg</h3>
+          <p>
+            Az ajánlat elfogadása után írásos adásvételi / vállalkozási szerződést
+            kötünk, amely rögzíti a műszaki tartalmat, az árat, a fizetési és
+            szállítási ütemtervet, valamint a garanciát. A gyártás az előleg
+            beérkezésével indul.
+          </p>
+          <ul>
+            <li>Egyértelmű műszaki tartalom és teljesítési határidők</li>
+            <li>Fizetési ütemterv (pl. előleg – részfizetés – átadáskori végösszeg)</li>
+            <li>Garanciális és jótállási feltételek</li>
+          </ul>
+          <div class="timing">A gyártásba vétel feltétele a szerződés aláírása és az előleg jóváírása</div>
+        </article>
+
+        <article class="step">
+          <span class="num">7</span>
+          <span class="who">GVM Haus</span>
+          <h3>Üzemi gyártás</h3>
+          <p>
+            Háza ellenőrzött üzemi körülmények között, az időjárástól függetlenül
+            készül. A folyamatról rendszeresen tájékoztatjuk – akár fotós
+            beszámolóval vagy videóhívással is.
+          </p>
+          <ul>
+            <li>Precíziós, sorozatminőségű gyártás</li>
+            <li>Folyamatos állapotjelentés a megrendelő felé</li>
+            <li>Igény esetén üzemlátogatás / videós bemutató</li>
+          </ul>
+          <div class="timing">Tipikus gyártási idő kb. 30–90 nap a konfigurációtól függően</div>
+        </article>
+
+        <article class="step">
+          <span class="num">8</span>
+          <span class="who">Megrendelő (támogatással)</span>
+          <h3>Engedélyek és a helyszín előkészítése</h3>
+          <p>
+            A gyártással párhuzamosan elő kell készíteni a helyszínt. A szükséges
+            engedélyek beszerzése a megrendelő feladata, ehhez műszaki
+            dokumentációval és tanácsadással segítünk.
+          </p>
+          <ul>
+            <li>Szükséges hatósági engedélyek / bejelentések tisztázása</li>
+            <li>Alapozás, sík és teherbíró felület kialakítása</li>
+            <li>Közművek kiállása a telepítési ponthoz</li>
+          </ul>
+        </article>
+
+        <article class="step">
+          <span class="num">9</span>
+          <span class="who">GVM Haus</span>
+          <h3>Szállítás és telepítés</h3>
+          <p>
+            A kész házat egyeztetett időpontban a helyszínre szállítjuk és
+            szakszerűen pozícionáljuk, csatlakoztatjuk a kiállt közművekre.
+          </p>
+          <ul>
+            <li>Speciális szállítás és daruzás megszervezése</li>
+            <li>Pozicionálás, rögzítés, közmű-bekötés</li>
+            <li>Üzembe helyezés és működés-ellenőrzés</li>
+          </ul>
+        </article>
+
+        <article class="step">
+          <span class="num">10</span>
+          <span class="who">GVM Haus + Megrendelő</span>
+          <h3>Átadás-átvétel és jótállás</h3>
+          <p>
+            Közös bejárással átadjuk a kulcsrakész házat, átadjuk a
+            dokumentációt, és rögzítjük az esetleges észrevételeket. A megrendelt
+            jótállás az átadással lép életbe.
+          </p>
+          <ul>
+            <li>Tételes átadás-átvételi jegyzőkönyv</li>
+            <li>Kezelési útmutatók, garanciajegyek, tanúsítványok átadása</li>
+            <li>Záró kifizetés rendezése</li>
+            <li>Átadás utáni ügyfélszolgálat és garanciális support</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="docs">
+    <div class="wrap">
+      <h2>Milyen adatokra és dokumentumokra lesz szükség?</h2>
+      <p class="section-lead">
+        Az alábbiak előkészítése felgyorsítja a folyamatot.
+      </p>
+      <div class="doc-grid">
+        <div class="item">
+          <h4>Helyszín adatai</h4>
+          <p>Cím, helyrajzi szám, megközelíthetőség, talaj- és terepviszonyok.</p>
+        </div>
+        <div class="item">
+          <h4>Igénylista</h4>
+          <p>Felhasználási cél, méret, szobaszám, felszereltségi elvárások.</p>
+        </div>
+        <div class="item">
+          <h4>Engedélyügyi háttér</h4>
+          <p>Helyi építési előírások, beépítési terv, szükséges bejelentések.</p>
+        </div>
+        <div class="item">
+          <h4>Finanszírozás</h4>
+          <p>Önerő / hitel arány tisztázása a saját bankjával, ha releváns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Gyakori kérdések</h2>
+      <p class="section-lead">A megrendeléssel kapcsolatos leggyakoribb kérdések.</p>
+
+      <details>
+        <summary>Mennyi a teljes átfutási idő a megrendeléstől az átadásig?</summary>
+        <p>
+          A gyártás jellemzően 30–90 nap, amelyhez hozzáadódik a helyszín
+          előkészítése, az engedélyeztetés, valamint a szállítás és telepítés
+          ideje. A pontos ütemtervet a szerződésben rögzítjük.
+        </p>
+      </details>
+
+      <details>
+        <summary>Mikor és milyen ütemben kell fizetni?</summary>
+        <p>
+          A fizetés ütemezett: a szerződéskötéskor előleg, ezt követően
+          előrehaladás szerinti részfizetés(ek), végül az átadáskor a fennmaradó
+          összeg. A pontos százalékokat a szerződés tartalmazza.
+        </p>
+      </details>
+
+      <details>
+        <summary>Mennyire szabható testre a ház?</summary>
+        <p>
+          A nyílászárók elrendezése, a burkolatok, a homlokzat, a gépészet és a
+          felszereltség szabadon konfigurálható. Az alaprajz a típustól függően
+          általában korlátozottan módosítható; egyedi igényekről a konzultáción
+          egyeztetünk.
+        </p>
+      </details>
+
+      <details>
+        <summary>Kötelező a helyszíni felmérés?</summary>
+        <p>
+          A pontos ajánlat és a zökkenőmentes telepítés érdekében erősen ajánlott.
+          A megközelíthetőség, a talajviszonyok és a daruzási feltételek
+          jelentősen befolyásolják a szállítást és a telepítést.
+        </p>
+      </details>
+
+      <details>
+        <summary>Az engedélyeket ki intézi?</summary>
+        <p>
+          A hatósági engedélyek beszerzése a megrendelő felelőssége, ehhez azonban
+          a szükséges műszaki dokumentációval és tanácsadással segítünk.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2>Készen áll az első lépésre?</h2>
+        <p>
+          Kérjen díjmentes, kötelezettség nélküli konzultációt – segítünk
+          megtalálni az igényeihez illő megoldást.
+        </p>
+        <a class="btn" href="#">Kapcsolatfelvétel</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    GVM Haus &middot; Mobil precíziós moduláris házak &middot; gvmhaus.at
+  </footer>
+</body>
+</html>
