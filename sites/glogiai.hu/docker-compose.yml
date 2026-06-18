@@ -1,0 +1,14 @@
+# glogiai.hu – elkülönített statikus weboldal (Hetzner)
+# Szerver útvonal: /srv/sites/glogiai.hu
+# Konténer neve: glogiai-hu-web (NE keverd más site-okkal!)
+
+services:
+  glogiai-hu-web:
+    container_name: glogiai-hu-web
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9080:80"
+    labels:
+      - "gvm.site=glogiai.hu"
+      - "gvm.description=GVM Europe statikus landing"
