@@ -1,102 +1,116 @@
-# glogiai.hu – Hetzner hosztolás
+# glogiai.hu – hosztolás (Netlify / Tárhely.Eu / Hetzner)
 
-> **Egy helyen minden, ami ehhez az oldalhoz tartozik.**  
-> Ne keverd össze a `gvmeurope.hu` főoldallal vagy más projektekkel.
+> **Egy helyen minden, ami ehhez az oldalhoz tartozik.**
 
-## Gyors referencia
+## Melyiket válaszd?
+
+| Ha… | Akkor… |
+|---|---|
+| **Nincs Hetzner jelszavad** | → **Netlify** (lent, 1. opció) — ingyenes, GitHub-ból deploy |
+| Van Tárhely.Eu ügyféladminod | → **Tárhely.Eu** (2. opció) — FTP feltöltés |
+| Van SSH a Hetznerre | → **Hetzner** (3. opció) — Docker |
+
+---
+
+## 1. Netlify (ajánlott — nincs szerver kell)
+
+**Előny:** ingyenes, automatikus deploy GitHub push-ra, HTTPS, nem kell szerver jelszó.
+
+### Lépések
+
+1. Regisztrálj: https://app.netlify.com (GitHub fiókkal is mehet)
+2. **Add new site → Import an existing project → GitHub**
+3. Repo: `rg191/gvm-europe-site`
+4. Build settings (a `netlify.toml` már beállítja):
+   - **Publish directory:** `sites/glogiai.hu/public`
+   - **Build command:** üres vagy `echo ok`
+5. Deploy → kapsz egy URL-t, pl. `gvm-europe-site.netlify.app`
+6. **Domain settings → Add custom domain →** `glogiai.hu` + `www.glogiai.hu`
+7. Netlify megadja a DNS beállítást — ezt írd be a **Tárhely.Eu** DNS-ben:
+
+```
+glogiai.hu      CNAME  →  [a-netlify-site-neve].netlify.app
+www.glogiai.hu  CNAME  →  [a-netlify-site-neve].netlify.app
+```
+
+Vagy apex (A rekord) esetén Netlify Load Balancer IP-k:
+```
+glogiai.hu  A  75.2.60.5
+glogiai.hu  A  99.83.231.61
+```
+
+8. Kész — push után automatikusan frissül az oldal.
+
+### Javítás később
+
+1. Szerkeszd: `sites/glogiai.hu/public/index.html`
+2. `git push` → Netlify 1–2 perc alatt deployol
+
+---
+
+## 2. Tárhely.Eu (ha van ügyféladmin hozzáférésed)
+
+A domain már ott van (ns.tns1.eu). A mail szerver IP: `185.208.224.100`.
+
+1. Lépj be: https://tarhely.eu ügyféladmin / cPanel
+2. **Fájlkezelő** vagy FTP → `public_html` (vagy a domain mappája)
+3. Töltsd fel a `sites/glogiai.hu/public/` tartalmát (`index.html` + `static/` mappa)
+4. DNS-ben állítsd az A rekordot:
+
+```
+glogiai.hu      A  185.208.224.100
+www.glogiai.hu  A  185.208.224.100
+```
+
+(Jelenleg `46.225.184.176`-ra mutat — ezt cseréld le.)
+
+---
+
+## 3. Hetzner (csak ha van SSH hozzáférés)
 
 | Mi | Hol |
 |---|---|
-| **Domain** | `glogiai.hu` |
-| **Szerver IP** | `46.225.184.176` (Hetzner Cloud) |
-| **Szerver útvonal** | `/srv/sites/glogiai.hu` |
-| **Docker konténer** | `glogiai-hu-web` |
-| **Belső port** | `9080` (127.0.0.1) |
-| **Forráskód (GitHub)** | [rg191/gvm-europe-site](https://github.com/rg191/gvm-europe-site) → `sites/glogiai.hu/` |
-| **Oldal szerkesztése** | `sites/glogiai.hu/public/index.html` |
-| **Stílus** | `sites/glogiai.hu/public/static/style.css` |
-| **DNS kezelő** | Tárhely.Eu (ns.tns1.eu – ns.tns4.eu) |
-
-## Első telepítés (Hetzner szerveren)
-
-```bash
-ssh root@46.225.184.176
-
-# Docker telepítése (ha még nincs)
-# apt update && apt install -y docker.io docker-compose-plugin git rsync
-
-mkdir -p /srv/sites/glogiai.hu
-git clone https://github.com/rg191/gvm-europe-site.git /srv/sites/glogiai.hu/repo
-cd /srv/sites/glogiai.hu/repo/sites/glogiai.hu
-chmod +x deploy.sh
-./deploy.sh
-```
-
-## Frissítés (javítás után)
+| Szerver IP | `46.225.184.176` |
+| Útvonal | `/srv/sites/glogiai.hu` |
+| Konténer | `glogiai-hu-web`, port `9080` |
 
 ```bash
 ssh root@46.225.184.176
 /srv/sites/glogiai.hu/deploy.sh
 ```
 
-Vagy manuálisan:
+Részletek: `docker-compose.yml`, `deploy.sh` ebben a mappában.
 
-```bash
-cd /srv/sites/glogiai.hu
-git -C repo pull
-docker compose up -d --build
-```
+---
 
-## Proxy beállítás (Coolify / Envoy)
+## Gyors referencia (minden opcióhoz)
 
-A konténer a **9080-as porton** fut (csak localhost). A reverse proxy-nak ide kell mutatnia:
+| | |
+|---|---|
+| **Domain** | `glogiai.hu` |
+| **DNS kezelő** | Tárhely.Eu |
+| **Forráskód** | [rg191/gvm-europe-site](https://github.com/rg191/gvm-europe-site) |
+| **Oldal fájlok** | `sites/glogiai.hu/public/` |
+| **index.html** | fő tartalom |
+| **static/style.css** | stílus |
 
-```
-glogiai.hu  →  http://127.0.0.1:9080
-www.glogiai.hu  →  http://127.0.0.1:9080
-```
+## Más site-ok (NE keverd!)
 
-**Coolify-ban:** Új Static Site vagy Docker Compose service, domain: `glogiai.hu`, port: `9080`.
-
-Ha jelenleg 404-et kapsz (`server: envoy`), a proxy nincs összekötve ezzel a konténerrel — ezt kell beállítani.
-
-## DNS (Tárhely.Eu)
-
-Az A rekordnak a Hetzner IP-re kell mutatnia (ez már így van):
-
-```
-glogiai.hu      A    46.225.184.176
-www.glogiai.hu  A    46.225.184.176
-```
-
-## Helyi tesztelés
-
-```bash
-cd sites/glogiai.hu
-docker compose up --build
-# Böngésző: http://localhost:9080
-```
+| Oldal | Hol |
+|---|---|
+| **glogiai.hu** | Ez a projekt (Netlify / Tárhely / Hetzner) |
+| **gvmeurope.hu** | Külön szerver (`185.80.49.249`) — fő cégoldal |
 
 ## Mappa struktúra
 
 ```
 sites/glogiai.hu/
-├── HOSZTOLAS.md          ← ez a fájl
-├── deploy.sh             ← szerver deploy script
-├── docker-compose.yml
-├── Dockerfile
-├── nginx.conf
-├── .env.example
-└── public/
-    ├── index.html        ← oldal tartalma
-    └── static/
-        └── style.css     ← stílus
+├── HOSZTOLAS.md
+├── public/
+│   ├── index.html
+│   └── static/style.css
+├── docker-compose.yml    ← csak Hetznerhez
+└── deploy.sh             ← csak Hetznerhez
+
+netlify.toml              ← repo gyökér, Netlify-hoz
 ```
-
-## Más site-ok (NE keverd!)
-
-| Oldal | Hol van | Megjegyzés |
-|---|---|---|
-| **glogiai.hu** | Hetzner `/srv/sites/glogiai.hu` | Ez az oldal |
-| **gvmeurope.hu** | Más szerver/IP (`185.80.49.249`) | Fő cégoldal |
-| Netlify | Nem használt | Régi terv, nincs összekötve |

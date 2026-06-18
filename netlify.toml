@@ -1,0 +1,12 @@
+# glogiai.hu – Netlify deploy (ajánlott, ha nincs szerver-hozzáférés)
+# Publish dir: sites/glogiai.hu/public
+# Netlify UI: Site settings → Build & deploy → Publish directory
+
+[build]
+  publish = "sites/glogiai.hu/public"
+  command = "echo 'Statikus oldal, nincs build lépés'"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
