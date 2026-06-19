@@ -1,0 +1,20 @@
+# glogiai.hu – Netlify deploy (statikus oldal, nincs build lépés)
+# Publish dir: sites/glogiai.hu/public
+# Netlify UI: Add new site → Import from GitHub → rg191/gvm-europe-site (branch: main)
+# A publish directory-t a netlify.toml automatikusan beállítja.
+
+[build]
+  publish = "sites/glogiai.hu/public"
+  command = "echo 'Statikus oldal, nincs build lepes'"
+
+# HTML ne legyen agresszívan cache-elve (a /sk/ és jogi oldalak frissüljenek)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CSS hosszabb cache
+[[headers]]
+  for = "/legal.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

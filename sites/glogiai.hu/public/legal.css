@@ -1,0 +1,102 @@
+/* GlogiAI — jogi aloldalak közös stílusa. Az index.html design tokenjeihez igazítva. */
+:root{
+  --orange:#E8631A;--orange-glow:#ff7b2e;
+  --navy:#0a0e27;--navy-mid:#111640;--navy-light:#1a2055;
+  --white:#f0f0f5;--grey:#8890b5;--cyan:#00d4ff;--green:#00ff88;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Exo 2',sans-serif;background:var(--navy);color:var(--white);
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+
+/* ===== Nav ===== */
+nav{
+  position:sticky;top:0;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;padding:1rem 3rem;
+  background:rgba(10,14,39,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(232,99,26,.15);
+}
+.nav-logo{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.5px}
+.nav-logo a{color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--orange)}
+.nav-back{
+  font-weight:600;color:var(--grey);text-decoration:none;font-size:.95rem;
+  display:inline-flex;align-items:center;gap:.45rem;transition:color .2s;
+}
+.nav-back:hover{color:var(--orange)}
+.nav-back::before{content:"\2190";font-size:1.05rem}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
+.lang-switch{display:flex;gap:.35rem;align-items:center}
+.lang-switch a{
+  color:var(--grey);text-decoration:none;font-size:.72rem;font-weight:700;letter-spacing:1px;
+  padding:.25rem .5rem;border-radius:6px;border:1px solid transparent;transition:color .2s,border-color .2s;
+}
+.lang-switch a:hover{color:var(--orange)}
+.lang-switch a.lang-active{color:var(--orange);border-color:rgba(232,99,26,.4)}
+
+/* ===== Tartalom ===== */
+main.legal{max-width:820px;margin:0 auto;padding:4rem 1.5rem 3rem}
+.kicker{
+  font-family:'Orbitron',sans-serif;letter-spacing:.28em;text-transform:uppercase;
+  font-size:.72rem;color:var(--orange);margin-bottom:1rem;
+}
+main.legal h1{
+  font-family:'Orbitron',sans-serif;font-weight:900;line-height:1.15;
+  font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.6rem;
+}
+.legal-meta{color:var(--grey);font-size:.9rem;margin-bottom:2.5rem}
+.legal-divider{height:3px;width:64px;background:linear-gradient(90deg,var(--orange),var(--cyan));
+  border-radius:2px;margin:1.2rem 0 2.5rem}
+
+main.legal h2{
+  font-family:'Orbitron',sans-serif;font-weight:700;font-size:1.2rem;
+  margin:2.6rem 0 .9rem;color:var(--white);
+}
+main.legal h3{font-weight:700;font-size:1.02rem;margin:1.6rem 0 .5rem;color:var(--white)}
+main.legal p{margin-bottom:1rem;color:#d6d9ec}
+main.legal ul,main.legal ol{margin:0 0 1.2rem 1.3rem;color:#d6d9ec}
+main.legal li{margin-bottom:.5rem}
+main.legal a{color:var(--orange);text-decoration:none;border-bottom:1px solid rgba(232,99,26,.4)}
+main.legal a:hover{color:var(--orange-glow)}
+strong{color:var(--white)}
+
+/* Adat-tábla (Impresszum / Kapcsolat) */
+.data-table{width:100%;border-collapse:collapse;margin:1.2rem 0 2rem;font-size:.97rem}
+.data-table th,.data-table td{
+  text-align:left;padding:.7rem .9rem;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top;
+}
+.data-table th{color:var(--grey);font-weight:600;width:38%;white-space:nowrap}
+.data-table td{color:var(--white)}
+
+.note{
+  background:var(--navy-mid);border:1px solid rgba(0,212,255,.18);
+  border-left:3px solid var(--cyan);border-radius:10px;padding:1rem 1.2rem;
+  margin:1.5rem 0;font-size:.93rem;color:#c9cde6;
+}
+
+/* CTA gomb (Kapcsolat) */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;background:var(--orange);
+  color:#fff;font-weight:700;text-decoration:none;border:none;
+  padding:.85rem 1.6rem;border-radius:10px;transition:transform .2s,box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,99,26,.35)}
+
+/* ===== Footer ===== */
+footer{
+  position:relative;z-index:1;padding:3rem 2rem 2rem;
+  border-top:1px solid rgba(255,255,255,.06);text-align:center;
+}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap}
+.footer-links a{color:var(--grey);text-decoration:none;font-size:.92rem;transition:color .2s}
+.footer-links a:hover{color:var(--orange)}
+.footer-links a[aria-current="page"]{color:var(--orange)}
+footer p{color:var(--grey);font-size:.85rem}
+
+@media(max-width:600px){
+  nav{padding:1rem 1.25rem}
+  main.legal{padding:2.5rem 1.25rem}
+  .data-table th{width:42%}
+}
