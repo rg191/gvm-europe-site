@@ -83,6 +83,8 @@ strong{color:var(--white)}
   padding:.85rem 1.6rem;border-radius:10px;transition:transform .2s,box-shadow .2s;
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,99,26,.35)}
+main.legal a.btn{color:#fff;border-bottom:none}
+main.legal a.btn:hover{color:#fff}
 
 /* ===== Footer ===== */
 footer{
