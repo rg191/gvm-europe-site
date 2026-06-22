@@ -175,6 +175,34 @@
       width: 38%;
     }
 
+    /* Models overview table */
+    .models-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px;
+    }
+    .models-table th,
+    .models-table td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .models-table thead th {
+      background: var(--light);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .models-table tbody th {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .models-table td.price { font-weight: 700; color: var(--red); white-space: nowrap; }
+
     /* Checklist */
     .checklist {
       list-style: none;
@@ -407,12 +435,34 @@
           kifejezetten másként nem rendelkezik, az alábbi tételek érvényesek:
         </p>
         <table class="specs-table">
-          <tr><th>Alapár</th><td>Modell alapfelszereltséggel (GVMHaus 15: ab 13.000 €, GVMHaus 30: ab 23.000 €, GVMHaus 44: 33.000 €, GVMHausU 01: 19.200 €, GVMHausU 02: 26.400 € – mind nettó)</td></tr>
+          <tr><th>Alapár</th><td>Modell alapfelszereltséggel – lásd a lenti modell-áttekintést</td></tr>
           <tr><th>Felárak</th><td>pl. erősített szigetelés, prémium szaniter, klíma, terasz, árnyékolás, egyedi külső szín</td></tr>
           <tr><th>Szállítás</th><td>Az üzem és a felépítés helye közötti távolság szerint</td></tr>
           <tr><th>Felépítés</th><td>Daru-idő, helyi közmű-csatlakozás</td></tr>
           <tr><th>Hatósági illetékek</th><td>Engedélyek, helyi csatlakozási díjak – nem tartalmazza az ár</td></tr>
         </table>
+
+        <h3>Modellek és nettó áraink</h3>
+        <p>Öt modell minden igényre, kulcsrakész kivitelben. Az alábbi árak nettó, euróban értendők (plusz 20 % osztrák ÁFA) – a pontos konfigurációs árat az egyedi ajánlat tartalmazza.</p>
+        <table class="models-table">
+          <thead>
+            <tr>
+              <th>Modell</th>
+              <th>Alapterület</th>
+              <th>Méret / kapacitás</th>
+              <th>Nettó ár</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th>GVMHaus 15</th><td>15 m²</td><td>6,00 × 2,43 m</td><td class="price">13.000 €-tól</td></tr>
+            <tr><th>GVMHaus 30</th><td>30 m²</td><td>6,00 × 4,68 m</td><td class="price">23.000 €-tól</td></tr>
+            <tr><th>GVMHaus 44</th><td>44 m²</td><td>6,00 × 7,30 m</td><td class="price">33.000 €</td></tr>
+            <tr><th>GVMHausU 01</th><td>18 m²</td><td>1–2 fő</td><td class="price">19.200 €</td></tr>
+            <tr><th>GVMHausU 02</th><td>25 m²</td><td>1–2 fő</td><td class="price">26.400 €</td></tr>
+          </tbody>
+        </table>
+        <p class="note">A GVMHausU 01 / 02 modellek azonnal szállíthatók. A részletes adatlapok (műszaki adatok, alaprajzok) a gvmhaus.at főoldaláról tölthetők le.</p>
+
         <p>
           A teljes részletezés az egyedi írásos ajánlatban található.
           <strong>Akár 70 %-kal kedvezőbb</strong>, mint a hagyományos kőműves építés azonos alapterületre.
