@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Angebot – GVM Haus</title>
+  <title>Angebot / Ajánlat – GVM Haus</title>
   <meta
     name="description"
-    content="Angebotsvorlage GVM Haus – Herstellung eines modularen mobilen Objektes im System schlüsselfertig. Lieferumfang, Preis, Liefer- und Zahlungsbedingungen, Garantie."
+    content="Zweisprachige Angebotsvorlage GVM Haus (DE/HU) – Herstellung eines modularen mobilen Objektes im System schlüsselfertig. Lieferumfang, Preis, Liefer- und Zahlungsbedingungen, Garantie."
   />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -263,18 +263,34 @@
       margin-top: 14px;
     }
 
-    /* Print toolbar (hidden on print) */
+    /* Toolbar + language switch (hidden on print) */
     .toolbar {
       position: sticky;
       top: 0;
       z-index: 10;
       background: var(--navy);
       color: #fff;
-      text-align: center;
-      padding: 10px;
-      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      padding: 10px 14px;
+      font-size: 12.5px;
     }
-    .toolbar button {
+    .toolbar .hint { opacity: 0.85; }
+    .lang-switch { display: inline-flex; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px; overflow: hidden; }
+    .lang-switch button {
+      background: transparent;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12.5px;
+    }
+    .lang-switch button.active { background: var(--red); }
+    .print-btn {
       background: var(--red);
       color: #fff;
       border: none;
@@ -282,9 +298,14 @@
       border-radius: 4px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 13px;
-      margin-left: 8px;
+      font-size: 12.5px;
     }
+
+    /* Language visibility */
+    body[data-lang="de"] .sheet.lang-hu { display: none; }
+    body[data-lang="hu"] .sheet.lang-de { display: none; }
+    body[data-lang="de"] .only-hu { display: none; }
+    body[data-lang="hu"] .only-de { display: none; }
 
     @media print {
       body { background: #fff; }
@@ -312,14 +333,21 @@
     }
   </style>
 </head>
-<body>
+<body data-lang="de">
   <div class="toolbar">
-    Angebotsvorlage – Felder in <em>[eckigen Klammern]</em> ausfüllen, dann drucken / als PDF speichern.
-    <button onclick="window.print()">Drucken / PDF</button>
+    <span class="hint">
+      <span class="only-de">Felder in [eckigen Klammern] ausfüllen, dann drucken / als PDF speichern.</span>
+      <span class="only-hu">A [szögletes zárójeles] mezőket kitöltve nyomtassa vagy mentse PDF-ként.</span>
+    </span>
+    <span class="lang-switch">
+      <button type="button" data-set="de" class="active">DE</button>
+      <button type="button" data-set="hu">HU</button>
+    </span>
+    <button type="button" class="print-btn" onclick="window.print()">Drucken / Nyomtatás – PDF</button>
   </div>
 
-  <div class="sheet">
-    <!-- Letterhead -->
+  <!-- ============================ DEUTSCH ============================ -->
+  <div class="sheet lang-de">
     <div class="letterhead">
       <div class="brand">
         <div class="logo">GVM<span>Haus</span></div>
@@ -334,7 +362,6 @@
 
     <div class="doc-title">Angebot</div>
 
-    <!-- Meta block -->
     <div class="meta">
       <div class="meta-row"><span class="k">Angebot Nr.</span><span class="fill">[ Nr. / Jahr ]</span></div>
       <div class="meta-row"><span class="k">Datum</span><span class="fill">[ TT.MM.JJJJ ]</span></div>
@@ -349,7 +376,6 @@
       im System <strong>„schlüsselfertig"</strong>.
     </div>
 
-    <!-- 1. Object data -->
     <h2 class="sec">Angaben zum Objekt</h2>
     <table class="kv">
       <tr><th>Lieferadresse</th><td class="fill">[ Lieferadresse / Aufstellort ]</td></tr>
@@ -363,7 +389,6 @@
       <tr><th>Konstruktion</th><td>Stahlprofile S335</td></tr>
     </table>
 
-    <!-- 2. Scope of supply (Rekapitulation) -->
     <h2 class="sec">Rekapitulation des Angebots – Lieferumfang und Montage</h2>
 
     <div class="scope-item">
@@ -485,7 +510,6 @@
       </div>
     </div>
 
-    <!-- 3. Price -->
     <h2 class="sec">Angebotspreis</h2>
     <div class="price-box">
       <div class="row"><span class="label">Nettopreis (ohne MwSt.)</span><span class="fill">[ … ] €</span></div>
@@ -494,7 +518,6 @@
     </div>
     <p class="muted">Alle Preise in Euro. Maßgeblich ist der oben angeführte Nettopreis zzgl. 20 % österreichischer MwSt.</p>
 
-    <!-- 4. Delivery conditions -->
     <h2 class="sec">Lieferbedingungen</h2>
     <ul class="terms">
       <li>Lieferzeit: <strong>30–90 Tage</strong> nach Auftragseingang und Anzahlung (modellabhängig).</li>
@@ -512,7 +535,6 @@
       <li>Stromanschluss auf der Baustelle</li>
     </ul>
 
-    <!-- 5. Payment conditions -->
     <h2 class="sec">Zahlungsbedingungen</h2>
     <p style="font-size:12.5px;">Die Bezahlung erfolgt in 3 Raten:</p>
     <div class="pay">
@@ -522,7 +544,6 @@
     </div>
     <p class="muted">Die Bedingungen können individuell angepasst werden.</p>
 
-    <!-- 6. Warranty -->
     <h2 class="sec">Garantie</h2>
     <ul class="terms">
       <li><strong>3 Jahre</strong> Gewährleistung auf unbewegliche Bauteile (Tragwerk, Wände, Dach, fest eingebaute Systeme) – gem. österr. Recht (ABGB)</li>
@@ -532,7 +553,6 @@
       <li>Mängel sind binnen 14 Tagen ab Übernahme schriftlich anzuzeigen</li>
     </ul>
 
-    <!-- Signature -->
     <div class="sign">
       <div class="line">Angebot erstellt von: GVM Haus – [ Name ]</div>
       <div class="line">Auftrag / Annahme durch den Kunden (Ort, Datum, Unterschrift)</div>
@@ -548,5 +568,242 @@
       Abklärung obliegt dem Käufer.
     </div>
   </div>
+
+  <!-- ============================ MAGYAR ============================ -->
+  <div class="sheet lang-hu">
+    <div class="letterhead">
+      <div class="brand">
+        <div class="logo">GVM<span>Haus</span></div>
+        <div class="tagline">Mobil precíziós házak · kulcsrakész</div>
+      </div>
+      <div class="company">
+        GVM Spedition GmbH<br />
+        info@gvmhaus.at · +43 676 934 8474<br />
+        <a href="https://gvmhaus.at">gvmhaus.at</a>
+      </div>
+    </div>
+
+    <div class="doc-title">Ajánlat</div>
+
+    <div class="meta">
+      <div class="meta-row"><span class="k">Ajánlat sz.</span><span class="fill">[ szám / év ]</span></div>
+      <div class="meta-row"><span class="k">Dátum</span><span class="fill">[ ÉÉÉÉ.HH.NN ]</span></div>
+      <div class="meta-row"><span class="k">Megrendelő</span><span class="fill">[ a megrendelő neve ]</span></div>
+      <div class="meta-row"><span class="k">E-mail</span><span class="fill">[ a megrendelő e-mailje ]</span></div>
+      <div class="meta-row"><span class="k">Kapcsolattartó</span><span class="fill">GVM Haus – [ kapcsolattartó ]</span></div>
+      <div class="meta-row"><span class="k">Telefon</span><span class="fill">+43 676 934 8474</span></div>
+    </div>
+
+    <div class="lead">
+      <strong>Ajánlat</strong> egy moduláris mobil objektum
+      <strong>„kulcsrakész"</strong> rendszerű gyártására.
+    </div>
+
+    <h2 class="sec">Az objektum adatai</h2>
+    <table class="kv">
+      <tr><th>Szállítási cím</th><td class="fill">[ szállítási cím / felállítás helye ]</td></tr>
+      <tr><th>Modell</th><td class="fill">[ GVMHaus 15 / 30 / 44 / GVMHausU 01 / 02 ]</td></tr>
+      <tr><th>Nettó alapterület m²</th><td class="fill">[ pl. 13,01 ]</td></tr>
+      <tr><th>Bruttó alapterület m²</th><td class="fill">[ pl. 14,58 ]</td></tr>
+      <tr><th>Objektum magassága kívül</th><td class="fill">[ … m ]</td></tr>
+      <tr><th>Belmagasság</th><td>2,62 m (szabad belmagasság, modellfüggő)</td></tr>
+      <tr><th>Tető</th><td>Lapostető szendvicspanellel (tetőlejtés modellfüggő)</td></tr>
+      <tr><th>Szállítási terjedelem</th><td>Kulcsrakész (teljes felszereltség, üzemkész átadás)</td></tr>
+      <tr><th>Szerkezet</th><td>Acélprofilok S335</td></tr>
+    </table>
+
+    <h2 class="sec">Az ajánlat összesítése – Szállítási terjedelem és szerelés</h2>
+
+    <div class="scope-item">
+      <div class="scope-num">1</div>
+      <div>
+        <h3>Tartószerkezeti váz</h3>
+        <ul>
+          <li>Acél tartóváz, S335 acél</li>
+          <li>Profilvastagság 3 mm</li>
+          <li>Profilok 120×40 / 60×40 / 50×50 mm</li>
+          <li>Keret 20·40·150·150·40·20 mm</li>
+          <li>Kötés: hegesztett</li>
+          <li>Korrózióvédő alapozás</li>
+          <li>Kétkomponensű fedőlakkozás</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">2</div>
+      <div>
+        <h3>Falak</h3>
+        <ul>
+          <li>Hőszigetelő szendvicspanelek</li>
+          <li>Vastagság 50 mm</li>
+          <li>Töltet PUR/PIR, sűrűség 40 kg/m³</li>
+          <li>Szín kívül RAL 7016 / belül RAL 9010</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">3</div>
+      <div>
+        <h3>Tető</h3>
+        <ul>
+          <li>Hőszigetelő szendvicspanelek</li>
+          <li>Vastagság 80 mm</li>
+          <li>Töltet PUR/PIR, sűrűség 40 kg/m³</li>
+          <li>Tetőlejtés modellfüggő</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">4</div>
+      <div>
+        <h3>Padlóburkolatok</h3>
+        <ul>
+          <li>Laminált padló</li>
+          <li>Vinyl</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">5</div>
+      <div>
+        <h3>Ablakok és ajtók (PVC)</h3>
+        <ul>
+          <li>5 kamrás profil</li>
+          <li>2 rétegű üvegezés</li>
+          <li>Bejárati ajtó</li>
+          <li>Redőnyök</li>
+          <li>Rovarvédő háló</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">6</div>
+      <div>
+        <h3>Beltéri ajtók</h3>
+        <ul>
+          <li>Tolóajtók</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">7</div>
+      <div>
+        <h3>Elektromos szerelés</h3>
+        <ul>
+          <li>Feszültség 220 V / 50 Hz</li>
+          <li>Elosztószekrény</li>
+          <li>7 konnektor</li>
+          <li>Kapcsolók</li>
+          <li>LED világítás 3×</li>
+          <li>Inverteres klíma</li>
+          <li>Elektromos melegvíz-bojler</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">8</div>
+      <div>
+        <h3>Vízvezeték és csatornázás</h3>
+        <ul>
+          <li>PVC csövek beépítése</li>
+          <li>Csatlakozások belül és kívül</li>
+          <li>WC</li>
+          <li>Zuhany</li>
+          <li>Mosdó</li>
+          <li>Konyha</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">9</div>
+      <div>
+        <h3>Fűtés és hűtés</h3>
+        <ul>
+          <li>Fűtés inverteres klímával</li>
+          <li>Opcionális: infravörös fali panel</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">Ajánlati ár</h2>
+    <div class="price-box">
+      <div class="row"><span class="label">Nettó ár (ÁFA nélkül)</span><span class="fill">[ … ] €</span></div>
+      <div class="row"><span class="label">ÁFA 20 %</span><span class="fill">[ … ] €</span></div>
+      <div class="row total"><span class="label">Ajánlati ár (bruttó)</span><span class="fill">[ … ] €</span></div>
+    </div>
+    <p class="muted">Minden ár euróban. A mérvadó a fent megadott nettó ár + 20 % osztrák ÁFA.</p>
+
+    <h2 class="sec">Szállítási feltételek</h2>
+    <ul class="terms">
+      <li>Szállítási idő: <strong>30–90 nap</strong> a megrendelés és az előleg beérkezése után (modellfüggő).</li>
+    </ul>
+    <p class="sub">Az árban benne foglalt:</p>
+    <ul class="terms">
+      <li>Minden fent felsorolt munka az alaprajz szerint</li>
+      <li>Szállítás és lerakodás a megadott szállítási címen</li>
+    </ul>
+    <p class="sub">Az árban nem foglalt, a vevő felelőssége:</p>
+    <ul class="terms">
+      <li>Általános forgalmi adó (ÁFA)</li>
+      <li>Sík és szakszerűen kivitelezett alaplemez / alapozás</li>
+      <li>A szállítás helyéig kamionnal (nyergesvontató) és daruval járható behajtás</li>
+      <li>Áramcsatlakozás a helyszínen</li>
+    </ul>
+
+    <h2 class="sec">Fizetési feltételek</h2>
+    <p style="font-size:12.5px;">A fizetés 3 részletben történik:</p>
+    <div class="pay">
+      <div class="cell"><div class="pct">30 %</div><div class="desc">a megrendeléskor / szerződéskötéskor – a gyártás a fizetés beérkezése után indul</div></div>
+      <div class="cell"><div class="pct">60 %</div><div class="desc">a szállításkész állapot bejelentésekor (a kamionra rakodás előtt)</div></div>
+      <div class="cell"><div class="pct">10 %</div><div class="desc">a lerakodáskor, felállításkor és a vevő általi átvételkor</div></div>
+    </div>
+    <p class="muted">A feltételek egyedileg is testreszabhatók.</p>
+
+    <h2 class="sec">Garancia és szavatosság</h2>
+    <ul class="terms">
+      <li><strong>3 év</strong> szavatosság az ingatlan jellegű szerkezetekre (tartószerkezet, falak, tető, fixen beépített rendszerek) – az osztrák jog szerint (ABGB)</li>
+      <li><strong>2 év</strong> szavatosság az ingó alkatrészekre (eszközök, szaniter, vasalat)</li>
+      <li><strong>10 év</strong> gyártói garancia a panelekre</li>
+      <li><strong>10 év</strong> garancia a konstrukcióra</li>
+      <li>A hibákat az átvételtől számított 14 napon belül írásban kell jelezni</li>
+    </ul>
+
+    <div class="sign">
+      <div class="line">Az ajánlatot készítette: GVM Haus – [ név ]</div>
+      <div class="line">Megrendelés / elfogadás a vevő részéről (hely, dátum, aláírás)</div>
+    </div>
+
+    <div class="validity">* Az ajánlat 15 napig érvényes</div>
+
+    <div class="doc-footer">
+      GVM Spedition GmbH · Mobil precíziós házak · info@gvmhaus.at · +43 676 934 8474 · gvmhaus.at<br />
+      Elhelyezés: A mobil- és modulházak telepíthetősége a helyi építési és önkormányzati előírásoktól függ,
+      amelyek településenként eltérhetnek. A GVM Spedition GmbH nem garantálja, hogy a ház egy adott helyszínen
+      elhelyezhető – ennek előzetes ellenőrzése a vevő felelőssége.
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var body = document.body;
+      var buttons = document.querySelectorAll('.lang-switch button');
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var lang = b.getAttribute('data-set');
+          body.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang);
+          buttons.forEach(function (x) { x.classList.toggle('active', x === b); });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
