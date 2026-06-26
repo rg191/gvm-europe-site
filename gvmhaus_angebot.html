@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Angebot – GVM Haus</title>
+  <meta
+    name="description"
+    content="Angebotsvorlage GVM Haus – Herstellung eines modularen mobilen Objektes im System schlüsselfertig. Lieferumfang, Preis, Liefer- und Zahlungsbedingungen, Garantie."
+  />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #2D3E50;
+      --red: #C8232C;
+      --anthracite: #3a3a3a;
+      --mid: #6b6b6b;
+      --light: #f5f5f3;
+      --white: #ffffff;
+      --border: #e0dcd5;
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+    body {
+      font-family: var(--font);
+      color: var(--anthracite);
+      background: #d9d9d9;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      font-size: 13px;
+    }
+    a { color: var(--red); text-decoration: none; }
+
+    /* A4 sheet */
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 16px auto;
+      background: var(--white);
+      padding: 18mm 16mm 16mm;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.18);
+    }
+
+    /* Letterhead */
+    .letterhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid var(--navy);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+    .brand .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy);
+    }
+    .brand .logo span { color: var(--red); }
+    .brand .tagline {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+    .company {
+      text-align: right;
+      font-size: 11px;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+    .doc-title {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 6px 0 16px;
+    }
+
+    /* Meta block (Angebot Nr / Kunde / Datum ...) */
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 28px;
+      margin-bottom: 18px;
+    }
+    .meta-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12.5px;
+    }
+    .meta-row .k {
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-size: 11px;
+      align-self: center;
+    }
+    .fill { color: var(--mid); }
+
+    .lead {
+      background: var(--light);
+      border-left: 3px solid var(--red);
+      padding: 12px 16px;
+      font-size: 13px;
+      margin: 6px 0 20px;
+    }
+
+    h2.sec {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin: 22px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    /* Object data table */
+    table.kv {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+    }
+    table.kv th, table.kv td {
+      text-align: left;
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12.5px;
+      vertical-align: top;
+    }
+    table.kv th {
+      background: var(--light);
+      color: var(--navy);
+      font-weight: 700;
+      width: 38%;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Scope of supply */
+    .scope-item {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+    }
+    .scope-item:last-child { border-bottom: none; }
+    .scope-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1.1;
+    }
+    .scope-item h3 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 4px;
+    }
+    .scope-item ul {
+      list-style: none;
+      columns: 2;
+      column-gap: 28px;
+    }
+    .scope-item li {
+      padding: 2px 0 2px 14px;
+      position: relative;
+      font-size: 12px;
+      break-inside: avoid;
+    }
+    .scope-item li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 800;
+    }
+
+    /* Price box */
+    .price-box {
+      margin: 6px 0 4px;
+      border: 2px solid var(--navy);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .price-box .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-box .row:last-child { border-bottom: none; }
+    .price-box .row.total {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .price-box .label { font-weight: 600; }
+
+    ul.terms {
+      margin: 4px 0 8px 18px;
+      font-size: 12.5px;
+    }
+    ul.terms li { margin-bottom: 4px; }
+    .sub { font-weight: 700; color: var(--navy); margin: 8px 0 4px; font-size: 12.5px; }
+    .muted { color: var(--mid); font-size: 11.5px; font-style: italic; margin-top: 6px; }
+
+    /* Payment schedule */
+    .pay {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0;
+    }
+    .pay .cell {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 10px 12px;
+      border-radius: 3px;
+    }
+    .pay .pct { font-size: 20px; font-weight: 800; color: var(--navy); }
+    .pay .desc { font-size: 11.5px; color: var(--anthracite); margin-top: 2px; }
+
+    /* Signature */
+    .sign {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 34px;
+    }
+    .sign .line {
+      border-top: 1px solid var(--anthracite);
+      padding-top: 6px;
+      font-size: 11.5px;
+      color: var(--mid);
+    }
+
+    .doc-footer {
+      margin-top: 26px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 10.5px;
+      color: var(--mid);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .validity {
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--red);
+      font-weight: 700;
+      margin-top: 14px;
+    }
+
+    /* Print toolbar (hidden on print) */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+    }
+    .toolbar button {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 13px;
+      margin-left: 8px;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none; }
+      .sheet {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      .scope-item, .price-box, .pay, .sign { break-inside: avoid; }
+      h2.sec { break-after: avoid; }
+    }
+
+    @page { size: A4; margin: 14mm; }
+
+    @media (max-width: 800px) {
+      .sheet { width: auto; padding: 16px; }
+      .meta { grid-template-columns: 1fr; }
+      .scope-item ul { columns: 1; }
+      .pay { grid-template-columns: 1fr; }
+      .letterhead { flex-direction: column; gap: 10px; }
+      .company { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    Angebotsvorlage – Felder in <em>[eckigen Klammern]</em> ausfüllen, dann drucken / als PDF speichern.
+    <button onclick="window.print()">Drucken / PDF</button>
+  </div>
+
+  <div class="sheet">
+    <!-- Letterhead -->
+    <div class="letterhead">
+      <div class="brand">
+        <div class="logo">GVM<span>Haus</span></div>
+        <div class="tagline">Mobile Präzisionshäuser · schlüsselfertig</div>
+      </div>
+      <div class="company">
+        GVM Spedition GmbH<br />
+        info@gvmhaus.at · +43 676 934 8474<br />
+        <a href="https://gvmhaus.at">gvmhaus.at</a>
+      </div>
+    </div>
+
+    <div class="doc-title">Angebot</div>
+
+    <!-- Meta block -->
+    <div class="meta">
+      <div class="meta-row"><span class="k">Angebot Nr.</span><span class="fill">[ Nr. / Jahr ]</span></div>
+      <div class="meta-row"><span class="k">Datum</span><span class="fill">[ TT.MM.JJJJ ]</span></div>
+      <div class="meta-row"><span class="k">Kunde</span><span class="fill">[ Name des Kunden ]</span></div>
+      <div class="meta-row"><span class="k">E-Mail</span><span class="fill">[ E-Mail des Kunden ]</span></div>
+      <div class="meta-row"><span class="k">Kontakt</span><span class="fill">GVM Haus – [ Ansprechpartner ]</span></div>
+      <div class="meta-row"><span class="k">Telefon</span><span class="fill">+43 676 934 8474</span></div>
+    </div>
+
+    <div class="lead">
+      <strong>Angebot</strong> für die Herstellung eines modularen mobilen Objektes
+      im System <strong>„schlüsselfertig"</strong>.
+    </div>
+
+    <!-- 1. Object data -->
+    <h2 class="sec">Angaben zum Objekt</h2>
+    <table class="kv">
+      <tr><th>Lieferadresse</th><td class="fill">[ Lieferadresse / Aufstellort ]</td></tr>
+      <tr><th>Modell</th><td class="fill">[ GVMHaus 15 / 30 / 44 / GVMHausU 01 / 02 ]</td></tr>
+      <tr><th>Netto-Fläche m²</th><td class="fill">[ z. B. 13,01 ]</td></tr>
+      <tr><th>Brutto-Fläche m²</th><td class="fill">[ z. B. 14,58 ]</td></tr>
+      <tr><th>Objekthöhe außen</th><td class="fill">[ … m ]</td></tr>
+      <tr><th>Objekthöhe innen</th><td>2,62 m (lichte Höhe, modellabhängig)</td></tr>
+      <tr><th>Dach</th><td>Flachdach mit Sandwichpaneel (Dachgefälle modellabhängig)</td></tr>
+      <tr><th>Lieferumfang</th><td>Schlüsselfertig (komplette Ausstattung, betriebsbereit übergeben)</td></tr>
+      <tr><th>Konstruktion</th><td>Stahlprofile S335</td></tr>
+    </table>
+
+    <!-- 2. Scope of supply (Rekapitulation) -->
+    <h2 class="sec">Rekapitulation des Angebots – Lieferumfang und Montage</h2>
+
+    <div class="scope-item">
+      <div class="scope-num">1</div>
+      <div>
+        <h3>Konstruktiver Rahmen</h3>
+        <ul>
+          <li>Konstruktiver Stahlrahmen, Stahl S335</li>
+          <li>Profildicke 3 mm</li>
+          <li>Profile 120×40 / 60×40 / 50×50 mm</li>
+          <li>Rahmen 20·40·150·150·40·20 mm</li>
+          <li>Verbindung: geschweißt</li>
+          <li>Antikorrosionsschutz-Grundierung</li>
+          <li>Zweikomponenten-Abschlusslackierung</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">2</div>
+      <div>
+        <h3>Wände</h3>
+        <ul>
+          <li>Thermoisolierende Sandwichpaneele</li>
+          <li>Dicke 50 mm</li>
+          <li>Füllung PUR/PIR, Dichte 40 kg/m³</li>
+          <li>Farbe außen RAL 7016 / innen RAL 9010</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">3</div>
+      <div>
+        <h3>Dach</h3>
+        <ul>
+          <li>Thermoisolierende Sandwichpaneele</li>
+          <li>Dicke 80 mm</li>
+          <li>Füllung PUR/PIR, Dichte 40 kg/m³</li>
+          <li>Dachgefälle modellabhängig</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">4</div>
+      <div>
+        <h3>Bodenbeläge</h3>
+        <ul>
+          <li>Laminat</li>
+          <li>Vinyl</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">5</div>
+      <div>
+        <h3>Fenster und Türen (PVC)</h3>
+        <ul>
+          <li>5-Kammer-Profil</li>
+          <li>2-fach Verglasung</li>
+          <li>Eingangstür</li>
+          <li>Rollos</li>
+          <li>Insektenschutz</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">6</div>
+      <div>
+        <h3>Innentüren</h3>
+        <ul>
+          <li>Schiebetüren</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">7</div>
+      <div>
+        <h3>Elektroinstallation</h3>
+        <ul>
+          <li>Spannung 220 V / 50 Hz</li>
+          <li>Verteilerkasten</li>
+          <li>7 Steckdosen</li>
+          <li>Schalter</li>
+          <li>LED-Beleuchtung 3×</li>
+          <li>Klima-Inverter</li>
+          <li>Elektro-Warmwasserboiler</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">8</div>
+      <div>
+        <h3>Wasserleitung und Kanalisation</h3>
+        <ul>
+          <li>Installation PVC-Rohre</li>
+          <li>Anschlüsse innen und außen</li>
+          <li>WC</li>
+          <li>Dusche</li>
+          <li>Waschbecken</li>
+          <li>Küche</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scope-item">
+      <div class="scope-num">9</div>
+      <div>
+        <h3>Heizung und Kühlung</h3>
+        <ul>
+          <li>Heizung mit Klima-Inverter</li>
+          <li>Optional: Infrarot-Wandpaneel</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Price -->
+    <h2 class="sec">Angebotspreis</h2>
+    <div class="price-box">
+      <div class="row"><span class="label">Nettopreis (ohne MwSt.)</span><span class="fill">[ … ] €</span></div>
+      <div class="row"><span class="label">MwSt. 20 %</span><span class="fill">[ … ] €</span></div>
+      <div class="row total"><span class="label">Angebotspreis (brutto)</span><span class="fill">[ … ] €</span></div>
+    </div>
+    <p class="muted">Alle Preise in Euro. Maßgeblich ist der oben angeführte Nettopreis zzgl. 20 % österreichischer MwSt.</p>
+
+    <!-- 4. Delivery conditions -->
+    <h2 class="sec">Lieferbedingungen</h2>
+    <ul class="terms">
+      <li>Lieferzeit: <strong>30–90 Tage</strong> nach Auftragseingang und Anzahlung (modellabhängig).</li>
+    </ul>
+    <p class="sub">Im Preis inbegriffen:</p>
+    <ul class="terms">
+      <li>Alle oben angeführten Arbeiten nach Grundriss</li>
+      <li>Lieferung und Entladung an der angegebenen Lieferadresse</li>
+    </ul>
+    <p class="sub">Nicht im Preis inbegriffen und in der Verantwortung des Käufers:</p>
+    <ul class="terms">
+      <li>Mehrwertsteuer</li>
+      <li>Ebene und fachgerecht ausgeführte Bodenplatte / Fundament</li>
+      <li>Für LKW (Sattelschlepper) und Kran zugängliche Zufahrt bis zum Lieferort</li>
+      <li>Stromanschluss auf der Baustelle</li>
+    </ul>
+
+    <!-- 5. Payment conditions -->
+    <h2 class="sec">Zahlungsbedingungen</h2>
+    <p style="font-size:12.5px;">Die Bezahlung erfolgt in 3 Raten:</p>
+    <div class="pay">
+      <div class="cell"><div class="pct">30 %</div><div class="desc">bei Auftragserteilung / Vertragsunterzeichnung – Produktionsbeginn nach Zahlungseingang</div></div>
+      <div class="cell"><div class="pct">60 %</div><div class="desc">bei Meldung der Lieferbereitschaft (vor Verladung auf den LKW)</div></div>
+      <div class="cell"><div class="pct">10 %</div><div class="desc">bei Entladung, Aufstellung und Übernahme durch den Kunden</div></div>
+    </div>
+    <p class="muted">Die Bedingungen können individuell angepasst werden.</p>
+
+    <!-- 6. Warranty -->
+    <h2 class="sec">Garantie</h2>
+    <ul class="terms">
+      <li><strong>3 Jahre</strong> Gewährleistung auf unbewegliche Bauteile (Tragwerk, Wände, Dach, fest eingebaute Systeme) – gem. österr. Recht (ABGB)</li>
+      <li><strong>2 Jahre</strong> Gewährleistung auf bewegliche Bauteile (Geräte, Sanitär, Beschläge)</li>
+      <li><strong>10 Jahre</strong> Herstellergarantie auf die Paneele</li>
+      <li><strong>10 Jahre</strong> Garantie auf die Konstruktion</li>
+      <li>Mängel sind binnen 14 Tagen ab Übernahme schriftlich anzuzeigen</li>
+    </ul>
+
+    <!-- Signature -->
+    <div class="sign">
+      <div class="line">Angebot erstellt von: GVM Haus – [ Name ]</div>
+      <div class="line">Auftrag / Annahme durch den Kunden (Ort, Datum, Unterschrift)</div>
+    </div>
+
+    <div class="validity">* Angebot gültig – 15 Tage</div>
+
+    <div class="doc-footer">
+      GVM Spedition GmbH · Mobile Präzisionshäuser · info@gvmhaus.at · +43 676 934 8474 · gvmhaus.at<br />
+      Aufstellung: Die Aufstellbarkeit mobiler und modularer Häuser hängt von den örtlichen Bau- und
+      Gemeindevorschriften ab, die je nach Gemeinde unterschiedlich sein können. Die GVM Spedition GmbH
+      garantiert nicht, dass das Haus an einem bestimmten Standort aufgestellt werden darf – die vorherige
+      Abklärung obliegt dem Käufer.
+    </div>
+  </div>
+</body>
+</html>
