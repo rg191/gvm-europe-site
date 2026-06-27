@@ -17,12 +17,18 @@ sites/glogiai.hu/public/
 └── sk/                     # Szlovák verzió (index + 5 jogi oldal)
 ```
 
-Nyelvek: **HU / SK** (nyelvváltó a fejlécben). Nincs build lépés — tiszta statikus HTML/CSS.
+Nyelvek: **HU / SK / EN** (nyelvváltó a fejlécben). Nincs build lépés — tiszta statikus HTML/CSS.
 
 ## Deploy
 
-Netlify (lásd `netlify.toml`): Add new site → Import from GitHub → `rg191/gvm-europe-site`, branch `main`.
-A publish directory: `sites/glogiai.hu/public`.
+Netlify (lásd `netlify.toml`): push a `main` branchre → GitHub Actions automatikusan deployol.
+Publish directory: `sites/glogiai.hu/public`.
+
+**DNS beállítás:** Alex — lásd `sites/glogiai.hu/DNS-ALEX.md`.
+
+## Platform URL
+
+A bejelentkezés és regisztráció gombok: **https://app.glogiai.hu**
 
 ## Nyitott teendő
 
