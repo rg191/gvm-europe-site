@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" role="img" aria-label="Osztálykép helye">
+  <defs>
+    <linearGradient id="go" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef3ee"/>
+      <stop offset="1" stop-color="#e2eae3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1500" height="1000" fill="url(#go)"/>
+  <g fill="none" stroke="#9bbfa3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="600" y="370" width="300" height="215" rx="20"/>
+    <circle cx="750" cy="465" r="58"/>
+    <path d="M656 370l26-40h136l26 40"/>
+  </g>
+  <text x="750" y="680" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="40" fill="#6f8a76">Osztálykép helye</text>
+  <text x="750" y="730" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="26" fill="#9bbfa3">3:2 · nagy felbontás</text>
+</svg>

@@ -1,0 +1,206 @@
+/* =========================================================================
+   Negyedik osztály digitális évkönyve — 2024
+   Design: fotó-központú, levegős, barátságos. Visszafogott zöld/narancs akcent.
+   A fotók az elsődleges tartalom; a layout őket szolgálja.
+   ========================================================================= */
+
+:root{
+  --bg:#fafafa;
+  --surface:#ffffff;
+  --ink:#262a28;
+  --ink-soft:#5d6661;
+  --line:#e7e9e7;
+  --green:#3f9b5a;       /* visszafogott, barátságos zöld akcent */
+  --green-dark:#327a48;
+  --orange:#e8843a;      /* meleg másodlagos akcent */
+  --radius:14px;
+  --shadow:0 1px 3px rgba(0,0,0,.06), 0 6px 22px rgba(0,0,0,.05);
+  --maxw:1180px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:'Rubik','Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{display:block;max-width:100%;height:auto}
+a{color:var(--green-dark)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.25rem}
+
+/* ---------- Navigáció (tab-ok / gördülő horgonyok) -------------------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,250,250,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;gap:1rem;
+  padding:.7rem 1.25rem;
+}
+.nav-brand{font-weight:600;font-size:1rem;white-space:nowrap;margin-right:auto}
+.nav-brand span{color:var(--green)}
+.nav-links{display:flex;gap:.35rem;list-style:none;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{
+  text-decoration:none;color:var(--ink-soft);
+  font-size:.88rem;font-weight:500;
+  padding:.45rem .8rem;border-radius:999px;
+  transition:background .2s,color .2s;
+  display:inline-block;
+}
+.nav-links a:hover,.nav-links a:focus-visible{background:#eef4ef;color:var(--green-dark)}
+.nav-links a.btn-pdf{background:var(--green);color:#fff}
+.nav-links a.btn-pdf:hover{background:var(--green-dark);color:#fff}
+
+/* ---------- Borító ---------------------------------------------------- */
+.cover{
+  position:relative;
+  min-height:78vh;
+  display:flex;align-items:flex-end;
+  border-radius:0 0 var(--radius) var(--radius);
+  overflow:hidden;
+  background:#e8efe9;
+}
+.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover-veil{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.45) 100%);
+}
+.cover-text{position:relative;z-index:2;color:#fff;padding:2.5rem 1.5rem;width:100%}
+.cover-text .wrap{padding:0 .25rem}
+.cover-kicker{
+  display:inline-block;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:600;background:var(--orange);color:#fff;
+  padding:.3rem .7rem;border-radius:999px;margin-bottom:.9rem;
+}
+.cover h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.cover .sub{margin-top:.6rem;font-size:clamp(1rem,2.4vw,1.3rem);opacity:.95;font-weight:300}
+
+/* ---------- Szekciók -------------------------------------------------- */
+.section{padding:3.5rem 0;scroll-margin-top:64px}
+.section + .section{border-top:1px solid var(--line)}
+.section-head{margin-bottom:1.8rem}
+.section-head .eyebrow{
+  color:var(--green);font-weight:600;font-size:.82rem;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.section-head h2{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:600;margin-top:.2rem}
+.section-head p{color:var(--ink-soft);margin-top:.5rem;max-width:60ch}
+
+/* ---------- Születésnapok galéria (1 / 2 / 3 oszlop) ----------------- */
+.bday-grid{
+  display:grid;gap:1.5rem;
+  grid-template-columns:1fr;             /* mobil: 1 oszlop */
+}
+@media(min-width:600px){ .bday-grid{grid-template-columns:repeat(2,1fr)} }   /* tablet: 2 */
+@media(min-width:980px){ .bday-grid{grid-template-columns:repeat(3,1fr)} }   /* desktop: 3 */
+
+.bday-card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .2s,box-shadow .2s;
+}
+.bday-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.09)}
+.bday-photo{aspect-ratio:1/1;width:100%;object-fit:cover;background:#eef3ee}
+.bday-meta{padding:.9rem 1rem 1.1rem}
+.bday-name{font-weight:600;font-size:1.05rem}
+.bday-date{color:var(--green-dark);font-size:.9rem;margin-top:.15rem;display:flex;align-items:center;gap:.4rem}
+.bday-date::before{content:"🎂";font-size:.95rem}
+
+.month-label{
+  grid-column:1 / -1;
+  font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);border-bottom:1px solid var(--line);
+  padding-bottom:.4rem;margin-top:.6rem;
+}
+.month-label:first-child{margin-top:0}
+
+/* ---------- Kirándulás / Év pillanatai (nagy fotó-rács) -------------- */
+.photo-grid{
+  display:grid;gap:1.25rem;
+  grid-template-columns:1fr;
+}
+@media(min-width:640px){ .photo-grid{grid-template-columns:repeat(2,1fr)} }
+@media(min-width:1000px){ .photo-grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+
+figure.photo{
+  margin:0;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+}
+figure.photo img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#f6e7d6}
+figure.photo figcaption{
+  padding:.6rem .85rem .8rem;font-size:.88rem;color:var(--ink-soft);
+}
+figure.photo figcaption b{color:var(--ink);font-weight:600}
+
+.date-badge{
+  display:inline-block;background:#eef4ef;color:var(--green-dark);
+  font-weight:600;font-size:.85rem;padding:.35rem .75rem;border-radius:999px;
+  margin-top:.4rem;
+}
+
+/* ---------- Zárás: osztálykép + tanári dedikáció -------------------- */
+.closing{background:#f3f6f3}
+.class-photo{
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  border:1px solid var(--line);background:#fff;
+}
+.class-photo img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.dedication{
+  margin-top:2rem;background:var(--surface);border:1px solid var(--line);
+  border-left:4px solid var(--green);border-radius:var(--radius);
+  padding:1.6rem 1.5rem;box-shadow:var(--shadow);max-width:760px;
+}
+.dedication p{font-size:1.1rem;line-height:1.75;font-style:italic;color:var(--ink)}
+.dedication .signoff{margin-top:1rem;font-style:normal;font-weight:600;color:var(--green-dark)}
+.dedication .signoff small{display:block;font-weight:400;color:var(--ink-soft)}
+
+/* ---------- Lábléc ---------------------------------------------------- */
+.foot{padding:2.5rem 0 3.5rem;text-align:center;color:var(--ink-soft);font-size:.9rem}
+
+/* ---------- Hozzáférhetőség ------------------------------------------ */
+:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:6px}
+
+/* =========================================================================
+   NYOMTATÁS / PDF — A4 & US Letter, logikus oldaltörések, FF-olvasható
+   ========================================================================= */
+@media print{
+  :root{--shadow:none}
+  @page{size:A4;margin:14mm}
+  body{background:#fff;color:#000;font-size:11pt}
+  .nav,.foot .no-print,.btn-pdf{display:none !important}
+
+  a{color:#000;text-decoration:none}
+
+  .cover{min-height:auto;border-radius:0;page-break-after:always;break-after:page;
+         border:1px solid #000}
+  .cover-img{position:static;height:auto;max-height:150mm}
+  .cover-veil{display:none}
+  .cover-text{position:static;color:#000;padding:1rem 0}
+  .cover h1{text-shadow:none}
+  .cover-kicker{background:#000;color:#fff}
+
+  .section{page-break-before:always;break-before:page;border:0;padding:0 0 .5rem}
+  .section:first-of-type{page-break-before:avoid}
+
+  /* a kártyák/fotók ne törjenek ketté oldalhatáron */
+  .bday-card,figure.photo,.class-photo,.dedication{
+    page-break-inside:avoid;break-inside:avoid;box-shadow:none;border:1px solid #999;
+  }
+  .bday-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .photo-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+
+  .bday-date,.date-badge,.dedication .signoff{color:#000}
+  .closing{background:#fff}
+
+  /* a böngésző töltse be a háttérképeket nyomtatáskor is */
+  *{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+}

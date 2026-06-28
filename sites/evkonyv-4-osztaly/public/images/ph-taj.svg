@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Fotó helye">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf3e9"/>
+      <stop offset="1" stop-color="#f6e7d6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g2)"/>
+  <g fill="none" stroke="#e0a86a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="270" y="215" width="260" height="185" rx="18"/>
+    <circle cx="400" cy="300" r="50"/>
+    <path d="M318 215l22-34h120l22 34"/>
+  </g>
+  <text x="400" y="470" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="34" fill="#b07a3c">Fotó helye</text>
+  <text x="400" y="512" text-anchor="middle" font-family="Rubik, Arial, sans-serif" font-size="22" fill="#e0a86a">4:3 · max 1200px</text>
+</svg>

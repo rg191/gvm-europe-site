@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negyedik osztály évkönyve – 2024</title>
+<meta name="description" content="A negyedik osztály digitális évkönyve – születésnapok, osztálykirándulás, az év pillanatai és tanári dedikáció.">
+<meta name="theme-color" content="#3f9b5a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="evkonyv.css">
+</head>
+<body>
+
+<!-- =======================================================================
+     SABLON-MEGJEGYZÉS (Cloud Design)
+     ---------------------------------------------------------------------
+     • Az alábbi nevek, dátumok és képaláírások MINTAADATOK – cseréld a
+       valós tartalomra. A képhelyek a images/ph-*.svg helyőrzőkre mutatnak.
+     • Valós fotó behelyezése: tedd a normalizált JPG-t az images/ mappába
+       (max 1200px, JPEG, max ~150 KB), és írd át a <img src="..."> értékét.
+     • Születésnapok: tartsd a január→december sorrendet; azonos hónapon
+       belül név szerint. A .month-label sorok a hónaphatárt jelölik.
+     • Minden <img> loading="lazy" – gyors betöltés, lásd README.md.
+     ======================================================================= -->
+
+<!-- NAVIGÁCIÓ (gördülő horgony-tabok) -->
+<header class="nav">
+  <nav class="nav-inner" aria-label="Évkönyv navigáció">
+    <span class="nav-brand">4.<span>osztály</span> · 2024</span>
+    <ul class="nav-links">
+      <li><a href="#szuletesnapok">Születésnapok</a></li>
+      <li><a href="#kirandulas">Kirándulás</a></li>
+      <li><a href="#pillanatok">Az év pillanatai</a></li>
+      <li><a href="#zaras">Zárás</a></li>
+      <li><a href="#" class="btn-pdf" onclick="window.print();return false;">⤓ PDF / Nyomtatás</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- 1) BORÍTÓ -->
+<section class="cover" id="borito">
+  <!-- Cseréld a borítófotót: images/borito.jpg (osztálykép vagy háttér) -->
+  <img class="cover-img" src="images/ph-borito.svg" alt="Az osztály borítóképe">
+  <div class="cover-veil"></div>
+  <div class="cover-text">
+    <div class="wrap">
+      <span class="cover-kicker">Digitális évkönyv</span>
+      <h1>Negyedik osztály<br>évkönyve – 2024</h1>
+      <p class="sub">Egy év közös pillanatai, születésnapok és emlékek.</p>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- 2) SZÜLETÉSNAPOK – időrend: január → december -->
+  <section class="section" id="szuletesnapok">
+    <div class="section-head">
+      <span class="eyebrow">Születésnapok</span>
+      <h2>Az osztály egész éve</h2>
+      <p>Minden gyerek születési dátuma szerint, januártól decemberig. Egységes, négyzetes fotók, tiszta keretezésben.</p>
+    </div>
+
+    <div class="bday-grid">
+      <!-- JANUÁR -->
+      <div class="month-label">Január</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Anna fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Anna</div><div class="bday-date">január 9.</div></figcaption>
+      </figure>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Bence fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Bence</div><div class="bday-date">január 23.</div></figcaption>
+      </figure>
+
+      <!-- FEBRUÁR -->
+      <div class="month-label">Február</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Csenge fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Csenge</div><div class="bday-date">február 14.</div></figcaption>
+      </figure>
+
+      <!-- MÁRCIUS -->
+      <div class="month-label">Március</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Dániel fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Dániel</div><div class="bday-date">március 3.</div></figcaption>
+      </figure>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Eszter fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Eszter</div><div class="bday-date">március 27.</div></figcaption>
+      </figure>
+
+      <!-- ÁPRILIS -->
+      <div class="month-label">Április</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Botond fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Botond</div><div class="bday-date">április 14.</div></figcaption>
+      </figure>
+
+      <!-- MÁJUS -->
+      <div class="month-label">Május</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Fanni fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Fanni</div><div class="bday-date">május 6.</div></figcaption>
+      </figure>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Gergő fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Gergő</div><div class="bday-date">május 19.</div></figcaption>
+      </figure>
+
+      <!-- JÚNIUS -->
+      <div class="month-label">Június</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Hanna fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Hanna</div><div class="bday-date">június 30.</div></figcaption>
+      </figure>
+
+      <!-- AUGUSZTUS -->
+      <div class="month-label">Augusztus</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Levente fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Levente</div><div class="bday-date">augusztus 11.</div></figcaption>
+      </figure>
+
+      <!-- SZEPTEMBER -->
+      <div class="month-label">Szeptember</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Mira fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Mira</div><div class="bday-date">szeptember 2.</div></figcaption>
+      </figure>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Noel fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Noel</div><div class="bday-date">szeptember 25.</div></figcaption>
+      </figure>
+
+      <!-- OKTÓBER -->
+      <div class="month-label">Október</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Olívia fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Olívia</div><div class="bday-date">október 17.</div></figcaption>
+      </figure>
+
+      <!-- NOVEMBER -->
+      <div class="month-label">November</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Patrik fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Patrik</div><div class="bday-date">november 8.</div></figcaption>
+      </figure>
+
+      <!-- DECEMBER -->
+      <div class="month-label">December</div>
+      <figure class="bday-card">
+        <img class="bday-photo" loading="lazy" src="images/ph-portret.svg" alt="Réka fotója">
+        <figcaption class="bday-meta"><div class="bday-name">Réka</div><div class="bday-date">december 21.</div></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3) OSZTÁLYKIRÁNDULÁS -->
+  <section class="section" id="kirandulas">
+    <div class="section-head">
+      <span class="eyebrow">Osztálykirándulás</span>
+      <h2>Balaton, 2024</h2>
+      <p>Egy felejthetetlen nap a vízparton. <span class="date-badge">2024. május 15.</span></p>
+    </div>
+
+    <div class="photo-grid cols-3">
+      <figure class="photo">
+        <img loading="lazy" src="images/ph-taj.svg" alt="Indulás a busznál">
+        <figcaption><b>Indulás</b> — gyülekező az iskola előtt</figcaption>
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="images/ph-taj.svg" alt="A vízparton">
+        <figcaption><b>A vízparton</b> — Balatonfüred</figcaption>
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="images/ph-taj.svg" alt="Közös ebéd">
+        <figcaption><b>Közös ebéd</b> — pihenő a fák alatt</figcaption>
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="images/ph-taj.svg" alt="Séta a kikötőben">
+        <figcaption><b>Séta a kikötőben</b></figcaption>
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="images/ph-taj.svg" alt="Játék a parton">
+        <figcaption><b>Játék a parton</b></figcaption>
+      </figure>
+      <figure class="photo">
+        <img loading="lazy" src="images/ph-taj.svg" alt="Csoportkép a mólón">
+        <figcaption><b>Csoportkép a mólón</b></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 4) AZ ÉV PILLANATAI -->
+  <section class="section" id="pillanatok">
+    <div class="section-head">
+      <span class="eyebrow">Az év pillanatai</span>
+      <h2>Közös emlékek</h2>
+      <p>Esemény és hónap szerint csoportosítva — a tanévünk legszebb pillanatai.</p>
+    </div>
+
+    <div class="photo-grid cols-3">
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Tanévnyitó"><figcaption><b>Tanévnyitó</b> — szeptember</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Őszi projektnap"><figcaption><b>Őszi projektnap</b> — október</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Mikulás"><figcaption><b>Mikulás</b> — december</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Karácsonyi műsor"><figcaption><b>Karácsonyi műsor</b> — december</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Farsang"><figcaption><b>Farsang</b> — február</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Anyák napja"><figcaption><b>Anyák napja</b> — május</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Sportnap"><figcaption><b>Sportnap</b> — június</figcaption></figure>
+      <figure class="photo"><img loading="lazy" src="images/ph-taj.svg" alt="Évzáró"><figcaption><b>Évzáró</b> — június</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 5) ZÁRÁS – osztálykép + tanári dedikáció -->
+  <section class="section closing" id="zaras">
+    <div class="section-head">
+      <span class="eyebrow">Zárás</span>
+      <h2>Mi vagyunk a negyedik osztály</h2>
+    </div>
+
+    <div class="class-photo">
+      <!-- Cseréld: images/osztalykep.jpg -->
+      <img loading="lazy" src="images/ph-osztalykep.svg" alt="A negyedik osztály közös képe">
+    </div>
+
+    <!-- TANÁRI DEDIKÁCIÓ — cseréld a valós szövegre (3–4 mondat) -->
+    <blockquote class="dedication">
+      <p>„Kedves Gyerekek! Négy év telt el, és ti olyan sokat nőttetek — nemcsak
+      magasságban, hanem szívben és tudásban is. Köszönöm a sok közös nevetést,
+      a kíváncsi kérdéseket és a kitartást. Bárhová is visz az utatok, vigyétek
+      magatokkal ennek az osztálynak a melegségét.”</p>
+      <p class="signoff">Szeretettel: a Tanító néni
+        <small>Negyedik osztály · 2024</small>
+      </p>
+    </blockquote>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Negyedik osztály digitális évkönyve · 2024</p>
+    <p class="no-print" style="margin-top:.4rem">
+      <a href="#" onclick="window.print();return false;">⤓ Évkönyv mentése PDF-be (Nyomtatás → Mentés PDF-ként)</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
