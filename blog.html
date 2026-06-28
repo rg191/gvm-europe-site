@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Útmutató, hírek és frissítések | GVM Haus</title>
+  <meta
+    name="description"
+    content="GVM Haus blog: gyakorlati útmutatók a telek-előkészítésről, mobilház felállításáról Ausztriában, mobilház vs. modulház, valamint aktuális hírek és frissítések."
+  />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #2D3E50;
+      --red: #C8232C;
+      --anthracite: #3a3a3a;
+      --mid: #6b6b6b;
+      --light: #f5f5f3;
+      --white: #ffffff;
+      --border: #e0dcd5;
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      --maxw: 880px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--anthracite);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .wide { max-width: 1140px; }
+
+    /* Nav */
+    header.nav {
+      position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .logo { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--navy); }
+    .logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--navy); font-weight: 600; font-size: 14px; }
+    .nav-links a.cta { background: var(--red); color: #fff; padding: 9px 18px; border-radius: 5px; }
+    .nav-links a.cta:hover { background: #a81a22; text-decoration: none; }
+
+    /* Hero */
+    .hero { background: var(--navy); color: #fff; padding: 64px 0 56px; }
+    .hero .label {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: #a8c8e8; margin-bottom: 14px;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .hero p { font-size: 1.05rem; opacity: 0.9; max-width: 620px; }
+
+    section { padding: 56px 0; }
+    .section-alt { background: var(--light); }
+
+    h2.sec {
+      font-size: 1.5rem; font-weight: 800; color: var(--navy); letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+    .sec-sub { color: var(--mid); margin-bottom: 28px; }
+
+    /* Updates feed */
+    .updates { display: grid; gap: 16px; }
+    .update {
+      display: grid; grid-template-columns: 130px 1fr; gap: 20px;
+      background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--red);
+      border-radius: 8px; padding: 20px 24px;
+    }
+    .update .date { font-size: 13px; font-weight: 700; color: var(--red); }
+    .update .date span { display: block; color: var(--mid); font-weight: 500; font-size: 12px; }
+    .update h3 { font-size: 1.1rem; color: var(--navy); font-weight: 800; margin-bottom: 6px; }
+    .update p { font-size: 0.95rem; color: var(--anthracite); }
+    .pill {
+      display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-bottom: 8px;
+    }
+    .pill.news { background: rgba(200,35,44,0.1); color: var(--red); }
+    .pill.update { background: rgba(45,62,80,0.1); color: var(--navy); }
+
+    /* Articles */
+    article {
+      border-bottom: 1px solid var(--border); padding: 44px 0;
+    }
+    article:last-child { border-bottom: none; }
+    article .tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 10px;
+    }
+    article h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: var(--navy);
+      letter-spacing: -0.5px; margin-bottom: 10px; scroll-margin-top: 80px;
+    }
+    article .meta { font-size: 13px; color: var(--mid); margin-bottom: 20px; }
+    article h3 { font-size: 1.15rem; color: var(--navy); font-weight: 700; margin: 26px 0 10px; }
+    article p { margin-bottom: 14px; }
+    article ul { margin: 0 0 16px 22px; }
+    article li { margin-bottom: 7px; }
+    .callout {
+      background: var(--light); border-left: 3px solid var(--navy); padding: 16px 20px;
+      border-radius: 4px; margin: 20px 0; font-size: 0.95rem;
+    }
+    .back-top { display: inline-block; margin-top: 8px; font-size: 0.85rem; font-weight: 700; }
+
+    .cta-band { background: var(--navy); color: #fff; text-align: center; padding: 48px 24px; }
+    .cta-band h2 { color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
+    .cta-band p { color: rgba(255,255,255,0.85); margin-bottom: 22px; }
+    .btn { display: inline-block; padding: 13px 26px; border-radius: 6px; font-weight: 700; font-size: 15px; }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: #a81a22; text-decoration: none; }
+
+    footer.site { background: var(--navy); color: rgba(255,255,255,0.8); padding: 40px 0 28px; font-size: 0.9rem; text-align: center; }
+    footer.site a { color: rgba(255,255,255,0.85); }
+    footer.site .bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; margin-top: 18px; font-size: 0.78rem; line-height: 1.6; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
+      .update { grid-template-columns: 1fr; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap wide nav-inner">
+      <a href="gvm_homepage.html" class="logo">GVM<span>Haus</span></a>
+      <nav class="nav-links">
+        <a href="gvm_homepage.html#modellek">Modellek</a>
+        <a href="gvm_homepage.html#folyamat">Folyamat</a>
+        <a href="megrendeles_menete.html">Megrendelés menete</a>
+        <a href="blog.html">Blog</a>
+        <a href="gvm_homepage.html#kapcsolat" class="cta">Ajánlatot kérek</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="label">Blog</span>
+      <h1>Útmutató, hírek és frissítések</h1>
+      <p>Gyakorlati tudás a felállításról, modellválasztásról és tervezésről – valamint a GVM Haus legfrissebb hírei.</p>
+    </div>
+  </section>
+
+  <!-- Updates / news feed -->
+  <section class="section-alt" id="aktualitasok">
+    <div class="wrap">
+      <h2 class="sec">Aktualitások &amp; frissítések</h2>
+      <p class="sec-sub">A legfrissebb hírek a modellekről, szállításról és elérhetőségről.</p>
+      <div class="updates">
+        <div class="update">
+          <div class="date">2026.06.<span>június</span></div>
+          <div>
+            <span class="pill update">Frissítés</span>
+            <h3>Új, kétnyelvű (DE/HU) ajánlat-sablon</h3>
+            <p>Mostantól minden ügyfél egységes, kétnyelvű árajánlatot kap, amely a teljes
+            szállítási terjedelmet, a fizetési ütemezést és a garanciát is tartalmazza.
+            <a href="gvmhaus_angebot.html">Ajánlat-minta megtekintése →</a></p>
+          </div>
+        </div>
+        <div class="update">
+          <div class="date">2026.05.<span>május</span></div>
+          <div>
+            <span class="pill news">Hír</span>
+            <h3>GVMHausU 01 és 02 – azonnal szállítható</h3>
+            <p>A kompakt GVMHausU 01 (18 m²) és a tágasabb GVMHausU 02 (25 m²) raktárról,
+            rövid határidővel elérhető – ideális hétvégi háznak, Airbnb-nek vagy kerti irodának.</p>
+          </div>
+        </div>
+        <div class="update">
+          <div class="date">2026.04.<span>április</span></div>
+          <div>
+            <span class="pill news">Hír</span>
+            <h3>Frissített nettó árlista 2026</h3>
+            <p>GVMHaus 15 13.000 €-tól, GVMHaus 30 23.000 €-tól, GVMHaus 44 33.000 € –
+            minden ár nettó, kulcsrakész kivitelben. <a href="gvm_homepage.html#modellek">Modellek és árak →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section>
+    <div class="wrap">
+      <h2 class="sec">Útmutató és betekintés</h2>
+      <p class="sec-sub">Részletes, gyakorlati cikkek a tervezéshez és a megrendeléshez.</p>
+
+      <article id="telek-elokeszitese">
+        <div class="tag">Útmutató</div>
+        <h2>Telek előkészítése a szállítás előtt</h2>
+        <div class="meta">Olvasási idő: ~4 perc · Téma: helyszín-előkészítés</div>
+        <p>
+          Ahhoz, hogy a szállítás és a felállítás zökkenőmentes legyen, a helyszínt időben elő kell
+          készíteni. Az alábbi ellenőrzőlista végigveszi, mire kell figyelni az aljzattól a
+          daruhozzáférésig – ezek a pontok a vevő felelősségi körébe tartoznak.
+        </p>
+
+        <h3>1. Stabil, vízszintes aljzat</h3>
+        <p>
+          A ház egy előkészített, teherbíró és vízszintes felületre kerül. A konkrét megoldás
+          modellfüggő lehet: pontalap, sávalap, csavaros földhorgony vagy betonlemez. A pontos
+          követelményeket a kiválasztott modellhez kérésre megküldjük.
+        </p>
+
+        <h3>2. Megfelelő behajtás</h3>
+        <ul>
+          <li>Nehéztranszport (nyergesvontató/tieflader) és daru számára járható útvonal</li>
+          <li>Minimum ~4 m szabad szélesség és megfelelő teherbírás</li>
+          <li>Elegendő manőverezési hely a daru felállításához</li>
+        </ul>
+
+        <h3>3. Közmű-csatlakozások a közelben</h3>
+        <ul>
+          <li>Áramcsatlakozás a tervezett ház helyétől 5 m-en belül, házi csatlakozásra alkalmasan</li>
+          <li>Vízbekötés és csatorna szintén 5 m-en belül</li>
+        </ul>
+
+        <h3>4. Tiszta, akadálymentes terület</h3>
+        <p>
+          A daru és a felállítás útjában ne legyen akadály (fák, vezetékek, építési törmelék).
+          A nem megfelelően előkészített helyszín miatt felmerülő többletköltségeket (extra daru,
+          várakozási idő, ismételt kiszállás) külön számítjuk fel.
+        </p>
+
+        <div class="callout">
+          <strong>Tipp:</strong> a helyszín-előkészítés részletes, modellspecifikus követelményeit a
+          <a href="megrendeles_menete.html#helyszin">Megrendelés menete</a> oldalon is megtalálja.
+        </div>
+        <a class="back-top" href="#top">↑ Vissza a tetejére</a>
+      </article>
+
+      <article id="felallitas-ausztriaban">
+        <div class="tag">Útmutató</div>
+        <h2>Mobilház felállítása Ausztriában</h2>
+        <div class="meta">Olvasási idő: ~4 perc · Téma: engedélyezés</div>
+        <p>
+          A megrendelés előtt érdemes tisztázni a helyi szabályozást. Ausztriában a mobil- és
+          modulházak telepíthetősége tartományonként és községenként eltérhet – az alábbiakat
+          javasolt előre ellenőrizni.
+        </p>
+
+        <h3>Önkormányzat és tartomány</h3>
+        <p>
+          A bizonyos feltételeknek megfelelő mobilházak „ingó dolognak" minősülhetnek, és
+          engedélymentesek vagy csupán bejelentés-kötelesek. Tartós lakhatás esetén azonban
+          általában építési bejelentés vagy engedély szükséges. A pontos elvárásokról a községi
+          építési hatóság ad felvilágosítást.
+        </p>
+
+        <h3>Telek és övezeti besorolás</h3>
+        <ul>
+          <li>Beépíthető-e a telek a tervezett használatra (állandó, hétvégi, üzleti)?</li>
+          <li>Vannak-e távolságtartási vagy beépítési előírások?</li>
+          <li>Biztosított-e a közmű-csatlakozás lehetősége?</li>
+        </ul>
+
+        <h3>Engedély: mit ellenőrizzen a megrendelés előtt</h3>
+        <ul>
+          <li>Szükséges-e bejelentés vagy építési engedély a tervezett használathoz</li>
+          <li>Milyen dokumentációt kér a hatóság (alaprajz, helyszínrajz)</li>
+          <li>Milyen határidőkkel számolhat az eljárás</li>
+        </ul>
+
+        <div class="callout">
+          A GVM Spedition GmbH nem garantálja, hogy a ház bármely területen elhelyezhető – ezek
+          előzetes ellenőrzése a vevő felelőssége. A tervezésben és a kérdések tisztázásában
+          szívesen segítünk: <a href="gvm_homepage.html#kapcsolat">vegye fel velünk a kapcsolatot</a>.
+        </div>
+        <a class="back-top" href="#top">↑ Vissza a tetejére</a>
+      </article>
+
+      <article id="mobilhaz-vagy-modulhaz">
+        <div class="tag">Útmutató</div>
+        <h2>Mobilház vagy modulház?</h2>
+        <div class="meta">Olvasási idő: ~3 perc · Téma: modellválasztás</div>
+        <p>
+          A két fogalmat gyakran keverik. A GVM Haus megoldásai a kettő előnyeit egyesítik:
+          gyári precizitás, kulcsrakész átadás és megőrzött áthelyezhetőség.
+        </p>
+
+        <h3>Áthelyezhetőség</h3>
+        <p>
+          A szerkezet mobilitásra tervezett – nyergesvontató és daru segítségével a ház később új
+          helyszínre helyezhető. Feltétel a megfelelő behajtás a régi és az új helyszínen, valamint
+          a közmű-csatlakozók szakszerű leválasztása.
+        </p>
+
+        <h3>Szállítási idő</h3>
+        <p>
+          A párhuzamos, gyári előregyártás jelentősen lerövidíti az átfutási időt a hagyományos
+          építéshez képest: a standard modellek 30–60 nap, az egyedileg konfiguráltak 60–90 nap,
+          az azonnal szállítható modellek pedig 1–4 hét alatt elérhetők.
+        </p>
+
+        <h3>Tipikus használat</h3>
+        <ul>
+          <li>Hétvégi ház, glamping, kiegészítő épület (GVMHaus 15, GVMHausU 01)</li>
+          <li>Állandó lakhatás, családi nyaraló, hosszú távú bérbeadás (GVMHaus 30 / 44, GVMHausU 02)</li>
+          <li>Bővítés: több modul egymás mellé állítva nagyobb lakóegységgé kapcsolható</li>
+        </ul>
+
+        <div class="callout">
+          Nem biztos, melyik modell illik az igényeihez? Az
+          <a href="megrendeles_menete.html#arak">öt modell áttekintése</a> segít a választásban,
+          vagy kérjen <a href="gvmhaus_angebot.html">egyedi ajánlatot</a>.
+        </div>
+        <a class="back-top" href="#top">↑ Vissza a tetejére</a>
+      </article>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Készen áll egy konkrét ajánlatra?</h2>
+    <p>1–3 munkanapon belül kötelező érvényű ajánlatot adunk a kívánt modellre.</p>
+    <a class="btn btn-red" href="gvm_homepage.html#kapcsolat">Ajánlatot kérek →</a>
+  </div>
+
+  <footer class="site">
+    <div class="wrap wide">
+      <a href="gvm_homepage.html" class="logo" style="color:#fff;">GVM<span style="color:var(--red);">Haus</span></a>
+      <p style="margin-top:10px;">
+        <a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a> ·
+        <a href="tel:+436769348474">+43 676 934 8474</a> ·
+        <a href="https://gvmhaus.at">gvmhaus.at</a>
+      </p>
+      <div class="bottom">
+        © <span id="year"></span> GVM Spedition GmbH · Mobil precíziós házak. Az elhelyezhetőség a helyi
+        építési és önkormányzati előírásoktól függ – ezek előzetes ellenőrzése a vevő felelőssége.
+      </div>
+    </div>
+  </footer>
+
+  <a id="top"></a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
