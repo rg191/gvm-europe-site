@@ -24,7 +24,7 @@ Nyelvek: **HU / SK / EN** (nyelvváltó a fejlécben). Nincs build lépés — t
 Netlify (lásd `netlify.toml`): push a `main` branchre → GitHub Actions automatikusan deployol.
 Publish directory: `sites/glogiai.hu/public`.
 
-**DNS beállítás:** Alex — lásd `sites/glogiai.hu/DNS-ALEX.md`.
+**DNS beállítás:** Alex — lásd `sites/glogiai.hu/DNS-ALEX.md` (rövid összefoglaló: `sites/glogiai.hu/ALEX-UZENET.md`).
 
 ## Platform URL
 
