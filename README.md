@@ -6,18 +6,22 @@ A **GlogiAI** mesterséges intelligenciára épülő fuvarbörze és logisztikai
 ## Tartalom
 
 ```
-sites/glogiai.hu/public/
-├── index.html              # Főoldal (HU)
-├── legal.css               # Jogi aloldalak közös stílusa
-├── aszf.html               # ÁSZF
-├── adatkezeles.html        # Adatkezelési tájékoztató (GDPR)
-├── cookie.html             # Cookie szabályzat
-├── impresszum.html         # Impresszum
-├── kapcsolat.html          # Kapcsolat
-└── sk/                     # Szlovák verzió (index + 5 jogi oldal)
+sites/
+├── glogiai.hu/public/      # GlogiAI landing (Netlify → glogiai.hu)
+│   ├── index.html          # Főoldal (HU)
+│   ├── sk/                 # Szlovák verzió
+│   └── en/                 # Angol verzió
+└── gvmeurope.ro/public/    # GVM Europe Románia (Hetzner → gvmeurope.ro)
+    ├── index.html          # Román (RO)
+    ├── hu/index.html       # Magyar
+    ├── en/index.html       # Angol
+    └── static/logo.svg     # Helyi logó (nem külső URL)
 ```
 
-Nyelvek: **HU / SK / EN** (nyelvváltó a fejlécben). Nincs build lépés — tiszta statikus HTML/CSS.
+- **glogiai.hu** — Nyelvek: **HU / SK / EN**. Netlify deploy (`netlify.toml`).
+- **gvmeurope.ro** — Nyelvek: **RO / HU / EN**. Hetzner deploy (`sites/gvmeurope.ro/HOSZTOLAS.md`).
+
+Nincs build lépés — tiszta statikus HTML/CSS.
 
 ## Deploy
 

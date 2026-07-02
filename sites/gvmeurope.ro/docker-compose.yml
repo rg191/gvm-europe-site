@@ -1,0 +1,14 @@
+# gvmeurope.ro – statikus román GVM Europe landing (Hetzner)
+# Szerver útvonal: /srv/sites/gvmeurope.ro
+# Konténer neve: gvmeurope-ro-web (port 9081)
+
+services:
+  gvmeurope-ro-web:
+    container_name: gvmeurope-ro-web
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9081:80"
+    labels:
+      - "gvm.site=gvmeurope.ro"
+      - "gvm.description=GVM Europe Romania static site"
