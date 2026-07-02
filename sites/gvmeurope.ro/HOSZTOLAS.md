@@ -1,18 +1,37 @@
-# gvmeurope.ro — Hetzner hosztolás
+# gvmeurope.ro — hosztolás
 
-> **Román GVM Europe landing** (GVM Europe Speditie Freight SRL).  
-> Ne keverd össze a `glogiai.hu` vagy `gvmeurope.hu` oldalakkal.
+> **Ajánlott: Netlify** (nincs Hetzner SSH / szerver keresés).  
+> Lépésről lépésre: **`NETLIFY-DNS.md`**
 
-## Gyors referencia
+## Gyors referencia (Netlify)
 
 | Mi | Hol |
 |---|---|
 | **Domain** | `gvmeurope.ro` / `www.gvmeurope.ro` |
-| **Szerver IP** | `46.225.184.176` (Hetzner Cloud) |
-| **Szerver útvonal** | `/srv/sites/gvmeurope.ro` |
-| **Docker konténer** | `gvmeurope-ro-web` |
-| **Belső port** | `9081` (127.0.0.1) |
 | **Forráskód** | `sites/gvmeurope.ro/public/` |
+| **Netlify base dir** | `sites/gvmeurope.ro` |
+| **GitHub secret** | `NETLIFY_GVMEUROPE_RO_SITE_ID` |
+| **Workflow** | `.github/workflows/netlify-deploy-gvmeurope-ro.yml` |
+
+---
+
+## Hetzner (régi / alternatív)
+
+<details>
+<summary>Hetzner Cloud deploy (archív)</summary>
+
+| Mi | Hol |
+|---|---|
+| **Szerver IP** | `46.225.184.176` |
+| **Szerver útvonal** | `/srv/sites/gvmeurope.ro` |
+| **Port** | `9081` |
+
+```bash
+ssh root@46.225.184.176
+/srv/sites/gvmeurope.ro/deploy.sh
+```
+
+</details>
 
 ## Nyelvek
 

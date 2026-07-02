@@ -19,7 +19,7 @@ sites/
 ```
 
 - **glogiai.hu** — Nyelvek: **HU / SK / EN**. Netlify deploy (`netlify.toml`).
-- **gvmeurope.ro** — Nyelvek: **RO / HU / EN**. Hetzner deploy (`sites/gvmeurope.ro/HOSZTOLAS.md`).
+- **gvmeurope.ro** — Nyelvek: **RO / HU / EN**. **Netlify deploy** (`sites/gvmeurope.ro/NETLIFY-DNS.md`).
 
 Nincs build lépés — tiszta statikus HTML/CSS.
 

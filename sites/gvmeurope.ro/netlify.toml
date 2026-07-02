@@ -1,0 +1,18 @@
+# gvmeurope.ro – Netlify deploy (statikus oldal, nincs build lépés)
+# Netlify UI: Add new site → GitHub → rg191/gvm-europe-site
+# Base directory: sites/gvmeurope.ro
+# Publish: public (alább relatív ehhez a mappához)
+
+[build]
+  publish = "public"
+  command = "echo 'gvmeurope.ro statikus oldal, nincs build lepes'"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
