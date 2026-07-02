@@ -36,4 +36,4 @@ A bejelentkezés és regisztráció gombok: **https://app.glogiai.hu**
 
 ## Árazás
 
-A főoldalon (HU / SK / EN) az árazás szekció a Basic (79 €), Pro (99 €) és Premium (129 €) csomagokat tartalmazza.
+A főoldalon (HU / SK / EN) és a dedikált árazás oldalakon (`arazas.html`, `sk/arazas.html`, `en/pricing.html`) a Basic (79 €), Pro (99 €) és Premium (129 €) csomagok szerepelnek.
