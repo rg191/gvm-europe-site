@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GYIK – Minden a megrendelésről | GVM Haus</title>
+  <title>GYIK – Gyakran Ismételt Kérdések | GVM Haus</title>
   <meta
     name="description"
-    content="Átfogó gyakori kérdések a GVM Haus mobilházak megrendeléséről: modellek, árak, folyamat, testreszabás, fizetés, szállítás, helyszín-előkészítés, engedélyek, műszaki adatok és garancia."
+    content="GVM Haus GYIK: átfogó válaszok a készházakról – általános információ, termékek és típusok, ár és finanszírozás, szállítás és telepítés, garancia, jog és dokumentáció, rendelési folyamat, fenntartás és speciális kérdések."
   />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -77,9 +77,7 @@
     .no-results { display: none; text-align: center; color: var(--mid); padding: 40px 0; font-style: italic; }
 
     /* Category jump nav */
-    .cats {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 8px;
-    }
+    .cats { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 8px; }
     .cats a {
       font-size: 13px; font-weight: 600; color: var(--navy); background: var(--light);
       border: 1px solid var(--border); padding: 7px 13px; border-radius: 20px;
@@ -93,7 +91,10 @@
       margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--navy);
       display: flex; align-items: center; gap: 10px;
     }
-    .cat-block h2 .ico { font-size: 1.2rem; }
+    .cat-block h2 .n {
+      background: var(--red); color: #fff; font-size: 0.85rem; width: 28px; height: 28px;
+      border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex: none;
+    }
 
     details.qa {
       border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;
@@ -116,15 +117,22 @@
     .qa .answer ul { margin: 4px 0 10px 20px; }
     .qa .answer li { margin-bottom: 5px; }
     .qa .answer table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13.5px; }
-    .qa .answer th, .qa .answer td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); }
+    .qa .answer th, .qa .answer td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
     .qa .answer th { color: var(--navy); background: var(--light); font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
     .qa .answer td.p { color: var(--red); font-weight: 700; white-space: nowrap; }
-    .qa mark { background: #ffe9a8; padding: 0 2px; }
 
-    /* CTA */
-    .cta-band { background: var(--navy); color: #fff; text-align: center; padding: 48px 24px; margin-top: 20px; }
-    .cta-band h2 { color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
-    .cta-band p { color: rgba(255,255,255,0.85); margin-bottom: 22px; }
+    /* Contact (section 10) */
+    .contact { background: var(--light); padding: 56px 0; }
+    .contact h2 { font-size: 1.6rem; color: var(--navy); font-weight: 800; margin-bottom: 8px; }
+    .contact .lead { color: var(--mid); margin-bottom: 26px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+    }
+    .contact-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 12px; }
+    .contact-card .row { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .contact-card .row:last-child { border-bottom: none; }
+    .contact-card .k { font-weight: 700; color: var(--navy); min-width: 110px; }
     .btn { display: inline-block; padding: 13px 26px; border-radius: 6px; font-weight: 700; font-size: 15px; }
     .btn-red { background: var(--red); color: #fff; }
     .btn-red:hover { background: #a81a22; text-decoration: none; }
@@ -135,6 +143,7 @@
 
     @media (max-width: 640px) {
       .nav-links a:not(.cta) { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -154,332 +163,257 @@
 
   <section class="hero">
     <div class="wrap">
-      <span class="label">Gyakori kérdések</span>
-      <h1>Minden, amit a megrendelésről tudni érdemes</h1>
-      <p>Átfogó válaszok a leggyakoribb érdeklődői kérdésekre – modellektől és áraktól a szállításon és engedélyeken át a garanciáig. Nem találja a választ? Írjon nekünk, 24 órán belül válaszolunk.</p>
+      <span class="label">Gyakran Ismételt Kérdések</span>
+      <h1>Minden, amit a GVM Haus készházakról tudni érdemes</h1>
+      <p>Átfogó válaszok a leggyakoribb érdeklődői kérdésekre – az általános tudnivalóktól az árakon, szállításon, garancián és jogi kérdéseken át a fenntartásig. Nem találja a választ? Írjon nekünk, 24 órán belül válaszolunk.</p>
     </div>
   </section>
 
   <div class="wrap toolbar">
     <div class="search-card">
-      <input type="search" id="faq-search" placeholder="Keresés a kérdések között… (pl. szállítás, engedély, fizetés)" aria-label="Keresés a GYIK-ben" />
+      <input type="search" id="faq-search" placeholder="Keresés a kérdések között… (pl. garancia, alapozás, finanszírozás)" aria-label="Keresés a GYIK-ben" />
       <button class="btn-mini" id="expand-all" type="button">Összes kinyitása</button>
       <button class="btn-mini" id="collapse-all" type="button">Összes bezárása</button>
     </div>
     <nav class="cats" aria-label="Kategóriák">
-      <a href="#modellek-arak">Modellek &amp; árak</a>
-      <a href="#folyamat">Megrendelési folyamat</a>
-      <a href="#testreszabas">Testreszabás</a>
-      <a href="#fizetes">Fizetés &amp; szerződés</a>
-      <a href="#szallitas">Szállítás &amp; felállítás</a>
-      <a href="#helyszin">Helyszín &amp; engedélyek</a>
-      <a href="#muszaki">Műszaki adatok</a>
-      <a href="#garancia">Garancia &amp; használat</a>
+      <a href="#altalanos">1. Általános</a>
+      <a href="#termekek">2. Termékek &amp; típusok</a>
+      <a href="#ar">3. Ár &amp; finanszírozás</a>
+      <a href="#szallitas">4. Szállítás &amp; telepítés</a>
+      <a href="#garancia">5. Garancia &amp; szerviz</a>
+      <a href="#jogi">6. Jogi &amp; dokumentáció</a>
+      <a href="#folyamat">7. Rendelési folyamat</a>
+      <a href="#fenntartas">8. Fenntartás</a>
+      <a href="#specialis">9. Speciális kérdések</a>
+      <a href="#kontakt">10. Kontakt</a>
     </nav>
   </div>
 
   <section class="faq">
     <div class="wrap">
-      <p class="no-results" id="no-results">Nincs a keresésnek megfelelő kérdés. Próbáljon más kulcsszót, vagy <a href="gvm_homepage.html#kapcsolat">írjon nekünk</a>.</p>
+      <p class="no-results" id="no-results">Nincs a keresésnek megfelelő kérdés. Próbáljon más kulcsszót, vagy <a href="#kontakt">írjon nekünk</a>.</p>
 
-      <!-- 1. Modellek és árak -->
-      <div class="cat-block" id="modellek-arak">
-        <h2><span class="ico">🏠</span> Modellek, méretek és árak</h2>
+      <!-- 1. ÁLTALÁNOS INFORMÁCIÓ -->
+      <div class="cat-block" id="altalanos">
+        <h2><span class="n">1</span> Általános információ</h2>
 
         <details class="qa">
-          <summary>Milyen modellek közül választhatok?</summary>
+          <summary>Mi az a készház?</summary>
           <div class="answer">
-            <p>Öt alapmodellünk van, minden igényre – kulcsrakész kivitelben:</p>
+            <p>A készház (mobil precíziós ház) egy <strong>üzemben, moduláris elven előregyártott</strong> épület, amelyet <strong>kulcsrakészen</strong> szállítunk a helyszínre. A GVM Haus házak acél tartószerkezetre épülnek, hőszigetelt szendvicspanelekkel. A hagyományos építkezéssel szemben a munka nagy része ellenőrzött üzemi körülmények között, párhuzamosan zajlik – így gyorsabb, kiszámíthatóbb és jellemzően kedvezőbb.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Miért válasszunk készházat?</summary>
+          <div class="answer">
+            <ul>
+              <li><strong>Gyors:</strong> 30–90 nap a megrendeléstől a kulcsátadásig</li>
+              <li><strong>Költséghatékony:</strong> akár 70%-kal kedvezőbb az azonos alapterületű hagyományos építésnél</li>
+              <li><strong>Minőségkontroll:</strong> gyári, hiánytalan minőségellenőrzés minden lépésnél</li>
+              <li><strong>Kulcsrakész:</strong> azonnal lakható, teljes felszereltséggel (konyha, fürdő, elektromos, fűtés)</li>
+              <li><strong>Mobilis és bővíthető:</strong> később áthelyezhető, több modul összekapcsolható</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Melyik típusok közül választhatok?</summary>
+          <div class="answer">
+            <p>Öt alapmodell: <strong>GVMHaus 15 / 30 / 44</strong>, valamint az azonnal szállítható <strong>GVMHausU 01 / 02</strong>. A részletek a <a href="gvm_homepage.html#modellek">modellek</a> szekcióban és a <a href="megrendeles_menete.html#arak">Megrendelés menete</a> oldalon.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Van-e mintaház, megtekintési lehetőség?</summary>
+          <div class="answer">
+            <p>Igen, megtekintés <strong>időpont-egyeztetéssel</strong> lehetséges – vegye fel velünk a kapcsolatot, és egyeztetjük a lehetőségeket. Emellett minden modellhez <strong>műszaki adatlap és alaprajz</strong>, valamint referencia-galéria elérhető. A tanácsadás ingyenes és kötelezettségmentes.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 2. TERMÉKEK ÉS TÍPUSOK -->
+      <div class="cat-block" id="termekek">
+        <h2><span class="n">2</span> Termékek és típusok</h2>
+
+        <details class="qa">
+          <summary>Milyen készház típusok vannak?</summary>
+          <div class="answer">
             <table>
-              <tr><th>Modell</th><th>Alapterület</th><th>Méret / kapacitás</th><th>Nettó ár</th></tr>
-              <tr><td>GVMHaus 15</td><td>15 m²</td><td>6,00 × 2,43 m</td><td class="p">13.000 €-tól</td></tr>
-              <tr><td>GVMHaus 30</td><td>30 m²</td><td>6,00 × 4,68 m</td><td class="p">23.000 €-tól</td></tr>
-              <tr><td>GVMHaus 44</td><td>44 m²</td><td>6,00 × 7,30 m</td><td class="p">33.000 €</td></tr>
-              <tr><td>GVMHausU 01</td><td>18 m²</td><td>1–2 fő</td><td class="p">19.200 €</td></tr>
-              <tr><td>GVMHausU 02</td><td>25 m²</td><td>1–2 fő</td><td class="p">26.400 €</td></tr>
+              <tr><th>Modell</th><th>Alapterület</th><th>Jellemző használat</th></tr>
+              <tr><td>GVMHaus 15</td><td>15 m²</td><td>Hétvégi ház, glamping, kiegészítő épület</td></tr>
+              <tr><td>GVMHaus 30</td><td>30 m²</td><td>Komfortos, kiegyensúlyozott lakótér</td></tr>
+              <tr><td>GVMHaus 44</td><td>44 m²</td><td>Családi mobilház</td></tr>
+              <tr><td>GVMHausU 01</td><td>18 m²</td><td>Hétvégi ház, Airbnb, kerti iroda (azonnal szállítható)</td></tr>
+              <tr><td>GVMHausU 02</td><td>25 m²</td><td>Tartós lakhatás, nyaraló, hosszú távú bérbeadás (azonnal szállítható)</td></tr>
             </table>
-            <p>A GVMHausU 01 / 02 modellek azonnal szállíthatók. A modellek részletes áttekintése a <a href="megrendeles_menete.html#arak">Megrendelés menete</a> oldalon.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Mit tartalmaz az alapár?</summary>
+          <summary>Mekkora lehet egy készház?</summary>
           <div class="answer">
-            <p>Az alapár a <strong>kulcsrakész, azonnal lakható</strong> házat jelenti: tartószerkezet, hőszigetelt falak és tető, padló, nyílászárók, teljes elektromos rendszer, víz- és szennyvízbekötés, konyha és fürdő alapfelszereltséggel, valamint fűtés. A pontos tartalmat mindig az egyedi ajánlat rögzíti.</p>
+            <p>Az alapmodellek 15 m²-től 44 m²-ig terjednek (a GVMHaus szélessége jellemzően 2,43–7,30 m, hossza 6,00 m). Több modul <strong>egymás mellé állítható és összekapcsolható</strong>, így nagyobb lakóegység is kialakítható – például két GVMHaus 30 együtt kb. 60 m². A szabad belmagasság 2,62 m.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Az árak tartalmazzák az ÁFÁ-t?</summary>
+          <summary>Lehet-e testreszabni a házat?</summary>
           <div class="answer">
-            <p>Nem. Minden feltüntetett ár <strong>nettó, euróban</strong> értendő, amelyhez <strong>20% osztrák ÁFA</strong> adódik. Az ajánlatban külön feltüntetjük a nettó árat, az ÁFÁ-t és a bruttó végösszeget.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Mennyivel kedvezőbb a hagyományos építésnél?</summary>
-          <div class="answer">
-            <p>Azonos alapterületre vetítve akár <strong>70%-kal</strong> kedvezőbb lehet, mint a hagyományos kőműves építés – a gyári, párhuzamos előregyártásnak és a rövid átfutási időnek köszönhetően.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Kombinálható-e több modul egy nagyobb házzá?</summary>
-          <div class="answer">
-            <p>Igen. A modulok egymás mellé állíthatók és kapcsolóelemekkel egy nagyobb lakóegységgé köthetők össze – például két GVMHaus 30 egymás mellett 60 m²-es megoldásként. A bővítés utólag is lehetséges.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Van-e azonnal szállítható modell?</summary>
-          <div class="answer">
-            <p>Igen, a <strong>GVMHausU 01 (18 m²)</strong> és a <strong>GVMHausU 02 (25 m²)</strong> rövid határidővel, jellemzően 1–4 héten belül elérhető.</p>
-          </div>
-        </details>
-      </div>
-
-      <!-- 2. Folyamat -->
-      <div class="cat-block" id="folyamat">
-        <h2><span class="ico">🧭</span> Megrendelési folyamat</h2>
-
-        <details class="qa">
-          <summary>Hogyan zajlik a megrendelés az első kapcsolatfelvételtől a beköltözésig?</summary>
-          <div class="answer">
-            <p>Egyszerű, 4 lépéses folyamatban:</p>
+            <p>Igen. A tervezési fázisban egyeztetve testreszabható:</p>
             <ul>
-              <li><strong>1. Tanácsadás</strong> – ingyenes igényfelmérés és modell-ajánlás</li>
-              <li><strong>2. Tervezés és ajánlat</strong> – egyedi konfiguráció, kötelező érvényű írásos ajánlat és szerződés</li>
-              <li><strong>3. Gyártás és helyszín-előkészítés</strong> – üzemi gyártás, közben Ön előkészíti a helyszínt</li>
-              <li><strong>4. Szállítás és átadás</strong> – kiszállítás, daruval felállítás, kulcsátadás</li>
+              <li>Alaprajz (plusz válaszfal, nagyobb ablak, terasz, eltérő belső elrendezés)</li>
+              <li>Külső szín, nyílászárók, árnyékolás (redőny)</li>
+              <li>Fűtési mód, szaniter és berendezés szintje, padló</li>
             </ul>
-            <p>Részletesen a <a href="megrendeles_menete.html">Megrendelés menete</a> oldalon.</p>
+            <p>A testreszabás kereteit a modul mérete és a statika adja; minden egyedi igényt a tervezéskor pontosítunk, és az ajánlat tételesen tartalmaz.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Mennyi idő az egész folyamat?</summary>
-          <div class="answer">
-            <p>Az első megkereséstől a kulcsátadásig jellemzően <strong>30–90 nap</strong>. A gyártási idő modell- és konfigurációfüggő: standard modellek 30–60 nap, egyedileg konfiguráltak 60–90 nap, azonnal szállítható modellek 1–4 hét.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Hogyan kérhetek ajánlatot?</summary>
-          <div class="answer">
-            <p>E-mailben (<a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a>), telefonon (<a href="tel:+436769348474">+43 676 934 8474</a>), vagy a <a href="gvm_homepage.html#kapcsolat">weboldali ajánlatkérő űrlapon</a>. Válaszunk általában 24 órán belül érkezik – magyarul vagy németül.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Mennyi idő alatt kapok ajánlatot, és meddig érvényes?</summary>
-          <div class="answer">
-            <p>A tanácsadás után <strong>1–3 munkanapon belül</strong> kötelező érvényű, írásos ajánlatot adunk. Az ajánlat <strong>15 napig</strong> érvényes.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Kerül-e valamibe a tanácsadás vagy az ajánlat?</summary>
-          <div class="answer">
-            <p>Nem. A tanácsadás és az árajánlat egyaránt <strong>ingyenes és kötelezettségmentes</strong>. Fizetési kötelezettsége csak a szerződés aláírásával keletkezik.</p>
-          </div>
-        </details>
-      </div>
-
-      <!-- 3. Testreszabás -->
-      <div class="cat-block" id="testreszabas">
-        <h2><span class="ico">🎨</span> Testreszabás és konfiguráció</h2>
-
-        <details class="qa">
-          <summary>Módosíthatom az alaprajzot?</summary>
-          <div class="answer">
-            <p>Igen. Egyedi módosítások kérhetők, például plusz válaszfal, nagyobb ablak, terasz vagy eltérő belső elrendezés. A módosításokat a tervezési fázisban egyeztetjük, és az ajánlat tartalmazza.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Milyen extrákat és felárakat választhatok?</summary>
+          <summary>Mit tartalmaz az alapcsomag?</summary>
           <div class="answer">
             <ul>
-              <li>Erősített szigetelés</li>
-              <li>Prémium szaniter és berendezés</li>
-              <li>Fűtőfunkciós klíma, infravörös fali panel</li>
-              <li>Terasz, árnyékolás (redőny)</li>
-              <li>Egyedi külső szín</li>
+              <li><strong>Szerkezet:</strong> acél tartóváz (S335)</li>
+              <li><strong>Burkolat:</strong> hőszigetelt fal- és tetőpanelek, padló</li>
+              <li><strong>Nyílászárók:</strong> PVC ablakok és bejárati ajtó, redőny, rovarháló</li>
+              <li><strong>Elektromos:</strong> elosztó, konnektorok, kapcsolók, LED világítás, klíma inverter, elektromos bojler</li>
+              <li><strong>Gépészet:</strong> víz- és szennyvízbekötés, WC, zuhany, mosdó, konyha</li>
+              <li><strong>Fűtés:</strong> alap elektromos fűtés (opcionális klíma/infra)</li>
             </ul>
-            <p>Minden extra tételesen szerepel az ajánlatban.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Milyen színt választhatok a házhoz?</summary>
-          <div class="answer">
-            <p>Az alapkivitel kívül RAL 7016 (antracit), belül RAL 9010 (fehér). Egyedi külső szín felár ellenében kérhető.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Milyen fűtési és padlóopciók vannak?</summary>
-          <div class="answer">
-            <p><strong>Fűtés:</strong> alapfelszereltségben elektromos fűtés; opcionálisan fűtőfunkciós klíma (inverter) vagy infravörös fali panel.</p>
-            <p><strong>Padló:</strong> laminált padló vagy vinyl.</p>
-          </div>
-        </details>
-      </div>
-
-      <!-- 4. Fizetés -->
-      <div class="cat-block" id="fizetes">
-        <h2><span class="ico">💶</span> Fizetés és szerződés</h2>
-
-        <details class="qa">
-          <summary>Hogyan és milyen ütemezésben történik a fizetés?</summary>
-          <div class="answer">
-            <p>A fizetés <strong>3 részletben</strong> történik:</p>
-            <ul>
-              <li><strong>50%</strong> a megrendeléskor / szerződéskötéskor – a gyártás a fizetés beérkezése után indul</li>
-              <li><strong>45%</strong> a szállítás előtt, a kamionra rakodás előtt</li>
-              <li><strong>5%</strong> a lerakodáskor, felállításkor és a vevő általi átvételkor</li>
-            </ul>
-            <p>A fizetési feltételek egyedileg is testreszabhatók.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Van-e írásos szerződés?</summary>
-          <div class="answer">
-            <p>Igen. A tervezés után kötelező érvényű írásos szerződést kötünk, amely rögzíti a választott konfigurációt, a végleges árat és a fizetési ütemezést.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Mit tartalmaz és mit nem tartalmaz az ár?</summary>
-          <div class="answer">
-            <p><strong>Tartalmazza:</strong> minden megegyezett munka az alaprajz szerint, valamint a szállítás és lerakodás a megadott címen.</p>
-            <p><strong>Nem tartalmazza (a vevő felelőssége):</strong> ÁFA, sík és szakszerű alaplemez/alapozás, kamionnal és daruval járható behajtás a helyszínig, áramcsatlakozás a helyszínen.</p>
-          </div>
-        </details>
-      </div>
-
-      <!-- 5. Szállítás -->
-      <div class="cat-block" id="szallitas">
-        <h2><span class="ico">🚚</span> Szállítás és felállítás</h2>
-
-        <details class="qa">
-          <summary>Hogyan szállítjátok és állítjátok fel a házat?</summary>
-          <div class="answer">
-            <p>A ház nehéztranszporttal (nyergesvontató / tieflader) érkezik az előkészített helyszínre, és daruval kerül a felállítási felületre. A helyszíni végszerelés (csatlakozók, finomállítás) jellemzően 24 órán belül elkészül, majd következik a rendszerek működés-ellenőrzése és az átadás-átvétel.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Mennyibe kerül a szállítás?</summary>
-          <div class="answer">
-            <p>A szállítási költséget az egyedi ajánlat tartalmazza. Ezt az üzem és a felépítési helyszín távolsága, valamint a megközelítés bonyolultsága (pl. különleges engedélyek, kísérőautó) határozza meg. Pontos költséget a helyszín megadása után tudunk kalkulálni.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Áthelyezhető később a ház egy másik helyszínre?</summary>
-          <div class="answer">
-            <p>Igen. A szerkezet mobilitásra tervezett – nyergesvontató és daru segítségével új helyszínre helyezhető. Feltétel a megfelelő behajtás mindkét helyszínen és a közmű-csatlakozók szakszerű leválasztása.</p>
-          </div>
-        </details>
-      </div>
-
-      <!-- 6. Helyszín -->
-      <div class="cat-block" id="helyszin">
-        <h2><span class="ico">📋</span> Helyszín-előkészítés és engedélyek</h2>
-
-        <details class="qa">
-          <summary>Mit kell előkészítenem a helyszínen?</summary>
-          <div class="answer">
-            <p>A helyszín-előkészítés a vevő feladata:</p>
-            <ul>
-              <li>Megfelelő behajtási útvonal nehéztranszporthoz és daruhoz (min. ~4 m széles, teherbíró)</li>
-              <li>Előkészített, vízszintes felépítési felület (pontalap, sávalap, csavaros földhorgony vagy betonlemez)</li>
-              <li>Áramcsatlakozás a ház helyétől 5 m-en belül</li>
-              <li>Vízbekötés és csatorna 5 m-en belül</li>
-              <li>Hatósági engedélyek a felépítéshez és használathoz</li>
-              <li>Tisztára takarított, akadálymentes terület a daru és a manőverezés számára</li>
-            </ul>
-            <p>Részletes checklista a <a href="blog.html#telek-elokeszitese">blog útmutatónkban</a>.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Milyen alapra kerül a ház?</summary>
-          <div class="answer">
-            <p>A megoldás modellfüggő: pontalap, sávalap, csavaros földhorgony vagy betonlemez. A pontos, modellspecifikus követelményeket kérésre megküldjük.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Kell építési engedély?</summary>
-          <div class="answer">
-            <p>Ez tartomány-, község-, használati idő- és felépítésmód-függő. Ausztriában a mobilházak bizonyos feltételek mellett „ingó dolognak" minősülnek és engedélymentesek vagy bejelentés-kötelesek – tartós lakhatás esetén viszont általában építési bejelentés vagy engedély szükséges. Javasoljuk, hogy a szerződéskötés előtt érdeklődjön a községi építési hatóságnál. Bővebben a <a href="blog.html#felallitas-ausztriaban">felállítás Ausztriában</a> útmutatóban.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Ki felel az engedélyekért?</summary>
-          <div class="answer">
-            <p>Az engedélyek beszerzése és az elhelyezhetőség előzetes ellenőrzése a vevő felelőssége. A GVM Spedition GmbH nem garantálja, hogy a ház bármely területen elhelyezhető. A kérdések tisztázásában szívesen segítünk.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Mi történik, ha a helyszín nincs megfelelően előkészítve?</summary>
-          <div class="answer">
-            <p>A nem megfelelően előkészített helyszín miatt felmerülő többletköltségeket (extra daru, várakozási idő, ismételt kiszállás) külön számítjuk fel.</p>
-          </div>
-        </details>
-      </div>
-
-      <!-- 7. Műszaki -->
-      <div class="cat-block" id="muszaki">
-        <h2><span class="ico">🔧</span> Műszaki adatok és anyagok</h2>
-
-        <details class="qa">
-          <summary>Milyen anyagokból készül a ház?</summary>
+          <summary>Milyen anyagokból készül?</summary>
           <div class="answer">
             <table>
-              <tr><th>Tartószerkezet</th><td>Acélprofil váz, S335 (horganyzott, moduláris)</td></tr>
+              <tr><th>Tartószerkezet</th><td>Acélprofil váz, S335 (horganyzott, kétkomponensű fedőlakk)</td></tr>
               <tr><th>Falak</th><td>Hőszigetelt szendvicspanel, 50 mm, PUR/PIR 40 kg/m³</td></tr>
               <tr><th>Tető</th><td>Szendvicspanel, 80 mm, PUR/PIR 40 kg/m³</td></tr>
               <tr><th>Padló</th><td>Szendvicspanel padlókonstrukció, laminált / vinyl burkolat</td></tr>
-              <tr><th>Belmagasság</th><td>2,62 m (szabad belmagasság, modellfüggő)</td></tr>
+              <tr><th>Nyílászárók</th><td>PVC, 5 kamrás profil, 2 rétegű üvegezés</td></tr>
             </table>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Egész évben lakható a ház?</summary>
-          <div class="answer">
-            <p>Igen. A PIR szigetelés (40 kg/m³) és a többrétegű üvegezésű ablakok egész éves használatra tervezettek. Az alapfelszereltség elektromos fűtést tartalmaz; opcionálisan fűtőfunkciós klíma vagy infravörös fali panel kérhető.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Milyen nyílászárók vannak?</summary>
-          <div class="answer">
-            <p>PVC nyílászárók 5 kamrás profillal, 2 rétegű üvegezéssel, bejárati ajtóval, redőnnyel és rovarvédő hálóval. Prémium opciók elérhetők.</p>
-          </div>
-        </details>
-
-        <details class="qa">
-          <summary>Milyen az elektromos rendszer és a vízellátás?</summary>
-          <div class="answer">
-            <p><strong>Elektromos:</strong> 220 V / 50 Hz, elosztószekrény, 7 konnektor, kapcsolók, LED világítás, klíma inverter, elektromos melegvíz-bojler.</p>
-            <p><strong>Víz és szennyvíz:</strong> PVC csövek, belső és külső csatlakozásokkal – WC, zuhany, mosdó és konyha bekötve.</p>
           </div>
         </details>
       </div>
 
-      <!-- 8. Garancia és használat -->
-      <div class="cat-block" id="garancia">
-        <h2><span class="ico">🛡️</span> Garancia, szavatosság és használat</h2>
+      <!-- 3. ÁR ÉS FINANSZÍROZÁS -->
+      <div class="cat-block" id="ar">
+        <h2><span class="n">3</span> Ár és finanszírozás</h2>
 
         <details class="qa">
-          <summary>Milyen garanciát és szavatosságot kapok?</summary>
+          <summary>Mennyibe kerül egy készház?</summary>
+          <div class="answer">
+            <table>
+              <tr><th>Modell</th><th>Alapterület</th><th>Nettó ár</th></tr>
+              <tr><td>GVMHaus 15</td><td>15 m²</td><td class="p">13.000 €-tól</td></tr>
+              <tr><td>GVMHaus 30</td><td>30 m²</td><td class="p">23.000 €-tól</td></tr>
+              <tr><td>GVMHaus 44</td><td>44 m²</td><td class="p">33.000 €</td></tr>
+              <tr><td>GVMHausU 01</td><td>18 m²</td><td class="p">19.200 €</td></tr>
+              <tr><td>GVMHausU 02</td><td>25 m²</td><td class="p">26.400 €</td></tr>
+            </table>
+            <p>Minden ár nettó, euróban (plusz 20% osztrák ÁFA). A pontos konfigurációs árat az <a href="gvmhaus_angebot.html">egyedi ajánlat</a> tartalmazza.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mi az ár tartalma?</summary>
+          <div class="answer">
+            <p>A nettó alapár a <strong>kulcsrakész házat</strong> jelenti az alaprajz szerinti összes munkával, valamint a <strong>szállítást és lerakodást</strong> a megadott címen.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Vannak-e extra költségek?</summary>
+          <div class="answer">
+            <p>Az áron felül a vevő felelőssége / külön költség lehet:</p>
+            <ul>
+              <li>20% ÁFA</li>
+              <li>Sík, teherbíró alaplemez / alapozás</li>
+              <li>Kamionnal és daruval járható behajtás biztosítása</li>
+              <li>Áramcsatlakozás a helyszínen</li>
+              <li>Hatósági illetékek, engedélyek, helyi csatlakozási díjak</li>
+              <li>Választott extrák (prémium szaniter, klíma, terasz, egyedi szín stb.)</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Lehet-e részletekben fizetni?</summary>
+          <div class="answer">
+            <p>Igen, a fizetés <strong>3 részletben</strong> történik: <strong>50%</strong> a szerződéskötéskor (gyártáskezdés), <strong>45%</strong> a szállítás előtt, <strong>5%</strong> az átvételkor. A fizetési ütemezés egyedileg is testreszabható.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Elérhető-e finanszírozási lehetőség?</summary>
+          <div class="answer">
+            <p>A vételár a fenti ütemezés szerint, részletekben rendezhető, és az ütemezés egyedileg is egyeztethető. Banki hitel, lízing vagy egyéb külső finanszírozás igénybevétele esetén javasoljuk pénzügyi tanácsadó / a bankja bevonását – a szükséges dokumentációban (ajánlat, szerződés, műszaki adatok) készséggel segítünk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Van-e kedvezmény nagyobb rendelésre?</summary>
+          <div class="answer">
+            <p>Több egység egyszerre történő megrendelése vagy visszatérő ügyfél esetén egyedi kedvezmény kérhető – kérjük, jelezze az igényét az ajánlatkéréskor.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 4. SZÁLLÍTÁS ÉS TELEPÍTÉS -->
+      <div class="cat-block" id="szallitas">
+        <h2><span class="n">4</span> Szállítás és telepítés</h2>
+
+        <details class="qa">
+          <summary>Mennyi idő a szállítás?</summary>
+          <div class="answer">
+            <p>A gyártási idő modellfüggő: standard modellek 30–60 nap, egyedileg konfiguráltak 60–90 nap, az azonnal szállítható GVMHausU 01 / 02 pedig 1–4 hét. A szállításkész állapotot időben előre jelezzük.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Hogyan zajlik a telepítés?</summary>
+          <div class="answer">
+            <p>A ház nehéztranszporttal (nyergesvontató / tieflader) érkezik, és <strong>daruval</strong> kerül az előkészített felületre. A helyszíni végszerelés (csatlakozók, finomállítás) jellemzően <strong>24 órán belül</strong> elkészül, majd a rendszerek (áram, víz, fűtés) működés-ellenőrzése és az átadás-átvétel következik.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Ki telepíti a házat?</summary>
+          <div class="answer">
+            <p>A szállítást és felállítást a <strong>GVM Haus szervezi</strong> szakértő csapattal/partnerekkel. Az ügyfél feladata a <strong>helyszín előkészítése</strong> (alap, behajtás, közmű-csatlakozási pontok).</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mit kell az alaphoz előkészíteni?</summary>
+          <div class="answer">
+            <p>Egy <strong>vízszintes, teherbíró aljzatot</strong>: pontalap, sávalap, csavaros földhorgony vagy betonlemez – a megoldás modellfüggő. A pontos, modellspecifikus követelményeket kérésre megküldjük. Részletes checklista a <a href="blog.html#telek-elokeszitese">blog útmutatóban</a>.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Szállítanak-e az ország egész területére?</summary>
+          <div class="answer">
+            <p>Ausztria és Magyarország területére szállítunk. A szállítási díj a távolság és a megközelítés bonyolultsága szerint alakul, és az egyedi ajánlat tartalmazza. Egyéb célországot illetően kérjük, egyeztessen velünk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mennyi időre van szükség az alapozástól a költözésig?</summary>
+          <div class="answer">
+            <p>A folyamat <strong>párhuzamos</strong>: amíg a ház az üzemben készül, Ön előkészíti a helyszínt és az alapot. Így az alapozástól a beköltözésig összességében a gyártási idő (30–90 nap) a mérvadó, plusz jellemzően 1 nap a szállítás és felállítás.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 5. GARANCIÁK ÉS SZERVIZ -->
+      <div class="cat-block" id="garancia">
+        <h2><span class="n">5</span> Garanciák és szerviz</h2>
+
+        <details class="qa">
+          <summary>Mennyi ideig tart a garancia?</summary>
           <div class="answer">
             <ul>
               <li><strong>3 év</strong> szavatosság az ingatlan jellegű szerkezetekre (tartószerkezet, falak, tető, fixen beépített rendszerek) – osztrák jog (ABGB) szerint</li>
@@ -491,41 +425,222 @@
         </details>
 
         <details class="qa">
-          <summary>Hogyan és mennyi időn belül jelenthetek hibát?</summary>
+          <summary>Mit fed le a garancia (és mit nem)?</summary>
           <div class="answer">
-            <p>A hibákat az átvételtől számított <strong>14 napon belül írásban</strong> kell jelezni. Egyes komponensekre (pl. szendvicspanelek, fűtőkészülékek) a vonatkozó gyártói garanciák érvényesek – adatlapokat kérésre küldünk.</p>
+            <p><strong>Lefedi:</strong> a szerkezeti elemek (váz, falak, tető, fix rendszerek) és az ingó alkatrészek (eszközök, szaniter, vasalat) anyag- és gyártási hibáit a fenti időtartamokon belül.</p>
+            <p><strong>Nem terjed ki:</strong> a nem rendeltetésszerű használatra, a harmadik fél általi hibás felépítésre, a karbantartás hiányára és a természetes elhasználódásra.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Mire nem terjed ki a garancia?</summary>
+          <summary>Ha valami meghibásodik, mi a teendő?</summary>
           <div class="answer">
-            <p>Nem terjed ki a nem rendeltetésszerű használatra, a harmadik fél általi hibás felépítésre, a karbantartás hiányára és a természetes elhasználódásra.</p>
+            <p>A hibát az átvételtől számított <strong>14 napon belül írásban</strong> kell jelezni (e-mail: <a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a>). Ezt követően egyeztetjük a javítás/csere menetét. Egyes komponensekre (pl. szendvicspanelek, fűtőkészülékek) a vonatkozó gyártói garanciák érvényesek.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Milyen célra használható a ház?</summary>
+          <summary>Van-e kiterjesztett garancia-lehetőség?</summary>
           <div class="answer">
-            <p>Sokoldalúan: állandó lakhatás, hétvégi ház, családi nyaraló, hosszú távú vagy rövid távú bérbeadás (pl. Airbnb), glamping, kerti iroda vagy üzleti célú egység.</p>
+            <p>A törvényes szavatosságon felül egyes komponensekre a gyártói garanciák (pl. panelek 10 év) érvényesek. További, egyedi garancia-megállapodásról a szerződéskötéskor egyeztethet velünk.</p>
           </div>
         </details>
 
         <details class="qa">
-          <summary>Milyen nyelven tudok kommunikálni Önökkel?</summary>
+          <summary>Ki végzi a szervizet?</summary>
           <div class="answer">
-            <p>Magyarul és németül egyaránt. Válaszunk általában 24 órán belül érkezik.</p>
+            <p>A szervizt a <strong>GVM Haus</strong> koordinálja, szükség szerint a gyártói / márka-partnerek bevonásával. Bejelentés az <a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a> címen.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 6. JOGI ÉS DOKUMENTÁCIÓ -->
+      <div class="cat-block" id="jogi">
+        <h2><span class="n">6</span> Jogi és dokumentáció</h2>
+
+        <details class="qa">
+          <summary>Milyen dokumentumok szükségesek a vásárláshoz?</summary>
+          <div class="answer">
+            <p>A szerződéshez a vevő azonosító és számlázási adatai szükségesek. A helyszínhez kapcsolódóan a telek adatai és – a helyi szabályozástól függően – az esetleges építési bejelentés/engedély. A pontos listát az ajánlatadáskor egyeztetjük.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Ki végzi a közművek bekötését?</summary>
+          <div class="answer">
+            <p>A házon belüli rendszereket (elektromos, víz, szennyvíz) beépítve szállítjuk. A <strong>telekhatáron lévő közmű-csatlakozás és a helyi rákötés</strong> (áram, víz, csatorna) az ügyfél, illetve helyi szakember feladata. A csatlakozási pontokat a ház helyétől <strong>5 m-en belül</strong> kell biztosítani.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Kell-e építési engedély a készházhoz?</summary>
+          <div class="answer">
+            <p>Ez tartomány-, község-, használati idő- és felépítésmód-függő. Ausztriában a mobilházak bizonyos feltételek mellett „ingó dolognak" minősülnek és engedélymentesek vagy bejelentés-kötelesek – tartós lakhatás esetén azonban általában építési bejelentés vagy engedély szükséges. Javasoljuk, hogy a szerződéskötés előtt érdeklődjön a helyi építési hatóságnál. Bővebben: <a href="blog.html#felallitas-ausztriaban">Mobilház felállítása Ausztriában</a>.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Van-e biztosítás a szállítás alatt?</summary>
+          <div class="answer">
+            <p>A szállítást professzionálisan, nehéztranszporttal szervezzük. A szállítás alatti kockázatviselés és biztosítás részleteit a szerződés rögzíti (a fizetési ütemezésben az utolsó 5% az átvételkor esedékes). A konkrét feltételekért kérjük, egyeztessen velünk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mi a vásárlási szerződés tartalma?</summary>
+          <div class="answer">
+            <p>A kötelező érvényű szerződés rögzíti a választott <strong>modellt és konfigurációt</strong>, a <strong>végleges árat</strong>, a <strong>fizetési ütemezést</strong>, a szállítási/felállítási feltételeket és határidőket, valamint a felek jogait, kötelezettségeit és a garanciát.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Lehet-e visszalépni a vásárlásból?</summary>
+          <div class="answer">
+            <p>Az elállás és felmondás feltételeit a szerződés tartalmazza. Mivel az <strong>50% befizetése után elindul a gyártás</strong>, a gyártáskezdés utáni visszalépésnek költségvonzata lehet. Kérjük, a részletekről a szerződéskötés előtt tájékozódjon nálunk.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 7. RENDELÉSI FOLYAMAT -->
+      <div class="cat-block" id="folyamat">
+        <h2><span class="n">7</span> Rendelési folyamat</h2>
+
+        <details class="qa">
+          <summary>Hogyan kezdjek el?</summary>
+          <div class="answer">
+            <p>Vegye fel velünk a kapcsolatot a <a href="gvm_homepage.html#kapcsolat">weboldali ajánlatkérő űrlapon</a>, e-mailben (<a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a>) vagy telefonon (<a href="tel:+436769348474">+43 676 934 8474</a>). Egy ingyenes, kötelezettségmentes beszélgetéssel indulunk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen információra van szükség egy ajánlathoz?</summary>
+          <div class="answer">
+            <ul>
+              <li>A kívánt modell és igények (méret, személyek száma, használat célja)</li>
+              <li>A helyszín adatai (telek, megközelítés/behajtás, közmű-lehetőségek)</li>
+              <li>Tervezett határidő és esetleges egyedi kérések</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mennyi ideig érvényes az ajánlat?</summary>
+          <div class="answer">
+            <p>Az írásos ajánlat <strong>15 napig</strong> érvényes. Módosítási igény esetén frissített ajánlatot készítünk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mi az utolsó határidő a rendeléshez?</summary>
+          <div class="answer">
+            <p>Nincs fix „végső" határidő – a gyártási slotot az aktuális ütemezés szabja meg. Mivel a kapacitás korlátos, a korábbi szerződéskötés korábbi szállítást jelent. A várható időpontról az ajánlatban tájékoztatjuk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Lehet-e előlegezni / lefoglalni a terméket?</summary>
+          <div class="answer">
+            <p>Igen. A szerződéskötéskor esedékes <strong>50% előleg</strong> egyben a gyártási slot foglalása – ennek beérkezésétől indul a gyártás.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen fizetési módok érhetők el?</summary>
+          <div class="answer">
+            <p>A fizetés jellemzően <strong>banki átutalással</strong>, a szerződésben rögzített ütemezés szerint történik. Egyéb fizetési módról a szerződéskötéskor egyeztethet velünk.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 8. FENNTARTÁS ÉS ÜZEMELTETÉS -->
+      <div class="cat-block" id="fenntartas">
+        <h2><span class="n">8</span> Fenntartás és üzemeltetés</h2>
+
+        <details class="qa">
+          <summary>Hogyan gondozzam a készházat?</summary>
+          <div class="answer">
+            <p>A GVM Haus házak <strong>alacsony karbantartásigényűek</strong>. Ajánlott időszakonként ellenőrizni a tömítéseket és nyílászárókat, a tető vízelvezetését, valamint a gépészetet (klíma, bojler). A felületek szokásos tisztítással karbantarthatók.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Vannak-e speciális fenntartási költségek?</summary>
+          <div class="answer">
+            <p>A fenntartási költségek jellemzően alacsonyak: a klíma/gépészet éves ellenőrzése és az esetleges kopó alkatrészek (pl. szűrők, tömítések) cseréje merülhet fel. Rendszeres karbantartás mellett a ház tartósan üzemképes marad.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>A készház felújítható-e később?</summary>
+          <div class="answer">
+            <p>Igen. A belső tér (burkolatok, berendezés, festés) és a külső felület is felújítható, a modul akár bővíthető is további egységgel. Nagyobb átalakításhoz kérjen tőlünk tanácsot.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Hogyan hosszabbíthatom meg a készház élettartamát?</summary>
+          <div class="answer">
+            <ul>
+              <li>A gyári korrózióvédelem (kétkomponensű fedőlakk) épségének megőrzése</li>
+              <li>A tömítések és a tető vízelvezetésének rendszeres ellenőrzése</li>
+              <li>A szendvicspanelek és nyílászárók kímélő tisztítása</li>
+              <li>A gépészeti berendezések időszakos szervizelése</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- 9. SPECIÁLIS KÉRDÉSEK -->
+      <div class="cat-block" id="specialis">
+        <h2><span class="n">9</span> Speciális kérdések</h2>
+
+        <details class="qa">
+          <summary>Van lehetőség akadálymentesítésre (pl. mozgássérült)?</summary>
+          <div class="answer">
+            <p>Igen, egyedi, akadálymentes megoldások kérhetők – például rámpa, szélesebb ajtók, küszöbmentes/akadálymentes zuhany. Ezeket a tervezéskor egyeztetjük, és felár ellenében beépítjük.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Beépíthetők-e környezetbarát / zöld technológiák?</summary>
+          <div class="answer">
+            <p>Igen. Választható például <strong>napelem</strong>, <strong>hőszivattyú</strong>, fűtőfunkciós <strong>klíma inverter</strong> vagy <strong>infravörös fali panel</strong>. A PIR szigetelés eleve az energiahatékony, egész éves használatot szolgálja.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen az energiahatékonyság?</summary>
+          <div class="answer">
+            <p>A házak <strong>PIR szigeteléssel (40 kg/m³)</strong> és többrétegű üvegezésű nyílászárókkal készülnek, egész éves használatra. A modellspecifikus <strong>U-értéket kérésre megadjuk</strong>. A jó szigetelésnek köszönhetően a fűtési és hűtési költségek alacsonyan tarthatók.</p>
           </div>
         </details>
       </div>
     </div>
   </section>
 
-  <div class="cta-band">
-    <h2>Nem találta a választ?</h2>
-    <p>Írjon nekünk, és 24 órán belül, magyarul vagy németül válaszolunk – ingyenesen és kötelezettségmentesen.</p>
-    <a class="btn btn-red" href="gvm_homepage.html#kapcsolat">Kérdésem van / ajánlatot kérek →</a>
-  </div>
+  <!-- 10. KONTAKT & TOVÁBBI SEGÍTSÉG -->
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <h2>10. Kontakt és további segítség</h2>
+      <p class="lead">Nem találta a választ a kérdésére? Segítünk – magyarul vagy németül, 24 órán belül.</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Elérhetőségeink</h3>
+          <div class="row"><span class="k">E-mail</span><a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a></div>
+          <div class="row"><span class="k">Telefon</span><a href="tel:+436769348474">+43 676 934 8474</a></div>
+          <div class="row"><span class="k">Web</span><a href="https://gvmhaus.at">gvmhaus.at</a></div>
+          <div class="row"><span class="k">Helyszín</span><span>Ausztria / Magyarország</span></div>
+          <div class="row"><span class="k">Konzultáció</span><span>Ingyenes, időpont-egyeztetéssel</span></div>
+        </div>
+        <div class="contact-card">
+          <h3>Szeretnék egy ingyenes ajánlatot</h3>
+          <p style="font-size:14px;color:var(--mid);margin-bottom:16px;">Küldjön néhány adatot a tervéről (modell, helyszín, használat, határidő), és 1–3 munkanapon belül kötelező érvényű ajánlatot adunk.</p>
+          <a class="btn btn-red" href="gvm_homepage.html#kapcsolat">Ajánlatot kérek →</a>
+          <p style="font-size:13px;color:var(--mid);margin-top:14px;">Vagy nézze meg az <a href="gvmhaus_angebot.html">ajánlat-mintát</a> és a <a href="megrendeles_menete.html">megrendelés menetét</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="site">
     <div class="wrap wide">
@@ -556,13 +671,6 @@
     document.getElementById('collapse-all').addEventListener('click', function () {
       items.forEach(function (d) { d.open = false; });
     });
-
-    function clearMarks(el) {
-      el.querySelectorAll('mark').forEach(function (m) {
-        m.replaceWith(document.createTextNode(m.textContent));
-      });
-      el.normalize();
-    }
 
     search.addEventListener('input', function () {
       var q = search.value.trim().toLowerCase();
