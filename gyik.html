@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GYIK – Minden a megrendelésről | GVM Haus</title>
+  <meta
+    name="description"
+    content="Átfogó gyakori kérdések a GVM Haus mobilházak megrendeléséről: modellek, árak, folyamat, testreszabás, fizetés, szállítás, helyszín-előkészítés, engedélyek, műszaki adatok és garancia."
+  />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #2D3E50;
+      --red: #C8232C;
+      --anthracite: #3a3a3a;
+      --mid: #6b6b6b;
+      --light: #f5f5f3;
+      --white: #ffffff;
+      --border: #e0dcd5;
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      --maxw: 900px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--anthracite);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .wide { max-width: 1140px; }
+
+    /* Nav */
+    header.nav {
+      position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .logo { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--navy); }
+    .logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--navy); font-weight: 600; font-size: 14px; }
+    .nav-links a.active { color: var(--red); }
+    .nav-links a.cta { background: var(--red); color: #fff; padding: 9px 18px; border-radius: 5px; }
+    .nav-links a.cta:hover { background: #a81a22; text-decoration: none; }
+
+    /* Hero */
+    .hero { background: var(--navy); color: #fff; padding: 60px 0 52px; }
+    .hero .label {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: #a8c8e8; margin-bottom: 14px;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .hero p { font-size: 1.05rem; opacity: 0.9; max-width: 640px; }
+
+    /* Search + tools */
+    .toolbar { margin: -28px 0 0; position: relative; z-index: 5; }
+    .search-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08); padding: 18px 20px;
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    }
+    .search-card input {
+      flex: 1; min-width: 200px; padding: 12px 14px; border: 1px solid var(--border);
+      border-radius: 6px; font-family: var(--font); font-size: 15px;
+    }
+    .search-card input:focus { outline: 2px solid var(--red); border-color: var(--red); }
+    .btn-mini {
+      background: var(--light); border: 1px solid var(--border); color: var(--navy);
+      padding: 11px 16px; border-radius: 6px; font-weight: 700; font-size: 13px; cursor: pointer;
+    }
+    .btn-mini:hover { border-color: var(--red); color: var(--red); }
+    .no-results { display: none; text-align: center; color: var(--mid); padding: 40px 0; font-style: italic; }
+
+    /* Category jump nav */
+    .cats {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 8px;
+    }
+    .cats a {
+      font-size: 13px; font-weight: 600; color: var(--navy); background: var(--light);
+      border: 1px solid var(--border); padding: 7px 13px; border-radius: 20px;
+    }
+    .cats a:hover { background: var(--navy); color: #fff; text-decoration: none; }
+
+    section.faq { padding: 40px 0 20px; }
+    .cat-block { margin-bottom: 36px; scroll-margin-top: 80px; }
+    .cat-block h2 {
+      font-size: 1.3rem; font-weight: 800; color: var(--navy); letter-spacing: -0.3px;
+      margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--navy);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cat-block h2 .ico { font-size: 1.2rem; }
+
+    details.qa {
+      border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;
+      background: #fff; overflow: hidden;
+    }
+    details.qa[open] { border-color: var(--red); }
+    details.qa summary {
+      list-style: none; cursor: pointer; padding: 15px 46px 15px 18px; position: relative;
+      font-weight: 700; color: var(--navy); font-size: 15px; line-height: 1.5;
+    }
+    details.qa summary::-webkit-details-marker { display: none; }
+    details.qa summary::after {
+      content: '+'; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      font-size: 22px; font-weight: 400; color: var(--red); line-height: 1;
+    }
+    details.qa[open] summary::after { content: '−'; }
+    details.qa summary:hover { background: var(--light); }
+    .qa .answer { padding: 0 18px 18px; font-size: 14.5px; color: var(--anthracite); }
+    .qa .answer p { margin-bottom: 10px; }
+    .qa .answer ul { margin: 4px 0 10px 20px; }
+    .qa .answer li { margin-bottom: 5px; }
+    .qa .answer table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13.5px; }
+    .qa .answer th, .qa .answer td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--border); }
+    .qa .answer th { color: var(--navy); background: var(--light); font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .qa .answer td.p { color: var(--red); font-weight: 700; white-space: nowrap; }
+    .qa mark { background: #ffe9a8; padding: 0 2px; }
+
+    /* CTA */
+    .cta-band { background: var(--navy); color: #fff; text-align: center; padding: 48px 24px; margin-top: 20px; }
+    .cta-band h2 { color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
+    .cta-band p { color: rgba(255,255,255,0.85); margin-bottom: 22px; }
+    .btn { display: inline-block; padding: 13px 26px; border-radius: 6px; font-weight: 700; font-size: 15px; }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: #a81a22; text-decoration: none; }
+
+    footer.site { background: var(--navy); color: rgba(255,255,255,0.8); padding: 40px 0 28px; font-size: 0.9rem; text-align: center; }
+    footer.site a { color: rgba(255,255,255,0.85); }
+    footer.site .bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; margin-top: 18px; font-size: 0.78rem; line-height: 1.6; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap wide nav-inner">
+      <a href="gvm_homepage.html" class="logo">GVM<span>Haus</span></a>
+      <nav class="nav-links">
+        <a href="gvm_homepage.html#modellek">Modellek</a>
+        <a href="megrendeles_menete.html">Megrendelés menete</a>
+        <a href="gyik.html" class="active">GYIK</a>
+        <a href="blog.html">Blog</a>
+        <a href="gvm_homepage.html#kapcsolat" class="cta">Ajánlatot kérek</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="label">Gyakori kérdések</span>
+      <h1>Minden, amit a megrendelésről tudni érdemes</h1>
+      <p>Átfogó válaszok a leggyakoribb érdeklődői kérdésekre – modellektől és áraktól a szállításon és engedélyeken át a garanciáig. Nem találja a választ? Írjon nekünk, 24 órán belül válaszolunk.</p>
+    </div>
+  </section>
+
+  <div class="wrap toolbar">
+    <div class="search-card">
+      <input type="search" id="faq-search" placeholder="Keresés a kérdések között… (pl. szállítás, engedély, fizetés)" aria-label="Keresés a GYIK-ben" />
+      <button class="btn-mini" id="expand-all" type="button">Összes kinyitása</button>
+      <button class="btn-mini" id="collapse-all" type="button">Összes bezárása</button>
+    </div>
+    <nav class="cats" aria-label="Kategóriák">
+      <a href="#modellek-arak">Modellek &amp; árak</a>
+      <a href="#folyamat">Megrendelési folyamat</a>
+      <a href="#testreszabas">Testreszabás</a>
+      <a href="#fizetes">Fizetés &amp; szerződés</a>
+      <a href="#szallitas">Szállítás &amp; felállítás</a>
+      <a href="#helyszin">Helyszín &amp; engedélyek</a>
+      <a href="#muszaki">Műszaki adatok</a>
+      <a href="#garancia">Garancia &amp; használat</a>
+    </nav>
+  </div>
+
+  <section class="faq">
+    <div class="wrap">
+      <p class="no-results" id="no-results">Nincs a keresésnek megfelelő kérdés. Próbáljon más kulcsszót, vagy <a href="gvm_homepage.html#kapcsolat">írjon nekünk</a>.</p>
+
+      <!-- 1. Modellek és árak -->
+      <div class="cat-block" id="modellek-arak">
+        <h2><span class="ico">🏠</span> Modellek, méretek és árak</h2>
+
+        <details class="qa">
+          <summary>Milyen modellek közül választhatok?</summary>
+          <div class="answer">
+            <p>Öt alapmodellünk van, minden igényre – kulcsrakész kivitelben:</p>
+            <table>
+              <tr><th>Modell</th><th>Alapterület</th><th>Méret / kapacitás</th><th>Nettó ár</th></tr>
+              <tr><td>GVMHaus 15</td><td>15 m²</td><td>6,00 × 2,43 m</td><td class="p">13.000 €-tól</td></tr>
+              <tr><td>GVMHaus 30</td><td>30 m²</td><td>6,00 × 4,68 m</td><td class="p">23.000 €-tól</td></tr>
+              <tr><td>GVMHaus 44</td><td>44 m²</td><td>6,00 × 7,30 m</td><td class="p">33.000 €</td></tr>
+              <tr><td>GVMHausU 01</td><td>18 m²</td><td>1–2 fő</td><td class="p">19.200 €</td></tr>
+              <tr><td>GVMHausU 02</td><td>25 m²</td><td>1–2 fő</td><td class="p">26.400 €</td></tr>
+            </table>
+            <p>A GVMHausU 01 / 02 modellek azonnal szállíthatók. A modellek részletes áttekintése a <a href="megrendeles_menete.html#arak">Megrendelés menete</a> oldalon.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mit tartalmaz az alapár?</summary>
+          <div class="answer">
+            <p>Az alapár a <strong>kulcsrakész, azonnal lakható</strong> házat jelenti: tartószerkezet, hőszigetelt falak és tető, padló, nyílászárók, teljes elektromos rendszer, víz- és szennyvízbekötés, konyha és fürdő alapfelszereltséggel, valamint fűtés. A pontos tartalmat mindig az egyedi ajánlat rögzíti.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Az árak tartalmazzák az ÁFÁ-t?</summary>
+          <div class="answer">
+            <p>Nem. Minden feltüntetett ár <strong>nettó, euróban</strong> értendő, amelyhez <strong>20% osztrák ÁFA</strong> adódik. Az ajánlatban külön feltüntetjük a nettó árat, az ÁFÁ-t és a bruttó végösszeget.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mennyivel kedvezőbb a hagyományos építésnél?</summary>
+          <div class="answer">
+            <p>Azonos alapterületre vetítve akár <strong>70%-kal</strong> kedvezőbb lehet, mint a hagyományos kőműves építés – a gyári, párhuzamos előregyártásnak és a rövid átfutási időnek köszönhetően.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Kombinálható-e több modul egy nagyobb házzá?</summary>
+          <div class="answer">
+            <p>Igen. A modulok egymás mellé állíthatók és kapcsolóelemekkel egy nagyobb lakóegységgé köthetők össze – például két GVMHaus 30 egymás mellett 60 m²-es megoldásként. A bővítés utólag is lehetséges.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Van-e azonnal szállítható modell?</summary>
+          <div class="answer">
+            <p>Igen, a <strong>GVMHausU 01 (18 m²)</strong> és a <strong>GVMHausU 02 (25 m²)</strong> rövid határidővel, jellemzően 1–4 héten belül elérhető.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 2. Folyamat -->
+      <div class="cat-block" id="folyamat">
+        <h2><span class="ico">🧭</span> Megrendelési folyamat</h2>
+
+        <details class="qa">
+          <summary>Hogyan zajlik a megrendelés az első kapcsolatfelvételtől a beköltözésig?</summary>
+          <div class="answer">
+            <p>Egyszerű, 4 lépéses folyamatban:</p>
+            <ul>
+              <li><strong>1. Tanácsadás</strong> – ingyenes igényfelmérés és modell-ajánlás</li>
+              <li><strong>2. Tervezés és ajánlat</strong> – egyedi konfiguráció, kötelező érvényű írásos ajánlat és szerződés</li>
+              <li><strong>3. Gyártás és helyszín-előkészítés</strong> – üzemi gyártás, közben Ön előkészíti a helyszínt</li>
+              <li><strong>4. Szállítás és átadás</strong> – kiszállítás, daruval felállítás, kulcsátadás</li>
+            </ul>
+            <p>Részletesen a <a href="megrendeles_menete.html">Megrendelés menete</a> oldalon.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mennyi idő az egész folyamat?</summary>
+          <div class="answer">
+            <p>Az első megkereséstől a kulcsátadásig jellemzően <strong>30–90 nap</strong>. A gyártási idő modell- és konfigurációfüggő: standard modellek 30–60 nap, egyedileg konfiguráltak 60–90 nap, azonnal szállítható modellek 1–4 hét.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Hogyan kérhetek ajánlatot?</summary>
+          <div class="answer">
+            <p>E-mailben (<a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a>), telefonon (<a href="tel:+436769348474">+43 676 934 8474</a>), vagy a <a href="gvm_homepage.html#kapcsolat">weboldali ajánlatkérő űrlapon</a>. Válaszunk általában 24 órán belül érkezik – magyarul vagy németül.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mennyi idő alatt kapok ajánlatot, és meddig érvényes?</summary>
+          <div class="answer">
+            <p>A tanácsadás után <strong>1–3 munkanapon belül</strong> kötelező érvényű, írásos ajánlatot adunk. Az ajánlat <strong>15 napig</strong> érvényes.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Kerül-e valamibe a tanácsadás vagy az ajánlat?</summary>
+          <div class="answer">
+            <p>Nem. A tanácsadás és az árajánlat egyaránt <strong>ingyenes és kötelezettségmentes</strong>. Fizetési kötelezettsége csak a szerződés aláírásával keletkezik.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 3. Testreszabás -->
+      <div class="cat-block" id="testreszabas">
+        <h2><span class="ico">🎨</span> Testreszabás és konfiguráció</h2>
+
+        <details class="qa">
+          <summary>Módosíthatom az alaprajzot?</summary>
+          <div class="answer">
+            <p>Igen. Egyedi módosítások kérhetők, például plusz válaszfal, nagyobb ablak, terasz vagy eltérő belső elrendezés. A módosításokat a tervezési fázisban egyeztetjük, és az ajánlat tartalmazza.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen extrákat és felárakat választhatok?</summary>
+          <div class="answer">
+            <ul>
+              <li>Erősített szigetelés</li>
+              <li>Prémium szaniter és berendezés</li>
+              <li>Fűtőfunkciós klíma, infravörös fali panel</li>
+              <li>Terasz, árnyékolás (redőny)</li>
+              <li>Egyedi külső szín</li>
+            </ul>
+            <p>Minden extra tételesen szerepel az ajánlatban.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen színt választhatok a házhoz?</summary>
+          <div class="answer">
+            <p>Az alapkivitel kívül RAL 7016 (antracit), belül RAL 9010 (fehér). Egyedi külső szín felár ellenében kérhető.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen fűtési és padlóopciók vannak?</summary>
+          <div class="answer">
+            <p><strong>Fűtés:</strong> alapfelszereltségben elektromos fűtés; opcionálisan fűtőfunkciós klíma (inverter) vagy infravörös fali panel.</p>
+            <p><strong>Padló:</strong> laminált padló vagy vinyl.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 4. Fizetés -->
+      <div class="cat-block" id="fizetes">
+        <h2><span class="ico">💶</span> Fizetés és szerződés</h2>
+
+        <details class="qa">
+          <summary>Hogyan és milyen ütemezésben történik a fizetés?</summary>
+          <div class="answer">
+            <p>A fizetés <strong>3 részletben</strong> történik:</p>
+            <ul>
+              <li><strong>50%</strong> a megrendeléskor / szerződéskötéskor – a gyártás a fizetés beérkezése után indul</li>
+              <li><strong>45%</strong> a szállítás előtt, a kamionra rakodás előtt</li>
+              <li><strong>5%</strong> a lerakodáskor, felállításkor és a vevő általi átvételkor</li>
+            </ul>
+            <p>A fizetési feltételek egyedileg is testreszabhatók.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Van-e írásos szerződés?</summary>
+          <div class="answer">
+            <p>Igen. A tervezés után kötelező érvényű írásos szerződést kötünk, amely rögzíti a választott konfigurációt, a végleges árat és a fizetési ütemezést.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mit tartalmaz és mit nem tartalmaz az ár?</summary>
+          <div class="answer">
+            <p><strong>Tartalmazza:</strong> minden megegyezett munka az alaprajz szerint, valamint a szállítás és lerakodás a megadott címen.</p>
+            <p><strong>Nem tartalmazza (a vevő felelőssége):</strong> ÁFA, sík és szakszerű alaplemez/alapozás, kamionnal és daruval járható behajtás a helyszínig, áramcsatlakozás a helyszínen.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 5. Szállítás -->
+      <div class="cat-block" id="szallitas">
+        <h2><span class="ico">🚚</span> Szállítás és felállítás</h2>
+
+        <details class="qa">
+          <summary>Hogyan szállítjátok és állítjátok fel a házat?</summary>
+          <div class="answer">
+            <p>A ház nehéztranszporttal (nyergesvontató / tieflader) érkezik az előkészített helyszínre, és daruval kerül a felállítási felületre. A helyszíni végszerelés (csatlakozók, finomállítás) jellemzően 24 órán belül elkészül, majd következik a rendszerek működés-ellenőrzése és az átadás-átvétel.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mennyibe kerül a szállítás?</summary>
+          <div class="answer">
+            <p>A szállítási költséget az egyedi ajánlat tartalmazza. Ezt az üzem és a felépítési helyszín távolsága, valamint a megközelítés bonyolultsága (pl. különleges engedélyek, kísérőautó) határozza meg. Pontos költséget a helyszín megadása után tudunk kalkulálni.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Áthelyezhető később a ház egy másik helyszínre?</summary>
+          <div class="answer">
+            <p>Igen. A szerkezet mobilitásra tervezett – nyergesvontató és daru segítségével új helyszínre helyezhető. Feltétel a megfelelő behajtás mindkét helyszínen és a közmű-csatlakozók szakszerű leválasztása.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 6. Helyszín -->
+      <div class="cat-block" id="helyszin">
+        <h2><span class="ico">📋</span> Helyszín-előkészítés és engedélyek</h2>
+
+        <details class="qa">
+          <summary>Mit kell előkészítenem a helyszínen?</summary>
+          <div class="answer">
+            <p>A helyszín-előkészítés a vevő feladata:</p>
+            <ul>
+              <li>Megfelelő behajtási útvonal nehéztranszporthoz és daruhoz (min. ~4 m széles, teherbíró)</li>
+              <li>Előkészített, vízszintes felépítési felület (pontalap, sávalap, csavaros földhorgony vagy betonlemez)</li>
+              <li>Áramcsatlakozás a ház helyétől 5 m-en belül</li>
+              <li>Vízbekötés és csatorna 5 m-en belül</li>
+              <li>Hatósági engedélyek a felépítéshez és használathoz</li>
+              <li>Tisztára takarított, akadálymentes terület a daru és a manőverezés számára</li>
+            </ul>
+            <p>Részletes checklista a <a href="blog.html#telek-elokeszitese">blog útmutatónkban</a>.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen alapra kerül a ház?</summary>
+          <div class="answer">
+            <p>A megoldás modellfüggő: pontalap, sávalap, csavaros földhorgony vagy betonlemez. A pontos, modellspecifikus követelményeket kérésre megküldjük.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Kell építési engedély?</summary>
+          <div class="answer">
+            <p>Ez tartomány-, község-, használati idő- és felépítésmód-függő. Ausztriában a mobilházak bizonyos feltételek mellett „ingó dolognak" minősülnek és engedélymentesek vagy bejelentés-kötelesek – tartós lakhatás esetén viszont általában építési bejelentés vagy engedély szükséges. Javasoljuk, hogy a szerződéskötés előtt érdeklődjön a községi építési hatóságnál. Bővebben a <a href="blog.html#felallitas-ausztriaban">felállítás Ausztriában</a> útmutatóban.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Ki felel az engedélyekért?</summary>
+          <div class="answer">
+            <p>Az engedélyek beszerzése és az elhelyezhetőség előzetes ellenőrzése a vevő felelőssége. A GVM Spedition GmbH nem garantálja, hogy a ház bármely területen elhelyezhető. A kérdések tisztázásában szívesen segítünk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mi történik, ha a helyszín nincs megfelelően előkészítve?</summary>
+          <div class="answer">
+            <p>A nem megfelelően előkészített helyszín miatt felmerülő többletköltségeket (extra daru, várakozási idő, ismételt kiszállás) külön számítjuk fel.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 7. Műszaki -->
+      <div class="cat-block" id="muszaki">
+        <h2><span class="ico">🔧</span> Műszaki adatok és anyagok</h2>
+
+        <details class="qa">
+          <summary>Milyen anyagokból készül a ház?</summary>
+          <div class="answer">
+            <table>
+              <tr><th>Tartószerkezet</th><td>Acélprofil váz, S335 (horganyzott, moduláris)</td></tr>
+              <tr><th>Falak</th><td>Hőszigetelt szendvicspanel, 50 mm, PUR/PIR 40 kg/m³</td></tr>
+              <tr><th>Tető</th><td>Szendvicspanel, 80 mm, PUR/PIR 40 kg/m³</td></tr>
+              <tr><th>Padló</th><td>Szendvicspanel padlókonstrukció, laminált / vinyl burkolat</td></tr>
+              <tr><th>Belmagasság</th><td>2,62 m (szabad belmagasság, modellfüggő)</td></tr>
+            </table>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Egész évben lakható a ház?</summary>
+          <div class="answer">
+            <p>Igen. A PIR szigetelés (40 kg/m³) és a többrétegű üvegezésű ablakok egész éves használatra tervezettek. Az alapfelszereltség elektromos fűtést tartalmaz; opcionálisan fűtőfunkciós klíma vagy infravörös fali panel kérhető.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen nyílászárók vannak?</summary>
+          <div class="answer">
+            <p>PVC nyílászárók 5 kamrás profillal, 2 rétegű üvegezéssel, bejárati ajtóval, redőnnyel és rovarvédő hálóval. Prémium opciók elérhetők.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen az elektromos rendszer és a vízellátás?</summary>
+          <div class="answer">
+            <p><strong>Elektromos:</strong> 220 V / 50 Hz, elosztószekrény, 7 konnektor, kapcsolók, LED világítás, klíma inverter, elektromos melegvíz-bojler.</p>
+            <p><strong>Víz és szennyvíz:</strong> PVC csövek, belső és külső csatlakozásokkal – WC, zuhany, mosdó és konyha bekötve.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- 8. Garancia és használat -->
+      <div class="cat-block" id="garancia">
+        <h2><span class="ico">🛡️</span> Garancia, szavatosság és használat</h2>
+
+        <details class="qa">
+          <summary>Milyen garanciát és szavatosságot kapok?</summary>
+          <div class="answer">
+            <ul>
+              <li><strong>3 év</strong> szavatosság az ingatlan jellegű szerkezetekre (tartószerkezet, falak, tető, fixen beépített rendszerek) – osztrák jog (ABGB) szerint</li>
+              <li><strong>2 év</strong> szavatosság az ingó alkatrészekre (eszközök, szaniter, vasalat)</li>
+              <li><strong>10 év</strong> gyártói garancia a panelekre</li>
+              <li><strong>10 év</strong> garancia a konstrukcióra</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Hogyan és mennyi időn belül jelenthetek hibát?</summary>
+          <div class="answer">
+            <p>A hibákat az átvételtől számított <strong>14 napon belül írásban</strong> kell jelezni. Egyes komponensekre (pl. szendvicspanelek, fűtőkészülékek) a vonatkozó gyártói garanciák érvényesek – adatlapokat kérésre küldünk.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Mire nem terjed ki a garancia?</summary>
+          <div class="answer">
+            <p>Nem terjed ki a nem rendeltetésszerű használatra, a harmadik fél általi hibás felépítésre, a karbantartás hiányára és a természetes elhasználódásra.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen célra használható a ház?</summary>
+          <div class="answer">
+            <p>Sokoldalúan: állandó lakhatás, hétvégi ház, családi nyaraló, hosszú távú vagy rövid távú bérbeadás (pl. Airbnb), glamping, kerti iroda vagy üzleti célú egység.</p>
+          </div>
+        </details>
+
+        <details class="qa">
+          <summary>Milyen nyelven tudok kommunikálni Önökkel?</summary>
+          <div class="answer">
+            <p>Magyarul és németül egyaránt. Válaszunk általában 24 órán belül érkezik.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Nem találta a választ?</h2>
+    <p>Írjon nekünk, és 24 órán belül, magyarul vagy németül válaszolunk – ingyenesen és kötelezettségmentesen.</p>
+    <a class="btn btn-red" href="gvm_homepage.html#kapcsolat">Kérdésem van / ajánlatot kérek →</a>
+  </div>
+
+  <footer class="site">
+    <div class="wrap wide">
+      <a href="gvm_homepage.html" class="logo" style="color:#fff;">GVM<span style="color:var(--red);">Haus</span></a>
+      <p style="margin-top:10px;">
+        <a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a> ·
+        <a href="tel:+436769348474">+43 676 934 8474</a> ·
+        <a href="https://gvmhaus.at">gvmhaus.at</a>
+      </p>
+      <div class="bottom">
+        © <span id="year"></span> GVM Spedition GmbH · Mobil precíziós házak. Az elhelyezhetőség a helyi
+        építési és önkormányzati előírásoktól függ – ezek előzetes ellenőrzése a vevő felelőssége.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var items = Array.prototype.slice.call(document.querySelectorAll('details.qa'));
+    var blocks = Array.prototype.slice.call(document.querySelectorAll('.cat-block'));
+    var noRes = document.getElementById('no-results');
+    var search = document.getElementById('faq-search');
+
+    document.getElementById('expand-all').addEventListener('click', function () {
+      items.forEach(function (d) { d.open = true; });
+    });
+    document.getElementById('collapse-all').addEventListener('click', function () {
+      items.forEach(function (d) { d.open = false; });
+    });
+
+    function clearMarks(el) {
+      el.querySelectorAll('mark').forEach(function (m) {
+        m.replaceWith(document.createTextNode(m.textContent));
+      });
+      el.normalize();
+    }
+
+    search.addEventListener('input', function () {
+      var q = search.value.trim().toLowerCase();
+      var anyVisible = false;
+
+      items.forEach(function (d) {
+        var text = d.textContent.toLowerCase();
+        var match = q === '' || text.indexOf(q) !== -1;
+        d.style.display = match ? '' : 'none';
+        if (match && q !== '') { d.open = true; anyVisible = true; }
+        if (q === '') d.open = false;
+      });
+
+      blocks.forEach(function (b) {
+        var visible = b.querySelectorAll('details.qa:not([style*="display: none"])').length > 0;
+        b.style.display = (q === '' || visible) ? '' : 'none';
+      });
+
+      noRes.style.display = (q !== '' && !anyVisible) ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>
