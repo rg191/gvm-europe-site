@@ -42,7 +42,23 @@ a gvmhaus.at gyökerébe feltöltve azonnal, a többi oldallal egységesen jelen
 
 | Fájl | Cél |
 |------|-----|
-| `ertekesitoi-telefonos-tanulo.html` | **Ezt nyisd meg böngészőben** — formázott telefonos tanulópéldány (nyomtatható / PDF) |
-| `ertekesitoi-telefonos-tanulo.md` | Ugyanaz a tartalom forrásként (nyers MD; böngészőben nem formázódik) |
+| `ertekesitoi-telefonos-tanulo.pdf` | **Legkönnyebb megnyitás** — töltsd le, nyisd meg PDF-olvasóban |
+| `ertekesitoi-telefonos-tanulo.html` | Formázott böngészős nézet (lokálisan / feltöltés után) |
+| `ertekesitoi-telefonos-tanulo.md` | Forrás (böngészőben nyers szöveg) |
+| `deploy-tanulo-hetzner.sh` | Feltöltés az élő `gvmhaus.at`-ra (Hetzner Console) |
+
+### Miért 404 a `https://gvmhaus.at/ertekesitoi-telefonos-tanulo.html`?
+
+A fájl **csak a GitHub PR-ben** van, amíg fel nem töltöd a szerverre. Az élő oldalon még nincs.
+
+**Azonnali megnyitás:** a PR-ből töltsd le a `.pdf` vagy `.html` fájlt, és nyisd meg lokálisan.
+
+**Éles URL-hez** (Hetzner Console, root a gvmhaus VM-en):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rg191/gvm-europe-site/cursor/gvmhaus-sales-phone-guide-9ebd/gvmhaus.at/deploy-tanulo-hetzner.sh | bash
+```
+
+Utána: `https://gvmhaus.at/ertekesitoi-telefonos-tanulo.html` (és `.pdf`).
 
 Ha a FAQ árai / feltételei változnak, a tanulópéldányt ugyanazon a napon frissíteni kell.

@@ -1,8 +1,8 @@
 # GVM Haus — Értékesítői tanulópéldány (telefonos beszélgetés)
 
-> **Megnyitás:** a formázott változatot böngészőben nyisd meg:  
-> [`ertekesitoi-telefonos-tanulo.html`](ertekesitoi-telefonos-tanulo.html)  
-> Ez az `.md` fájl forrás; böngészőben nyers szövegként jelenik meg.
+> **Megnyitás:** használd a [`ertekesitoi-telefonos-tanulo.pdf`](ertekesitoi-telefonos-tanulo.pdf) fájlt  
+> (vagy lokálisan az [`ertekesitoi-telefonos-tanulo.html`](ertekesitoi-telefonos-tanulo.html)-t).  
+> Az élő `https://gvmhaus.at/...` URL csak a szerverre feltöltés után működik (`deploy-tanulo-hetzner.sh`).
 
 **Forrás:** frissített GYIK (`gvmhaus.at/hu/faq.html`, 45 kérdés, 10 szekció)  
 **Cél:** hogy a telefonos beszélgetésnél magabiztosan, egységesen és pontosan válaszolj — anélkül, hogy szó szerint felolvasnád a FAQ-t.  
