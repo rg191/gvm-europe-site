@@ -9,6 +9,9 @@
   <meta property="og:url" content="https://www.gvmeurope.ro/en/" />
   <title>GVM Europe Romania – Professional Freight &amp; Logistics</title>
   <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
@@ -35,56 +38,45 @@
   </nav>
 
   <header class="hero" id="home">
-    <span class="hero-badge">GVM Europe Speditie Freight SRL</span>
-    <h1>Professional freight &amp; logistics</h1>
-    <p>
-      Your trusted partner for complete forwarding and logistics solutions
-      in Romania and across Europe.
-    </p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Request a quote</a>
-      <a href="#services" class="btn btn-outline">Our services</a>
+    <div class="hero-media" aria-hidden="true">
+      <img src="/static/hero.svg" alt="" width="1600" height="900" />
+    </div>
+    <div class="hero-copy">
+      <p class="hero-brand">GVM Europe</p>
+      <h1>Professional freight &amp; logistics</h1>
+      <p class="hero-lead">
+        Your partner for complete forwarding and logistics across Romania and Europe.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Request a quote</a>
+        <a href="#services" class="btn btn-outline">Our services</a>
+      </div>
     </div>
   </header>
 
   <main>
     <section id="about">
-      <div class="section-container">
-        <span class="section-label">About us</span>
+      <div class="section-container reveal">
         <h2 class="section-title">About us</h2>
         <p class="section-desc">
-          We provide transport and logistics services for clients in Romania and Europe,
+          We provide transport and logistics for clients in Romania and Europe,
           with a focus on safety, reliability and transparency.
         </p>
 
         <div class="about-grid">
-          <div class="about-image-wrapper">
-            <div class="about-image" aria-hidden="true">GVM</div>
+          <div class="about-visual">
+            <img src="/static/about.svg" alt="GVM Europe warehousing and logistics" width="900" height="900" />
           </div>
           <div class="about-text">
             <h3>Expertise you can rely on</h3>
             <p>
-              We move your goods across Europe with a modern fleet and professional drivers.
-              FTL and LTL available with real-time tracking.
+              We move goods across Europe with a modern fleet and professional drivers.
+              FTL and LTL with real-time tracking.
             </p>
             <p>
-              Secure warehousing managed with modern WMS systems. We handle customs and
-              logistics documentation for imports and exports.
+              Secure warehousing managed with modern WMS systems. Customs and logistics
+              documentation for imports and exports.
             </p>
-            <div class="stat-row">
-              <div class="stat">
-                <span class="stat-number">EU</span>
-                <span class="stat-label">Coverage</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">FTL/LTL</span>
-                <span class="stat-label">Transport</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">24/7</span>
-                <span class="stat-label">Support</span>
-              </div>
-            </div>
             <div class="company-meta">
               <strong>GVM Europe Speditie Freight SRL</strong><br />
               Bulevardul Timișoarei 10, Ap. SPII/A<br />
@@ -97,41 +89,34 @@
     </section>
 
     <section id="services">
-      <div class="section-container">
-        <span class="section-label">What we offer</span>
+      <div class="section-container reveal">
         <h2 class="section-title">Our services</h2>
         <p class="section-desc">
           From road transport to warehousing and customs clearance – complete solutions in one place.
         </p>
 
-        <div class="service-grid">
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">&#128666;</span>
+        <div class="service-list">
+          <article class="service-item">
             <h3>International road freight</h3>
             <p>FTL and LTL across Europe with real-time tracking and professional drivers.</p>
           </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">&#128230;</span>
+          <article class="service-item">
             <h3>Logistics &amp; warehousing</h3>
             <p>Secure storage facilities managed with modern WMS systems.</p>
           </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">&#127760;</span>
+          <article class="service-item">
             <h3>International forwarding</h3>
             <p>Full customs and logistics documentation for import and export.</p>
           </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">&#128203;</span>
+          <article class="service-item">
             <h3>Customs &amp; documentation</h3>
             <p>Complete support for customs formalities in Romania and the EU.</p>
           </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">&#9881;</span>
+          <article class="service-item">
             <h3>Special cargo transport</h3>
             <p>Solutions for special loads and complex logistics requirements.</p>
           </article>
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">&#128161;</span>
+          <article class="service-item">
             <h3>Logistics consulting</h3>
             <p>Route planning, optimization and supply chain consulting.</p>
           </article>
@@ -140,61 +125,39 @@
     </section>
 
     <section class="contact-section" id="contact">
-      <div class="section-container">
-        <span class="section-label">Contact</span>
+      <div class="section-container reveal">
         <h2 class="section-title">Get in touch</h2>
         <p class="section-desc">Our team responds quickly to freight and logistics enquiries.</p>
 
         <div class="contact-grid">
           <div class="contact-info">
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128100;</div>
-              <div>
-                <span>Agent</span>
-                <strong>Salamon Szilárd</strong>
-              </div>
+              <span>Agent</span>
+              <strong>Salamon Szilárd</strong>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128222;</div>
-              <div>
-                <span>Phone</span>
-                <strong><a href="tel:+40723392502">+40 723 392 502</a></strong>
-              </div>
+              <span>Phone</span>
+              <strong><a href="tel:+40723392502">+40 723 392 502</a></strong>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128231;</div>
-              <div>
-                <span>Email</span>
-                <strong><a href="mailto:szilard.salamon@gvmeurope.ro">szilard.salamon@gvmeurope.ro</a></strong>
-              </div>
+              <span>Email</span>
+              <strong><a href="mailto:szilard.salamon@gvmeurope.ro">szilard.salamon@gvmeurope.ro</a></strong>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128100;</div>
-              <div>
-                <span>Contact</span>
-                <strong>Enikő Amália</strong>
-              </div>
+              <span>Contact</span>
+              <strong>Enikő Amália</strong>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128222;</div>
-              <div>
-                <span>Phone</span>
-                <strong><a href="tel:+40722530354">+40 722 530 354</a></strong>
-              </div>
+              <span>Phone</span>
+              <strong><a href="tel:+40722530354">+40 722 530 354</a></strong>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128231;</div>
-              <div>
-                <span>Email</span>
-                <strong><a href="mailto:eniko@gvmeurope.ro">eniko@gvmeurope.ro</a></strong>
-              </div>
+              <span>Email</span>
+              <strong><a href="mailto:eniko@gvmeurope.ro">eniko@gvmeurope.ro</a></strong>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon" aria-hidden="true">&#128205;</div>
-              <div>
-                <span>Head office</span>
-                <strong>Bulevardul Timișoarei 10, Ap. SPII/A, 530102 Miercurea Ciuc</strong>
-              </div>
+              <span>Head office</span>
+              <strong>Bulevardul Timișoarei 10, Ap. SPII/A, 530102 Miercurea Ciuc</strong>
             </div>
           </div>
 
