@@ -1,73 +1,61 @@
-# gvmeurope.ro — Netlify deploy + DNS
+# gvmeurope.ro — Netlify (külön site, NEM a glogiai)
 
-> A román GVM Europe landing oldal Netlify-on fut (ugyanúgy, mint a glogiai.hu).
-> A javított logó és RO/HU/EN nyelvváltó a `sites/gvmeurope.ro/public/` mappában van.
+## Fontos
 
-## 1. Új Netlify site létrehozása (egyszer)
+| Site | Netlify | Secret |
+|------|---------|--------|
+| **glogiai.hu** | `genuine-banoffee-bf6eea` | `NETLIFY_SITE_ID` |
+| **gvmeurope.ro** | külön site (pl. `gvm-europe-staging`) | `NETLIFY_GVMEUROPE_RO_SITE_ID` |
 
-1. Jelentkezz be: **https://app.netlify.com**
-2. **Add new site** → **Import an existing project** → **GitHub**
-3. Repo: **`rg191/gvm-europe-site`**, branch: **`main`**
-4. Site beállítások:
+**Ne** használd a `genuine-banoffee-bf6eea.netlify.app` címet / Site ID-t a román oldalhoz.
+Ha a két secret ugyanaz, a román deploy felülírja a GlogiAI oldalt.
+
+## 1. Dedikált Netlify site (ha még nincs)
+
+1. https://app.netlify.com → **Add new site** → **Import an existing project** → GitHub  
+2. Repo: `rg191/gvm-europe-site`, branch: `main`  
+3. Beállítások:
 
 | Mező | Érték |
 |------|-------|
 | **Base directory** | `sites/gvmeurope.ro` |
-| **Build command** | *(üresen hagyható — a netlify.toml kezeli)* |
+| **Build command** | *(üres / netlify.toml)* |
 | **Publish directory** | `public` |
 
-5. **Deploy site**
-6. Site settings → **Site configuration** → **General** → **Site details** → másold ki a **Site ID**-t (pl. `abc123-def456-...`)
-7. Site settings → **Domain management** → **Add a domain**:
-   - `gvmeurope.ro`
-   - `www.gvmeurope.ro`
+4. Site settings → **Site details** → másold a **Site ID**-t  
+5. GitHub → Settings → Secrets → Actions → `NETLIFY_GVMEUROPE_RO_SITE_ID` = ez a Site ID  
+   (különböznie kell a `NETLIFY_SITE_ID`-tól)
 
-A Netlify megadja a DNS rekordokat (általában CNAME a `www`-re, apex-nél A/ALIAS vagy Netlify DNS).
+Ha már létezik a **gvm-europe-staging** site, annak a Site ID-ját tedd a secretbe.
 
-## 2. GitHub secret (automatikus deploy)
+## 2. Deploy
 
-GitHub repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
+A workflow jelenleg csak **kézi** indításra fut:
 
-| Secret neve | Érték |
-|-------------|-------|
-| `NETLIFY_GVMEUROPE_RO_SITE_ID` | A Netlify Site ID (6. lépés) |
+GitHub → **Actions** → **Deploy gvmeurope.ro to Netlify** → **Run workflow**
 
-A `NETLIFY_AUTH_TOKEN` már létezik a glogiai.hu-hoz — ugyanazt használja ez a workflow is.
+(A guard elutasítja, ha a secret = glogiai Site ID.)
 
-Push a `main`-re után a **Deploy gvmeurope.ro to Netlify** workflow automatikusan fut.
+## 3. DNS — gvmeurope.ro → Netlify
 
-## 3. DNS — gvmeurope.ro átállítása Hetzner-ről Netlify-ra
+**Jelenlegi DNS:** `gvmeurope.ro` / `www` → `A 46.225.184.176` (Hetzner)  
+**Nameserver:** `dns1.hu` / `dns2.hu` / `dns3.hu`
 
-**Jelenlegi állapot:** `gvmeurope.ro` → A → `46.225.184.176` (Hetzner)
+Amíg ez így van, a böngésző a Hetzner-t látja, nem a Netlify-t.
 
-**Cél:** Netlify (a Domain management oldalon látható értékek)
+A Netlify **Domain management** oldalon add hozzá:
 
-Tipikus beállítás (Tárhely.Eu / domain regisztrátor):
+- `gvmeurope.ro`
+- `www.gvmeurope.ro`
 
-| Rekord | Típus | Érték |
-|--------|-------|-------|
-| `www` | CNAME | *(pl. `gvmeurope-ro.netlify.app` — a Netlify megmutatja)* |
-| `@` (apex) | A vagy ALIAS | *(Netlify load balancer IP — a Netlify Domain settings-ben)* |
+majd a domain regisztrátornál (dns1.hu) állítsd a Netlify által kért rekordokra (tipikusan `www` CNAME → `*.netlify.app`, apex A/ALIAS → Netlify IP).
 
-Vagy: használd a **Netlify DNS**-t (domain nameserverek átállítása Netlify-ra).
+## 4. Ellenőrzés
 
-## 4. Ellenőrzés deploy után
+1. Dedikált `*.netlify.app` URL — logó + RO/HU/EN  
+2. DNS átállás után: https://www.gvmeurope.ro/  
+3. https://www.gvmeurope.ro/static/logo.svg → 200  
 
-1. https://www.gvmeurope.ro/ — logó + román (RO)
-2. Fejléc: **RO | HU | EN** — kattintás működik
-3. https://www.gvmeurope.ro/hu/ — magyar
-4. https://www.gvmeurope.ro/en/ — angol
-5. https://www.gvmeurope.ro/static/logo.svg — logó fájl (200 OK)
+## 5. Hetzner
 
-## 5. Mi változott a korábbi hibákhoz képest
-
-| Probléma | Megoldás |
-|----------|----------|
-| Logó nem töltődött | Helyi `/static/logo.svg` |
-| HU/EN nem működött | `/hu/` és `/en/` oldalak a repóban |
-| Hetzner nehéz elérni | Netlify deploy — nincs szerver SSH |
-
-## 6. Hetzner (opcionális, kikapcsolható)
-
-Ha a DNS Netlify-ra mutat, a Hetzner szerver (`46.225.184.176`) már nem szolgálja ki a gvmeurope.ro-t.
-A régi Hetzner deploy: `sites/gvmeurope.ro/HOSZTOLAS.md` (archív).
+Opcionális / archív. DNS Netlify-ra állítása után a `46.225.184.176` már nem szolgálja a domaint. Lásd `HOSZTOLAS.md`.

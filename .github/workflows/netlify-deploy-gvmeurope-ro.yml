@@ -1,11 +1,15 @@
 name: Deploy gvmeurope.ro to Netlify
 
+# IMPORTANT:
+# Do NOT deploy gvmeurope.ro to the glogiai Netlify site
+# (genuine-banoffee-bf6eea / secrets.NETLIFY_SITE_ID).
+# Use a dedicated site (e.g. gvm-europe-staging) and set
+# secrets.NETLIFY_GVMEUROPE_RO_SITE_ID to THAT site's Site ID.
+#
+# Auto-deploy on push is disabled until the secret points to the
+# dedicated site. Run manually via Actions → workflow_dispatch.
+
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sites/gvmeurope.ro/**'
-      - '.github/workflows/netlify-deploy-gvmeurope-ro.yml'
   workflow_dispatch:
 
 jobs:
@@ -15,6 +19,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Guard — refuse glogiai / genuine-banoffee site id
+        env:
+          GVM_SITE_ID: ${{ secrets.NETLIFY_GVMEUROPE_RO_SITE_ID }}
+          GLOGIAI_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GVM_SITE_ID}" ]; then
+            echo "::error::NETLIFY_GVMEUROPE_RO_SITE_ID is empty. Create a dedicated Netlify site for gvmeurope.ro and set the secret."
+            exit 1
+          fi
+          if [ -n "${GLOGIAI_SITE_ID}" ] && [ "${GVM_SITE_ID}" = "${GLOGIAI_SITE_ID}" ]; then
+            echo "::error::NETLIFY_GVMEUROPE_RO_SITE_ID matches NETLIFY_SITE_ID (glogiai / genuine-banoffee). Refusing to deploy — set a dedicated Site ID."
+            exit 1
+          fi
+          echo "Site ID guard OK (dedicated secret differs from glogiai)."
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
@@ -23,7 +43,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy gvmeurope.ro (${{ github.sha }})"
           enable-pull-request-comment: false
-          enable-commit-comment: true
+          enable-commit-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_GVMEUROPE_RO_SITE_ID }}
