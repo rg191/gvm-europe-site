@@ -1,5 +1,9 @@
 # GVM Haus — Értékesítői tanulópéldány (telefonos beszélgetés)
 
+> **Megnyitás:** a formázott változatot böngészőben nyisd meg:  
+> [`ertekesitoi-telefonos-tanulo.html`](ertekesitoi-telefonos-tanulo.html)  
+> Ez az `.md` fájl forrás; böngészőben nyers szövegként jelenik meg.
+
 **Forrás:** frissített GYIK (`gvmhaus.at/hu/faq.html`, 45 kérdés, 10 szekció)  
 **Cél:** hogy a telefonos beszélgetésnél magabiztosan, egységesen és pontosan válaszolj — anélkül, hogy szó szerint felolvasnád a FAQ-t.  
 **Kapcsolat a híváson:** `info@gvmhaus.at` · `+43 676 934 8474`

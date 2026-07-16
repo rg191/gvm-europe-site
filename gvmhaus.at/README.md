@@ -42,6 +42,7 @@ a gvmhaus.at gyökerébe feltöltve azonnal, a többi oldallal egységesen jelen
 
 | Fájl | Cél |
 |------|-----|
-| `ertekesitoi-telefonos-tanulo.md` | Telefonos beszélgetésre felkészítő tanulópéldány a frissített GYIK alapján (hívásmenet, gyors adatlap, válaszminták, ellenvetéskezelés, gyakorló dialógusok) |
+| `ertekesitoi-telefonos-tanulo.html` | **Ezt nyisd meg böngészőben** — formázott telefonos tanulópéldány (nyomtatható / PDF) |
+| `ertekesitoi-telefonos-tanulo.md` | Ugyanaz a tartalom forrásként (nyers MD; böngészőben nem formázódik) |
 
 Ha a FAQ árai / feltételei változnak, a tanulópéldányt ugyanazon a napon frissíteni kell.
