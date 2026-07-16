@@ -73,9 +73,15 @@ img {
   background: rgba(247, 248, 250, 0.94);
 }
 
-.nav-logo img {
+.nav-logo img,
+.nav-logo svg {
   height: 40px;
   width: auto;
+  display: block;
+}
+
+.nav-logo svg {
+  overflow: visible;
 }
 
 .nav-links {
