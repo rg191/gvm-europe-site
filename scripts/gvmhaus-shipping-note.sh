@@ -50,6 +50,29 @@ for f in index.html gvmhaus-15.html gvmhaus-30.html gvmhaus-44.html gvmhaus-u-01
 done
 
 echo
+echo "--- 2. lepes: szallitasi megjegyzes kozvetlenul az arcimkekbe ---"
+# "Preis (netto)" -> "Preis (netto, zzgl. Lieferung)"
+# "Ár (nettó)"    -> "Ár (nettó, szállítás nélkül)"
+for f in index.html gvmhaus-15.html gvmhaus-30.html gvmhaus-44.html gvmhaus-u-01.html gvmhaus-u-02.html; do
+  p="$SITE/$f"
+  if [ ! -f "$p" ]; then
+    continue
+  fi
+  if grep -q "zzgl. Lieferung)" "$p"; then
+    echo "ARCIMKE MAR ATIRVA, kihagyva: $f"
+    continue
+  fi
+  if ! grep -q "Preis (netto)" "$p"; then
+    echo "NINCS Preis (netto) cimke: $f"
+    continue
+  fi
+  cp "$p" "$p.bak-shipping2-$STAMP"
+  sed -i 's/Preis (netto)/Preis (netto, zzgl. Lieferung)/g' "$p"
+  sed -i 's/Ár (nettó)/Ár (nettó, szállítás nélkül)/g' "$p"
+  echo "ARCIMKEK KESZ: $f"
+done
+
+echo
 echo "--- Ellenorzes: Preis kornyeke az index.html-ben (ha finomitani kell, kuldj errol fotot) ---"
 grep -n -i -m 8 -B1 -A1 preis "$SITE/index.html" || true
 echo
