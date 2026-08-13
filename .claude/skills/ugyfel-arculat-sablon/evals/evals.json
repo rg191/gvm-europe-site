@@ -1,0 +1,18 @@
+{
+  "skill_name": "ugyfel-arculat-sablon",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Új ügyfelem van: Kovács Fatelep Kft., fűrészáru- és épületfa-kereskedés Szentendrén, a domain kovacsfatelep.hu lesz. Még nincs weboldaluk, se arculatuk — natúr fa, meleg, földközeli irányt szeretnének, a célközönség lakossági építkezők és kisebb kivitelezők. Csinálj nekik arculati skillt és egy rövid designtervet, amit átküldhetek nekik jóváhagyásra.",
+      "expected_output": "kovacs-fatelep-arculat/SKILL.md a sablon szerkezetével, JAVASLAT státusszal, hex-palettával, font-párossal, Mit NE listával; mellé ügyfélnek átadható designterv üzleti nyelven, Niviloop-branding nélkül.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Adj a gvmeurope.ro oldalhoz egy 'Flottánk' szekciót a szolgáltatások szekció után: pár mondat a modern flottáról és 3 kiemelt adat (kamionok száma, éves futott km, Euro 6-os arány — reális placeholder számokkal). Készítsd el a kész HTML szekció(ka)t és a szükséges CSS-kiegészítést.",
+      "expected_output": "Flotta szekció HTML mindhárom nyelven (RO/HU/EN) a meglévő section-container/section-title/reveal mintákkal, CSS-kiegészítés csak a meglévő tokenekkel, formális hangnem.",
+      "files": [],
+      "note": "Ez az eval a generált gvm-europe-arculat példány-skillt teszteli, nem közvetlenül a sablont."
+    }
+  ]
+}
