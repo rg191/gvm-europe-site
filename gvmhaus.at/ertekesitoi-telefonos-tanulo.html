@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GVM Haus — Értékesítői telefonos tanulópéldány</title>
+<style>
+  :root {
+    --ink: #1a1f24;
+    --muted: #5a6570;
+    --line: #d8dee4;
+    --bg: #f6f3ee;
+    --card: #ffffff;
+    --accent: #2f5d4a;
+    --accent-soft: #e8f0ec;
+    --warn: #8a3b12;
+    --warn-bg: #f8ebe3;
+    --quote: #eef3f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 500px at 10% -10%, #e7efe9 0%, transparent 55%),
+      radial-gradient(900px 400px at 100% 0%, #f0e8df 0%, transparent 50%),
+      var(--bg);
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  header.doc {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--accent);
+  }
+  header.doc .eyebrow {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.4rem;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 1.35rem;
+    margin: 2.4rem 0 0.9rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--line);
+    color: var(--accent);
+  }
+  h3 {
+    font-size: 1.08rem;
+    margin: 1.6rem 0 0.6rem;
+  }
+  p, li { font-size: 1.02rem; }
+  p { margin: 0.65rem 0; }
+  a { color: var(--accent); }
+  strong { font-weight: 700; }
+  hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 1.75rem 0;
+  }
+  blockquote {
+    margin: 0.9rem 0;
+    padding: 0.85rem 1rem;
+    background: var(--quote);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+  }
+  blockquote p { margin: 0.35rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.25rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.92rem;
+    background: var(--card);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.65rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent-soft);
+    color: var(--ink);
+    font-weight: 650;
+  }
+  tr:nth-child(even) td { background: #fafbfc; }
+  code {
+    font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: #eceff2;
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+  pre {
+    background: #1f2930;
+    color: #e8eef2;
+    padding: 1rem 1.1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+  ul, ol { padding-left: 1.3rem; }
+  li { margin: 0.28rem 0; }
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem 1.15rem 1.15rem;
+    margin: 1.25rem 0 2rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .toc strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .toc ol { margin: 0; padding-left: 1.2rem; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .note {
+    background: var(--warn-bg);
+    color: var(--warn);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 0.92rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1rem 0 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .actions button {
+    appearance: none;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .actions button.secondary {
+    background: transparent;
+    color: var(--accent);
+  }
+  @media print {
+    body { background: #fff; }
+    .actions, .toc { display: none !important; }
+    .wrap { max-width: none; padding: 0; }
+    h2 { break-before: auto; break-after: avoid; }
+    table, blockquote { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="doc">
+      <p class="eyebrow">GVM Haus · belső felkészítő</p>
+      <div class="actions">
+        <button type="button" onclick="window.print()">Nyomtatás / PDF</button>
+        <button type="button" class="secondary" onclick="document.getElementById('tartalom').scrollIntoView({behavior:'smooth'})">Tartalomjegyzék</button>
+      </div>
+    </header>
+        <div class="note">
+      Lokális olvasáshoz: nyisd meg ezt a fájlt a gépeden (File → Open), vagy használd a <code>.pdf</code> változatot.
+    </div>
+    <nav class="toc" id="tartalom">
+      <strong>Tartalom</strong>
+      <ol>
+        <li><a href="#1-hogyan-hasznald-ezt-a-peldanyt">Hogyan használd</a></li>
+        <li><a href="#2-gyors-adatlap-ezt-kivulrol">Gyors adatlap</a></li>
+        <li><a href="#3-hivasmenet-telefonos-forgatokonyv">Hívásmenet</a></li>
+        <li><a href="#4-szuksegletfeltaro-kerdesek-arany-lista">Feltáró kérdések</a></li>
+        <li><a href="#5-telefonos-valaszmintak-faq-beszelt-nyelv">Válaszminták</a></li>
+        <li><a href="#6-ellenveteskezeles-rovid-fordulatok">Ellenvetéskezelés</a></li>
+        <li><a href="#7-piros-vonalak-amit-ne-igerj">Piros vonalak</a></li>
+        <li><a href="#8-jegyzetlap-hivashoz-masold-at">Jegyzetlap</a></li>
+        <li><a href="#9-gyakorlo-dialogusok-tanulo-peldany">Gyakorló dialógusok</a></li>
+        <li><a href="#10-10-perces-onellenorzo-kviz">Kvíz</a></li>
+        <li><a href="#11-napi-15-perces-gyakorlorutin">Napi rutin</a></li>
+        <li><a href="#12-forras-es-frissites">Forrás</a></li>
+      </ol>
+    </nav>
+    <main id="content">
+<h1>GVM Haus — Értékesítői tanulópéldány (telefonos beszélgetés)</h1>
+<blockquote>
+<p><strong>Megnyitás:</strong> használd a <a href="ertekesitoi-telefonos-tanulo.pdf"><code>ertekesitoi-telefonos-tanulo.pdf</code></a> fájlt<br />
+(vagy lokálisan az <a href="ertekesitoi-telefonos-tanulo.html"><code>ertekesitoi-telefonos-tanulo.html</code></a>-t).<br />
+Az élő <code>https://gvmhaus.at/...</code> URL csak a szerverre feltöltés után működik (<code>deploy-tanulo-hetzner.sh</code>).</p>
+</blockquote>
+<p><strong>Forrás:</strong> frissített GYIK (<code>gvmhaus.at/hu/faq.html</code>, 45 kérdés, 10 szekció)<br />
+<strong>Cél:</strong> hogy a telefonos beszélgetésnél magabiztosan, egységesen és pontosan válaszolj — anélkül, hogy szó szerint felolvasnád a FAQ-t.<br />
+<strong>Kapcsolat a híváson:</strong> <code>info@gvmhaus.at</code> · <code>+43 676 934 8474</code></p>
+<hr />
+<h2>1. Hogyan használd ezt a példányt</h2>
+<ol>
+<li>Tanuld meg a <strong>gyors adatlapot</strong> (2. szekció) — ezt kívülről kell tudni.</li>
+<li>Gyakorold a <strong>hívásmenetet</strong> (3. szekció) hangosan, 2–3×.</li>
+<li>A <strong>válaszmintákat</strong> (5. szekció) ne memorizáld szó szerint: a lényeget mondd el, saját szavakkal.</li>
+<li>A <strong>piros vonalakat</strong> (7. szekció) mindig tartsd: amit nem tudsz biztosan, ne találgass.</li>
+<li>Záráskor mindig legyen <strong>következő lépés</strong> (ajánlat, megtekintés, visszahívás).</li>
+</ol>
+<hr />
+<h2>2. Gyors adatlap — ezt kívülről</h2>
+<h3>Modellek és nettó árak (EUR, + 20% osztrák ÁFA)</h3>
+<table>
+<thead>
+<tr>
+<th>Modell</th>
+<th>Alapterület</th>
+<th>Nettó ár</th>
+<th>Tipikus használat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GVMHaus 15</td>
+<td>15 m²</td>
+<td><strong>13.000 €-tól</strong></td>
+<td>hétvége, glamping, kiegészítő</td>
+</tr>
+<tr>
+<td>GVMHaus 30</td>
+<td>30 m²</td>
+<td><strong>23.000 €-tól</strong></td>
+<td>komfortos lakótér</td>
+</tr>
+<tr>
+<td>GVMHaus 44</td>
+<td>44 m²</td>
+<td><strong>33.000 €</strong></td>
+<td>családi mobilház</td>
+</tr>
+<tr>
+<td>GVMHausU 01</td>
+<td>18 m²</td>
+<td><strong>19.200 €</strong></td>
+<td>hétvége / Airbnb / iroda — <strong>gyors szállítás</strong></td>
+</tr>
+<tr>
+<td>GVMHausU 02</td>
+<td>25 m²</td>
+<td><strong>26.400 €</strong></td>
+<td>tartós lakás / nyaraló / bérbeadás — <strong>gyors szállítás</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Méretkeret:</strong> 15–44 m² alapmodellek; hossz jellemzően 6,00 m; szabad belmagasság <strong>2,62 m</strong>. Több modul összekapcsolható (pl. 2×30 ≈ 60 m²).</p>
+<h3>Határidők</h3>
+<table>
+<thead>
+<tr>
+<th>Típus</th>
+<th>Gyártás / átadás</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard modell</td>
+<td><strong>30–60 nap</strong></td>
+</tr>
+<tr>
+<td>Egyedi konfiguráció</td>
+<td><strong>60–90 nap</strong></td>
+</tr>
+<tr>
+<td>GVMHausU 01 / 02</td>
+<td><strong>1–4 hét</strong></td>
+</tr>
+<tr>
+<td>Helyszíni végszerelés</td>
+<td>jellemzően <strong>1 nap</strong> (24 órán belül)</td>
+</tr>
+</tbody>
+</table>
+<h3>Fizetés (alap ütem)</h3>
+<ol>
+<li><strong>50%</strong> — szerződéskötéskor (gyártáskezdés / foglalás)  </li>
+<li><strong>45%</strong> — szállítás előtt  </li>
+<li><strong>5%</strong> — átvételkor  </li>
+</ol>
+<p>Ütemezés egyedileg is egyeztethető. Fizetés jellemzően <strong>banki átutalás</strong>.</p>
+<h3>Az alapárban benne van</h3>
+<p>Kulcsrakész ház (alaprajz szerinti felszereltség) + <strong>szállítás és lerakodás</strong> a megadott címen.</p>
+<h3>Nincs benne / vevő oldala</h3>
+<ul>
+<li>20% ÁFA  </li>
+<li>alapozás / sík, teherbíró aljzat  </li>
+<li>kamion + daru behajtás  </li>
+<li>telekhatáron lévő közműcsatlakozás  </li>
+<li>hatósági illetékek / engedélyek  </li>
+<li>választott extrák (terasz, prémium szaniter, egyedi szín stb.)</li>
+</ul>
+<h3>Garancia (rövid)</h3>
+<ul>
+<li><strong>3 év</strong> szavatosság szerkezetre (ABGB)  </li>
+<li><strong>2 év</strong> ingó alkatrészekre  </li>
+<li><strong>10 év</strong> gyártói garancia panelekre (és a FAQ szerinti további gyártói garanciák)  </li>
+<li>Hibajelzés: írásban, lehetőleg <strong>14 napon belül</strong> → <code>info@gvmhaus.at</code></li>
+</ul>
+<h3>Szállítási terület</h3>
+<p><strong>Ausztria és Magyarország.</strong> Más ország: egyeztetés szükséges.</p>
+<hr />
+<h2>3. Hívásmenet (telefonos forgatókönyv)</h2>
+<h3>A) Nyitás (15–20 mp)</h3>
+<blockquote>
+<p>„Jó napot kívánok, [Név] vagyok a GVM Haus-tól. Köszönöm, hogy hívott / hogy visszahívhatom. Miben segíthetek — modellválasztás, ár, telek/engedély, vagy már konkrét ajánlat érdekel?”</p>
+</blockquote>
+<p><strong>Cél:</strong> azonnal irányt kapni (információ / ajánlat / időpont).</p>
+<h3>B) Szükségletfeltárás (2–4 perc) — mielőtt árat mondanál</h3>
+<p>Kérdezd sorban, jegyzetelj:</p>
+<ol>
+<li><strong>Hol</strong> állna a ház? (ország, település, telek jellege)  </li>
+<li><strong>Mire</strong> használnák? (hétvége / tartós lakás / Airbnb / iroda / glamping)  </li>
+<li><strong>Hányan</strong> használnák rendszeresen?  </li>
+<li>Van-e már <strong>preferált méret</strong> vagy modell?  </li>
+<li><strong>Mikorra</strong> szeretnék? (határidő-nyomás?)  </li>
+<li>A telek <strong>megközelíthető</strong> kamionnal/daruval? Van közmű?  </li>
+<li>Kell-e <strong>engedély / bejelentés</strong> — már beszéltek a községgel?  </li>
+<li><strong>Költségkeret</strong> nettóban, vagy bruttó érdekel?</li>
+</ol>
+<blockquote>
+<p>Tipikus mondat: „Ahhoz, hogy jól tudjak javasolni, 3–4 rövid kérdésem lenne — rendben?”</p>
+</blockquote>
+<h3>C) Ajánlás + rövid indoklás</h3>
+<blockquote>
+<p>„A leírtak alapján a <strong>GVMHaus 30</strong>-at javasolnám: 30 m², külön háló- és nappali rész, kulcsrakész, nettó <strong>23.000 €-tól</strong>. Ha gyorsabb átadás kell, megnézhetjük a <strong>GVMHausU</strong> sorozatot is, az 1–4 hét.”</p>
+</blockquote>
+<h3>D) Gyakori kérdések megválaszolása</h3>
+<p>Használd az 5. szekció mintáit. Egy válasz = <strong>1–3 mondat + egy ellenőrző kérdés</strong>.</p>
+<blockquote>
+<p>„… Így hangzik ez önnek, vagy inkább a nagyobb / kisebb méret érdekes?”</p>
+</blockquote>
+<h3>E) Zárás — mindig következő lépés</h3>
+<p>Válassz egyet:</p>
+<ol>
+<li><strong>Írásos ajánlat</strong> (15 napig érvényes) — e-mail + telek/modell adatok  </li>
+<li><strong>Megtekintés</strong> időpont-egyeztetéssel  </li>
+<li><strong>Online megrendelés / dokumentumfeltöltés</strong> irányítása  </li>
+<li><strong>Visszahívás</strong> konkrét időponttal  </li>
+</ol>
+<blockquote>
+<p>„Összefoglalva: [modell], [használat], [helyszín]. Küldök ma / holnap írásos ajánlatot — milyen e-mail címre legyen?”</p>
+</blockquote>
+<hr />
+<h2>4. Szükségletfeltáró kérdések — „arany lista”</h2>
+<table>
+<thead>
+<tr>
+<th>Cél</th>
+<th>Kérdés</th>
+<th>Miért kell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modell</td>
+<td>„Inkább kompakt hétvégire, vagy egész éves lakásra gondolnak?”</td>
+<td>15/U01 vs 30/44/U02</td>
+</tr>
+<tr>
+<td>Méret</td>
+<td>„Hány fő használná rendszeresen?”</td>
+<td>alapterület</td>
+</tr>
+<tr>
+<td>Határidő</td>
+<td>„Mikorra szeretnék beköltözni?”</td>
+<td>standard vs U sorozat</td>
+</tr>
+<tr>
+<td>Telek</td>
+<td>„A telek elérhető nagyobb kamionnal és daruval?”</td>
+<td>szállítás megvalósíthatóság</td>
+</tr>
+<tr>
+<td>Alap</td>
+<td>„Van már sík, teherbíró alap / terv alapozásra?”</td>
+<td>extra költség + ütem</td>
+</tr>
+<tr>
+<td>Engedély</td>
+<td>„Beszéltek már a községgel a felállításról?”</td>
+<td>jogi elvárások tisztázása</td>
+</tr>
+<tr>
+<td>Büdzsé</td>
+<td>„Nettó árkeret van, vagy bruttóban gondolkodnak?”</td>
+<td>ÁFA-kommunikáció</td>
+</tr>
+<tr>
+<td>Extra</td>
+<td>„Kell terasz, egyedi alaprajz, napelem vagy akadálymentesítés?”</td>
+<td>ajánlat pontossága</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Telefonos válaszminták (FAQ → beszélt nyelv)</h2>
+<p>Minden blokk: <strong>ügyfél kérdése → mit mondj → ellenőrző kérdés</strong>.</p>
+<h3>5.1 Általános</h3>
+<p><strong>„Mi ez tulajdonképpen? Modulház? Konténer?”</strong>  </p>
+<blockquote>
+<p>„GVM Haus mobil precíziós készház: üzemben, modulárisan előregyártjuk, acél vázra, hőszigetelt szendvicspanellel, és kulcsrakészen szállítjuk. Nem klasszikus évekig tartó építkezés — a munka nagy része gyári ellenőrzés mellett készül.”<br />
+<em>Ellenőrzés:</em> „Otthonra, vagy inkább hétvégire / bérbeadásra gondolnak?”</p>
+</blockquote>
+<p><strong>„Miért ezt válasszam a hagyományos építés helyett?”</strong>  </p>
+<blockquote>
+<p>„Három fő ok: <strong>30–90 nap</strong> a kulcsig, kiszámítható gyári minőség, és jellemzően <strong>jelentősen kedvezőbb</strong> költség azonos alapterületen. Emellett később áthelyezhető és bővíthető.”  </p>
+</blockquote>
+<p><strong>„Van mintaház?”</strong>  </p>
+<blockquote>
+<p>„Igen, megtekintés <strong>időpont-egyeztetéssel</strong> lehetséges. Emellett minden modellhez van műszaki adatlap, alaprajz és galéria. A tanácsadás ingyenes és kötelezettségmentes.”<br />
+<em>Zárás:</em> „Mikor lenne jó önnek egy megtekintés?”</p>
+</blockquote>
+<h3>5.2 Modellek és felszereltség</h3>
+<p><strong>„Milyen méretek vannak?”</strong>  </p>
+<blockquote>
+<p>„Öt alapmodell: 15, 30, 44 m², plusz az azonnal szállítható U01 18 m² és U02 25 m². Több modul egymás mellé is állítható — például két 30-as körülbelül 60 m².”  </p>
+</blockquote>
+<p><strong>„Mit kapok az alapárban?”</strong>  </p>
+<blockquote>
+<p>„Kulcsrakész csomagot: acél váz, hőszigetelt panelek, PVC nyílászárók redőnnyel, elektromos rendszer, víz-szennyvíz bekötés, WC/zuhany/mosdó, konyha, alap elektromos fűtés. Plus a szállítást és lerakodást a címre.”  </p>
+</blockquote>
+<p><strong>„Testre lehet szabni?”</strong>  </p>
+<blockquote>
+<p>„Igen — alaprajz, szín, nyílászárók, fűtés, szaniter, padló, terasz. A keretet a modul mérete és a statika adja; minden egyedit a tervezéskor rögzítünk, és az ajánlat tételesen tartalmazza.”  </p>
+</blockquote>
+<h3>5.3 Ár és fizetés</h3>
+<p><strong>„Mennyibe kerül?”</strong>  </p>
+<blockquote>
+<p>„Nettó irányárak: 15-ös <strong>13.000 €-tól</strong>, 30-as <strong>23.000 €-tól</strong>, 44-es <strong>33.000 €</strong>, U01 <strong>19.200 €</strong>, U02 <strong>26.400 €</strong>. Ehhez jön a <strong>20% osztrák ÁFA</strong>. Az alapár a kulcsrakész házat, szállítást és lerakodást tartalmazza.”<br />
+<em>Fontos:</em> „Az alapozás, a behajtás, a helyi közműrákötés és az engedélyek a vevő oldala — ezt az ajánlatban külön tisztázzuk.”</p>
+</blockquote>
+<p><strong>„Lehet részletben?”</strong>  </p>
+<blockquote>
+<p>„Igen: <strong>50%</strong> szerződéskor, <strong>45%</strong> szállítás előtt, <strong>5%</strong> átvételkor. Ha indokolt, az ütemezést egyedileg is tudjuk igazítani.”  </p>
+</blockquote>
+<p><strong>„Van hitel / lízing?”</strong>  </p>
+<blockquote>
+<p>„A vételár nálunk a fenti ütem szerint rendezhető. Banki hitel vagy lízing esetén javasoljuk, hogy a pénzügyi tanácsadójukkal / bankjukkal egyeztessenek — mi a szerződéses ütemezésben tudunk rugalmasak lenni.”<br />
+<em>(Ne ígérj saját banki hitelterméket, ha nincs.)</em></p>
+</blockquote>
+<p><strong>„Van kedvezmény?”</strong>  </p>
+<blockquote>
+<p>„Több egység vagy visszatérő ügyfél esetén egyedi kedvezmény kérhető — jelezzük az ajánlatkérésben, és visszajelzünk.”  </p>
+</blockquote>
+<h3>5.4 Szállítás és telepítés</h3>
+<p><strong>„Mennyi idő, mire ott van?”</strong>  </p>
+<blockquote>
+<p>„Standard 30–60 nap, egyedi 60–90. Az U01/U02 akár 1–4 hét. A helyszíni felállítás jellemzően egy napon belül megvan, ha az alap és a behajtás kész.”  </p>
+</blockquote>
+<p><strong>„Ki állítja fel?”</strong>  </p>
+<blockquote>
+<p>„A szállítást és felállítást mi szervezzük szakértő csapattal. Az ön feladata a helyszín: alap, behajtás, közmű csatlakozási pontok.”  </p>
+</blockquote>
+<p><strong>„Mit kell az alaphoz?”</strong>  </p>
+<blockquote>
+<p>„Vízszintes, teherbíró aljzat kell — pontalap, sávalap, csavaros földhorgony vagy betonlemez, modellfüggően. A pontos követelményt megküldjük.”  </p>
+</blockquote>
+<p><strong>„Szállítanak Magyarországra / Ausztriába?”</strong>  </p>
+<blockquote>
+<p>„Igen, AT és HU területére. A szállítási díj a távolságtól és a megközelítéstől függ, az egyedi ajánlat tartalmazza.”  </p>
+</blockquote>
+<h3>5.5 Engedély, közmű, jog</h3>
+<p><strong>„Kell építési engedély?”</strong>  </p>
+<blockquote>
+<p>„Ez tartomány-, község-, használat- és felállításmód-függő. Ausztriában bizonyos feltételek mellett a mobilház lehet engedélymentes vagy bejelentés-köteles; tartós lakhatásnál gyakran szigorúbb. Magyarországon is a helyi szabály a mérvadó. <strong>Mi tanácsot adunk a tervezéshez, de a hatósági egyeztetés és az engedély a vevő felelőssége</strong> — javasoljuk, hogy a községgel előre beszéljenek.”  </p>
+</blockquote>
+<p><strong>„Ki köti be a közművet?”</strong>  </p>
+<blockquote>
+<p>„A házon belüli rendszerek beépítve érkeznek. A telekhatáron lévő csatlakozás és a helyi rákötés az ügyfél / helyi szakember feladata.”  </p>
+</blockquote>
+<p><strong>„Mi van, ha meggondolom magam?”</strong>  </p>
+<blockquote>
+<p>„Az elállás feltételeit a szerződés rögzíti. Az 50% után elindul a gyártás, ezért a gyártáskezdés utáni visszalépésnek költségvonzata lehet — ezt szerződéskötés előtt tisztázzuk.”  </p>
+</blockquote>
+<h3>5.6 Garancia és szerviz</h3>
+<p><strong>„Mi a garancia?”</strong>  </p>
+<blockquote>
+<p>„Szerkezetre 3 év szavatosság, ingó alkatrészekre 2 év, a panelekre 10 év gyártói garancia. Hibát írásban jelezzenek az <code>info@gvmhaus.at</code> címre; az átvétel után lehetőleg 14 napon belül.”  </p>
+</blockquote>
+<p><strong>„Mit nem fed a garancia?”</strong>  </p>
+<blockquote>
+<p>„Nem terjed ki a nem rendeltetésszerű használatra, a harmadik fél hibás felépítésére, illetve a természetes kopásra — a pontos kör a szerződésben van.”  </p>
+</blockquote>
+<h3>5.7 Folyamat és ajánlat</h3>
+<p><strong>„Hogyan induljunk?”</strong>  </p>
+<blockquote>
+<p>„Ingyenes, kötelezettségmentes beszélgetéssel — ez most is az. Utána küldünk ajánlatot, vagy ha kész a döntés, online is lehet rendelni. Az írásos ajánlat <strong>15 napig</strong> érvényes.”  </p>
+</blockquote>
+<p><strong>„Mit kell tudniuk ajánlathoz?”</strong>  </p>
+<blockquote>
+<p>„Modellt és igényeket, telek/megközelítés/közmű adatokat, tervezett határidőt, és ha van, egyedi kéréseket.”  </p>
+</blockquote>
+<p><strong>„Le lehet foglalni?”</strong>  </p>
+<blockquote>
+<p>„Igen: a szerződéskori 50% előleg egyben a gyártási időpont foglalása — ennek beérkezésétől indul a gyártás.”  </p>
+</blockquote>
+<h3>5.8 Speciális</h3>
+<p><strong>„Akadálymentes lehet?”</strong>  </p>
+<blockquote>
+<p>„Igen — rámpa, szélesebb ajtók, küszöbmentes zuhany stb. Tervezéskor egyeztetjük, felár ellenében.”  </p>
+</blockquote>
+<p><strong>„Napelem, hőszivattyú?”</strong>  </p>
+<blockquote>
+<p>„Igen, választható zöld technológia: napelem, hőszivattyú, fűtőklíma, infra panel. A PIR szigetelés eleve az energiahatékony, egész éves használatot szolgálja.”  </p>
+</blockquote>
+<hr />
+<h2>6. Ellenvetéskezelés (rövid fordulatok)</h2>
+<table>
+<thead>
+<tr>
+<th>Ellenvetés</th>
+<th>Válaszirány</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>„Drága.”</td>
+<td>Hasonlítsd a hagyományos építés idő- és költségkockázatához; említsd a kulcsrakész tartalmat és a 30–90 napot. Kérdezd: melyik modellkeret lenne reális.</td>
+</tr>
+<tr>
+<td>„Még csak nézelődöm.”</td>
+<td>Rendben — küldj modellösszehasonlítót + 1 ajánlott modellt. Kérj engedélyt 3–5 nap múlva visszahívásra.</td>
+</tr>
+<tr>
+<td>„Nem tudom, kell-e engedély.”</td>
+<td>Ne döntsd el helyette. Adj irányt: község előre, mi műszaki tanácsot adunk. Ajánlj megtekintést / írásos checklistát.</td>
+</tr>
+<tr>
+<td>„Gyorsabban kellene.”</td>
+<td>Tereld U01/U02 felé (1–4 hét), és ellenőrizd a telek készültségét.</td>
+</tr>
+<tr>
+<td>„Csak árat mondjon.”</td>
+<td>Mondj irányárat nettóban + ÁFA + mi nincs benne, majd kérdezz használatot — különben félreértés lesz.</td>
+</tr>
+<tr>
+<td>„Mások olcsóbbak.”</td>
+<td>Ne támadd a konkurenciát. Emeld ki: acél váz, PIR, kulcsrakész tartalom, szállítás+lerakodás, garanciák, AT/HU szállítás.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Piros vonalak — amit NE ígérj</h2>
+<table>
+<thead>
+<tr>
+<th>Téma</th>
+<th>Ne mondd</th>
+<th>Helyette</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engedély</td>
+<td>„Nem kell engedély.”</td>
+<td>„Helyi szabály függő — a községgel érdemes előre egyeztetni; mi ebben tanácsot adunk.”</td>
+</tr>
+<tr>
+<td>Pontos napra szállítás</td>
+<td>„Március 12-én ott lesz.”</td>
+<td>„Célablak 30–90 nap / U sorozatnál 1–4 hét; pontos időpont a kapacitás és a telek készültsége után.”</td>
+</tr>
+<tr>
+<td>Banki hitel</td>
+<td>„Mi megfinanszírozzuk.”</td>
+<td>„Ütemezésben rugalmasak tudunk lenni; hitelhez a bankjukkal egyeztessenek.”</td>
+</tr>
+<tr>
+<td>Fix szállítási díj telefonon</td>
+<td>„X euró a szállítás.”</td>
+<td>„Távolság és behajtás alapján az ajánlatban szerepel.”</td>
+</tr>
+<tr>
+<td>Garancia kiterjesztés</td>
+<td>„Örök garancia.”</td>
+<td>Csak a FAQ/szerződés szerinti időtartamok.</td>
+</tr>
+<tr>
+<td>Amit nem tudsz</td>
+<td>Találgatás</td>
+<td>„Pontosítom kollégával / írásban visszajelzek még ma.”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Eszkalálás:</strong> összetett engedélyügy, egyedi statika, külföldi szállítás AT/HU-n kívül, speciális finanszírozás, jogi elállásvita → írásban / vezető / <code>info@gvmhaus.at</code>.</p>
+<hr />
+<h2>8. Jegyzetlap híváshoz (másold át)</h2>
+<pre><code>Dátum: __________   Ügyfél: __________   Tel/e-mail: __________
+Ország / helyszín: __________
+Használat: hétvége / tartós / Airbnb / iroda / egyéb: __________
+Személyek: ____   Preferált modell: __________
+Határidő: __________   Büdzsé (nettó/bruttó): __________
+Telek: behajtás OK? igen/nem/nem tudja   Alap kész? igen/nem/tervben
+Községgel beszélt? igen/nem
+Érdeklődés: ajánlat / megtekintés / visszahívás / rendelés
+Következő lépés + határidő: __________
+Megjegyzés: __________
+</code></pre>
+<hr />
+<h2>9. Gyakorló dialógusok (tanuló példány)</h2>
+<h3>Párbeszéd A — árkérdező, hétvégi ház</h3>
+<p><strong>Ügyfél:</strong> „Mennyibe kerül egy ilyen házuk?”<br />
+<strong>Értékesítő:</strong> „Örömmel segítek. Nettó irányáraink 13.000 €-tól indulnak a 15 m²-es modelltől. Ahhoz, hogy jól mondjak számot: hétvégire vagy tartós lakásra gondolnak, és körülbelül hány négyzetméter érdekes?”<br />
+<strong>Ügyfél:</strong> „Hétvégére, ketten, Ausztriában.”<br />
+<strong>Értékesítő:</strong> „Akkor a GVMHaus 15 nettó 13.000 €-tól, vagy ha kicsit több komfort kell, az U01 18 m² 19.200 € — utóbbi gyorsabban, 1–4 hét is lehet. Az ár a kulcsrakész házat, szállítást és lerakodást tartalmazza; ÁFA 20%, az alapozás és a helyi közmű a vevő oldala. Küldjek írásos ajánlatot a telek címére?”</p>
+<h3>Párbeszéd B — engedélyféltő</h3>
+<p><strong>Ügyfél:</strong> „Kell ehhez építési engedély? Mert ha igen, nem is folytatjuk.”<br />
+<strong>Értékesítő:</strong> „Értem a aggodalmat. Ez község- és használatfüggő — mobilháznál bizonyos esetekben enyhébb a szabály, tartós lakhatásnál szigorúbb. Mi nem helyettesítjük a hatóságot, de segítünk a műszaki/tervezési oldal tisztázásában. Beszéltek már a községgel? Ha nem, adok ellenőrzőlistát, és közben megnézhetjük, melyik modell illene önökhöz.”</p>
+<h3>Párbeszéd C — gyors határidő</h3>
+<p><strong>Ügyfél:</strong> „Hat héten belül kellene.”<br />
+<strong>Értékesítő:</strong> „Erre az U sorozat a legalkalmasabb: GVMHausU 01 vagy 02, jellemzően 1–4 hét, ha van szabad kapacitás és a telek kész. Van sík, teherbíró alap és kamionos behajtás? Ha igen, még ma egyeztetünk foglalási lehetőséget; ha nincs, párhuzamosan az alapot is el kell indítani.”</p>
+<hr />
+<h2>10. 10 perces önellenőrző kvíz</h2>
+<p>Válaszolj hangosan, óra nélkül. Utána ellenőrizd a 2. és 5. szekcióval.</p>
+<ol>
+<li>Mondd el az öt modell nettó irányárát.  </li>
+<li>Mi van az alapárban, és mi nincs?  </li>
+<li>Mi a fizetési ütem (50 / 45 / 5)?  </li>
+<li>Standard vs egyedi vs U sorozat határidő?  </li>
+<li>Mit mondasz engedélykérdésre — egy mondatban?  </li>
+<li>Hová szállítunk alapból?  </li>
+<li>Meddig érvényes az írásos ajánlat?  </li>
+<li>Mi a vevő feladata telepítéskor?  </li>
+<li>Hogyan jelentsen hibát az ügyfél?  </li>
+<li>Mi a következő lépés, ha „csak érdeklődöm”?</li>
+</ol>
+<p><strong>Sikerkritérium:</strong> 8/10 helyes, találgatás nélkül.</p>
+<hr />
+<h2>11. Napi 15 perces gyakorlórutin</h2>
+<table>
+<thead>
+<tr>
+<th>Perc</th>
+<th>Feladat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–3</td>
+<td>Gyors adatlap felmondása (árak, határidők, fizetés)</td>
+</tr>
+<tr>
+<td>3–8</td>
+<td>Egy teljes hívásmenet hangosan (nyitás → 4 kérdés → ajánlás → zárás)</td>
+</tr>
+<tr>
+<td>8–12</td>
+<td>Egy ellenvetés a 6. szekcióból</td>
+</tr>
+<tr>
+<td>12–15</td>
+<td>Egy piros vonal felidézése + „nem tudom → visszajelzek” gyakorlat</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>12. Forrás és frissítés</h2>
+<ul>
+<li>Tartalmi forrás: <strong>GVM Haus GYIK</strong> — <code>hu/faq.html</code> (DE: <code>faq.html</code>)  </li>
+<li>Ha a FAQ változik (ár, garancia, fizetés, szállítási terület), <strong>ezt a tanulópéldányt is frissíteni kell</strong> ugyanazon a napon.  </li>
+<li>Vita esetén a <strong>szerződés / aktuális írásos ajánlat</strong> az irányadó, nem a telefonos emlékezet.</li>
+</ul>
+<p><strong>Készítői megjegyzés:</strong> Ez belső felkészítő anyag értékesítőknek. Ügyfélnek a hivatalos GYIK / ajánlat / szerződés szövegét add tovább.</p>
+    </main>
+  </div>
+  <script>
+    // Add ids to h2 for TOC deep links (slugify Hungarian headings)
+    function slugify(t) {
+      return t.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+    document.querySelectorAll('main h2').forEach(h => {
+      if (!h.id) h.id = slugify(h.textContent);
+    });
+  </script>
+</body>
+</html>
