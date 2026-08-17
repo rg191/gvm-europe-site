@@ -12,6 +12,11 @@ description: >-
 
 # GVM Europe Speditie Freight SRL — arculat
 
+> STÁTUSZ: JAVASLAT — a lenti tipográfia és paletta a 2026-08-as
+> arculatfrissítés, ügyfél-jóváhagyásra vár (`sites/gvmeurope.ro/DESIGNTERV.md`).
+> Az éles gvmeurope.ro a jóváhagyásig a régi brandet (Syne + teal `#0f6e64`)
+> futtatja; a repo `main` merge után áll át.
+
 ## A cég
 
 - **Hivatalos név**: GVM Europe Speditie Freight SRL
@@ -36,11 +41,16 @@ A nyelvváltó (`.lang-switch`) a navigációban van: RO / HU / EN.
 
 ## Tipográfia
 
-- **Display / címsor**: Syne 600–800 (`--font-display`), fallback "Avenir Next"
-- **Törzsszöveg**: Figtree 400–700 (`--font-body`), fallback "Segoe UI"
+Az irány: **az országút vizuális nyelve** — a Barlow család a kaliforniai
+közúti táblák feliratain alapul, ez adja a fuvarozás-karaktert.
+
+- **Display / címsor**: Barlow Condensed 600–700 (`--font-display`),
+  fallback "Arial Narrow"
+- **Törzsszöveg**: Barlow 400–700 (`--font-body`), fallback "Segoe UI"
 - Betöltés: Google Fonts, `display=swap` (lásd a `<head>`-et)
-- Címsorok: `letter-spacing: -0.02em`, `clamp()`-alapú méretezés
-  (pl. section-title: `clamp(1.9rem, 4vw, 2.75rem)`)
+- Címsorok: `letter-spacing: 0–0.01em` (condensed betűnél negatív tracking
+  tilos), `clamp()`-alapú méretezés (pl. section-title:
+  `clamp(1.9rem, 4vw, 2.75rem)`)
 
 ## Színek
 
@@ -49,15 +59,20 @@ Forrás: `sites/gvmeurope.ro/public/static/style.css` `:root` blokk.
 
 | Token | Hex | Használat |
 |---|---|---|
-| `--ink` | `#1c2430` | fő szövegszín, sötét felületek |
-| `--ink-soft` | `#4a5563` | másodlagos szöveg, nav-linkek |
-| `--paper` | `#eef1f4` | oldal-háttér |
-| `--paper-deep` | `#e2e7ec` | mélyebb háttérsáv |
-| `--surface` | `#f7f8fa` | kártya/felület |
-| `--accent` | `#0f6e64` | gombok, hangsúly (sötét teal-zöld) |
-| `--accent-deep` | `#0a4f48` | linkek, hover, logó-gradiens vége |
-| `--line` | `rgba(28,36,48,0.12)` | elválasztók, borderek |
-| `--shadow` | `0 18px 50px rgba(28,36,48,0.12)` | egyetlen árnyék-recept |
+| `--ink` | `#1a2530` | fő szövegszín, sötét felületek (acélkék-grafit) |
+| `--ink-soft` | `#4d5a68` | másodlagos szöveg, nav-linkek |
+| `--paper` | `#f3f5f7` | oldal-háttér |
+| `--paper-deep` | `#e5e9ed` | mélyebb háttérsáv |
+| `--surface` | `#fafbfc` | kártya/felület |
+| `--accent` | `#b4530a` | gombok, hangsúly (rozsda-borostyán, „jelzőfény") |
+| `--accent-deep` | `#8c3f06` | linkek, hover, logó-gradiens vége |
+| `--line` | `rgba(26,37,48,0.12)` | elválasztók, borderek |
+| `--shadow` | `0 18px 50px rgba(26,37,48,0.14)` | egyetlen árnyék-recept |
+
+WCAG AA ellenőrizve: ink/paper 14.2:1, ink-soft/paper 6.5:1, accent/paper
+4.6:1, fehér az accent gombon 5.0:1, fehér az accent-deep-en 7.4:1.
+Az illusztrációk meglévő borostyán/narancs kísérőszínei (`#d4a017`,
+`#c45c1a`) a palettával harmonizálnak, csak dekorációra valók.
 
 ## Hangnem
 
@@ -87,7 +102,7 @@ Forrás: `sites/gvmeurope.ro/public/static/style.css` `:root` blokk.
 - **Szolgáltatások**: szándékosan **lista, nem kártyarács** — ezt a döntést
   tartsd tiszteletben
 - **Logó**: inline SVG (path-alapú wordmark, fontfüggetlen) — soha ne cseréld
-  szöveges/fontos változatra; a logó-gradiens `#0f6e64 → #0a4f48`
+  szöveges/fontos változatra; a logó-gradiens `#b4530a → #8c3f06`
 
 ## Technika
 
@@ -101,10 +116,9 @@ Forrás: `sites/gvmeurope.ro/public/static/style.css` `:root` blokk.
 ## Mit NE
 
 - Ne használd a Niviloop arculati elemeit vagy hangnemét (az a kivitelező
-  saját brandje). Figyelem: a GVM jelenlegi arculata (Syne + teal) vizuálisan
-  közel áll a Niviloopéhoz — ettől még a fenti tokenek az ügyfél élő,
-  leszállított brandje; ha a szétválasztás felmerül, azt a felhasználóval
-  kell egyeztetni, nem önhatalmúlag átszínezni.
+  saját brandje). A 2026-08-as frissítés pont ezért váltott a Syne + teal
+  párosról Barlow + rozsda-borostyánra — Niviloop-elem (Syne font, teal
+  szín) még véletlenül se kerüljön vissza GVM-anyagba.
 - Ne keverd a glogiai.hu oldallal — az másik ügyfél ugyanebben a repóban.
 - Ne térj el a fenti tokenektől „szebb" színek vagy fontok irányába — ha
   javításra van ötleted, javaslatként fogalmazd meg a felhasználónak.
