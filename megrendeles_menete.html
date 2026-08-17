@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Megrendelés menete – GVM Haus</title>
+  <meta
+    name="description"
+    content="Az út a saját GVMHaus-hoz: tanácsadás, tervezés, gyártás, szállítás – megrendelési folyamat, anyagok, helyszín-előkészítés, árképzés, szavatosság és GYIK."
+  />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #2D3E50;
+      --red: #C8232C;
+      --anthracite: #3a3a3a;
+      --mid: #6b6b6b;
+      --light: #f5f5f3;
+      --white: #ffffff;
+      --border: #e0dcd5;
+      --font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      --maxw: 980px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--anthracite);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* Hero */
+    .hero {
+      background: var(--navy);
+      color: #fff;
+      padding: 72px 0 64px;
+    }
+    .hero .wrap { text-align: center; }
+    .page-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a8c8e8;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 2.75rem);
+      line-height: 1.15;
+      margin: 0 0 16px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 0 auto;
+      opacity: 0.9;
+      line-height: 1.7;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .badge {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 4px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Intro */
+    .intro {
+      background: var(--light);
+      border-left: 3px solid var(--red);
+      padding: 24px 28px;
+      margin: 40px 0 48px;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    section { padding: 48px 0; }
+    section h2 {
+      font-size: clamp(1.35rem, 3vw, 1.65rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 16px;
+      letter-spacing: -0.3px;
+    }
+    section h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 28px 0 12px;
+    }
+    section > .wrap > p {
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    section ul {
+      margin: 0 0 14px 24px;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    section li { margin-bottom: 6px; }
+
+    /* Steps */
+    .step-block {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-block:last-of-type { border-bottom: none; }
+    .step-num-big {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .step-block h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 6px;
+    }
+    .step-duration {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      background: rgba(200, 35, 44, 0.08);
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .step-block p { margin-bottom: 10px; color: var(--anthracite); font-size: 15px; }
+    .step-block ul { margin: 8px 0 0 20px; color: var(--anthracite); font-size: 15px; }
+
+    /* Tables */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px;
+    }
+    .specs-table th,
+    .specs-table td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .specs-table th {
+      background: var(--light);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: 38%;
+    }
+
+    /* Models overview table */
+    .models-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 24px;
+    }
+    .models-table th,
+    .models-table td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .models-table thead th {
+      background: var(--light);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .models-table tbody th {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .models-table td.price { font-weight: 700; color: var(--red); white-space: nowrap; }
+
+    /* Checklist */
+    .checklist {
+      list-style: none;
+      margin: 16px 0 20px;
+    }
+    .checklist li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: var(--red);
+      font-weight: 800;
+    }
+    .note {
+      font-size: 14px;
+      color: var(--mid);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 24px; }
+    .faq-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .faq-item p { font-size: 14px; line-height: 1.7; color: var(--anthracite); }
+
+    /* CTA */
+    .price-callout {
+      background: var(--navy);
+      color: white;
+      padding: 32px;
+      border-radius: 4px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .price-callout h3 { color: white; font-size: 1.25rem; margin-bottom: 8px; }
+    .price-callout p { color: rgba(255, 255, 255, 0.85); margin-bottom: 16px; line-height: 1.7; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #a81a22; text-decoration: none; }
+
+    .section-alt { background: var(--light); }
+
+    footer {
+      text-align: center;
+      color: var(--mid);
+      font-size: 0.88rem;
+      padding: 40px 24px 56px;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--mid); }
+
+    @media (max-width: 640px) {
+      .step-block { grid-template-columns: 1fr; gap: 8px; }
+      .step-num-big { font-size: 36px; }
+      .specs-table th { width: 45%; font-size: 11px; }
+      .specs-table td { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="page-label">Folyamat</span>
+      <h1>Az út a saját GVMHaus-hoz</h1>
+      <p>
+        Az első megkereséstől a kulcsátadásig <strong>30–90 nap</strong> – ezen az oldalon
+        megtalálja a megrendelési folyamat, a felhasznált anyagok, a helyszín-előkészítés,
+        az árképzés és a szavatosság minden részletét.
+      </p>
+      <div class="badges">
+        <span class="badge">Kulcsrakész átadás</span>
+        <span class="badge">30–90 nap gyártási idő</span>
+        <span class="badge">Moduláris, bővíthető</span>
+        <span class="badge">Nettó árak euróban</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="intro">
+          Kérdésével forduljon hozzánk:
+          <a href="mailto:info@gvmhaus.at">info@gvmhaus.at</a> vagy
+          <a href="tel:+436769348474">+43 676 934 8474</a>.
+          Válaszunk általában <strong>24 órán belül</strong> érkezik – magyarul vagy németül.
+        </div>
+
+        <h2>1. Négy lépés a saját házig</h2>
+        <p>
+          A GVM Haus egyszerű, 4 lépéses folyamata az ötlettől a beköltözésig –
+          a főoldalon is bemutatott folyamat részletes kibontása.
+        </p>
+
+        <div class="step-block">
+          <div class="step-num-big">01</div>
+          <div>
+            <span class="step-duration">1–3 nap</span>
+            <h3>Tanácsadás</h3>
+            <p>Ingyenes első kapcsolatfelvétel telefonon, e-mailben vagy személyesen. Egy kötelezettség nélküli beszélgetésben közösen tisztázzuk:</p>
+            <ul>
+              <li>Igényfelmérés: méret, személyek száma, használat (állandó, hétvégi, bérbeadás, glamping, üzleti)</li>
+              <li>Modell-ajánlás a helyszín és az igények alapján (GVMHaus 15 / 30 / 44, GVMHausU 01 / 02)</li>
+              <li>Tájékoztatás a helyi építési szabályokról, engedélyezési kötelezettségekről és közmű-csatlakozásokról</li>
+              <li>Időbeli keretek a szállítás és felépítés szervezéséhez</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num-big">02</div>
+          <div>
+            <span class="step-duration">1–2 hét</span>
+            <h3>Tervezés és ajánlat</h3>
+            <p>A tanácsadás után kötelező érvényű írásos ajánlatot készítünk:</p>
+            <ul>
+              <li>A választott modell egyedi konfigurációja (belső elrendezés, szaniter, fűtés, nyílászárók, külső szín)</li>
+              <li>Egyedi alaprajz-módosítások (pl. plusz válaszfal, nagyobb ablak, terasz)</li>
+              <li>Árkalkuláció szállítással, felépítéssel és minden megegyezett extrával</li>
+              <li>Kötelező érvényű szerződés és fizetési ütemezés</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num-big">03</div>
+          <div>
+            <span class="step-duration">30–90 nap</span>
+            <h3>Gyártás és helyszín-előkészítés</h3>
+            <p>A szerződéskötés és előleg beérkezése után üzemünkben elindul a gyártás. Ezzel párhuzamosan Ön előkészíti a felépítési helyszínt (lásd 3. szakasz lent).</p>
+            <ul>
+              <li>A modulok párhuzamos előregyártása – jelentősen lerövidíti a teljes szállítási időt a hagyományos építéshez képest</li>
+              <li>Hiánytalan minőségellenőrzés minden lépésnél</li>
+              <li>A belső kialakítás végszerelése: konyha, fürdő, elektromos rendszer, világítás</li>
+              <li>A szállításkész állapotot időben jelezzük – ettől fut a részletfizetés</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num-big">04</div>
+          <div>
+            <span class="step-duration">1 nap</span>
+            <h3>Szállítás és átadás</h3>
+            <p>Nehéztranszport az előkészített helyszínre, daruval történő felállítás, kulcsrakész átadás – általában egy munkanap alatt.</p>
+            <ul>
+              <li>Tieflader nehéztranszport, daruval az előkészített alapra állítva</li>
+              <li>Gyors helyszíni végszerelés (csatlakozók, finomállítás) – jellemzően 24 órán belül</li>
+              <li>Az összes rendszer működés-ellenőrzése (áram, víz, fűtés)</li>
+              <li>Átadás-átvételi jegyzőkönyv, kulcsátadás, az utolsó 10 % rendezése</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="wrap">
+        <h2>2. Anyagok és műszaki adatok</h2>
+        <p>
+          Minden GVMHaus modell az alábbi alapanyagokból készül. A pontos specifikáció
+          modellenként és konfigurációnként eltérhet – kérésre küldünk modellspecifikus
+          adatlapot (pl. GVMHaus 15, 30, 44 adatlapjai letölthetők a főoldalról).
+        </p>
+        <table class="specs-table">
+          <tr><th>Tartószerkezet</th><td>Profilált acélcsövek, horganyzott – moduláris kialakítás</td></tr>
+          <tr><th>Falszerkezet</th><td>Hőszigetelt szendvicspanel</td></tr>
+          <tr><th>Padlószerkezet</th><td>Szendvicspanel padlókonstrukció hőszigeteléssel</td></tr>
+          <tr><th>Tető</th><td>Lapostető szendvicspanellel</td></tr>
+          <tr><th>Szigetelés</th><td>PIR töltet 40 kg/m³ (poliizocianurát)</td></tr>
+          <tr><th>Belmagasság</th><td>2,62 m (szabad belmagasság)</td></tr>
+          <tr><th>Vezetékek</th><td>Rejtett csővezetés – áram, víz, szennyvíz a falszerkezetben</td></tr>
+          <tr><th>Nyílászárók</th><td>Többrétegű üvegezés, energiahatékony – modellfüggő alapszint, prémium opciók elérhetők</td></tr>
+          <tr><th>Fűtés</th><td>Alap: elektromos fűtés. Opcionális: fűtőfunkciós klíma, infravörös fali panel</td></tr>
+          <tr><th>Konyha és fürdő</th><td>Teljesen felszerelt – mosogató, csaptelep, WC, zuhany; tetszőleges berendezés-opciókkal</td></tr>
+          <tr><th>U-érték (fal/tető)</th><td>Kérésre megadjuk – modellspecifikus, energiahatékony szint az egész éves használathoz</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>3. Helyszín-előkészítés (a vevő feladata)</h2>
+        <p>
+          Hogy a szállítás és felépítés zökkenőmentesen menjen, a helyszínt elő kell
+          készíteni. Az alábbi pontok a vevő felelőssége:
+        </p>
+        <ul class="checklist">
+          <li><strong>Megfelelő behajtási útvonal</strong> nehéztranszporthoz (tieflader) és daruhoz – minimum 4 m széles, megfelelő teherbírás</li>
+          <li><strong>Előkészített, vízszintes felépítési felület</strong> – pontalap, sávalap, csavaros földhorgony vagy betonlemez (modellspecifikus követelményeket kérésre küldjük)</li>
+          <li><strong>Áramcsatlakozás</strong> 5 m-en belül a tervezett ház helyétől, házi csatlakozásra alkalmas</li>
+          <li><strong>Vízbekötés és csatorna</strong> 5 m-en belül</li>
+          <li><strong>Hatósági engedélyek</strong> a felépítéshez és használathoz – tartomány-, község- és használat-függő (hétvégi, állandó, üzleti)</li>
+          <li><strong>Tisztára takarított terület</strong> – semmi akadály a daru és felépítés útjában; elegendő hely a tieflader manőverezéséhez</li>
+        </ul>
+        <p class="note">
+          A nem megfelelően előkészített helyszín miatt felmerülő többletköltségeket
+          (extra daru, várakozási idő, ismételt kiszállás) külön számítjuk fel.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="wrap">
+        <h2>4. Árképzés</h2>
+        <p>
+          Minden ár nettó euróban értendő, plusz 20 % osztrák ÁFA. Hacsak az ajánlat
+          kifejezetten másként nem rendelkezik, az alábbi tételek érvényesek:
+        </p>
+        <table class="specs-table">
+          <tr><th>Alapár</th><td>Modell alapfelszereltséggel – lásd a lenti modell-áttekintést</td></tr>
+          <tr><th>Felárak</th><td>pl. erősített szigetelés, prémium szaniter, klíma, terasz, árnyékolás, egyedi külső szín</td></tr>
+          <tr><th>Szállítás</th><td>Az üzem és a felépítés helye közötti távolság szerint</td></tr>
+          <tr><th>Felépítés</th><td>Daru-idő, helyi közmű-csatlakozás</td></tr>
+          <tr><th>Hatósági illetékek</th><td>Engedélyek, helyi csatlakozási díjak – nem tartalmazza az ár</td></tr>
+        </table>
+
+        <h3>Modellek és nettó áraink</h3>
+        <p>Öt modell minden igényre, kulcsrakész kivitelben. Az alábbi árak nettó, euróban értendők (plusz 20 % osztrák ÁFA) – a pontos konfigurációs árat az egyedi ajánlat tartalmazza.</p>
+        <table class="models-table">
+          <thead>
+            <tr>
+              <th>Modell</th>
+              <th>Alapterület</th>
+              <th>Méret / kapacitás</th>
+              <th>Nettó ár</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th>GVMHaus 15</th><td>15 m²</td><td>6,00 × 2,43 m</td><td class="price">13.000 €-tól</td></tr>
+            <tr><th>GVMHaus 30</th><td>30 m²</td><td>6,00 × 4,68 m</td><td class="price">23.000 €-tól</td></tr>
+            <tr><th>GVMHaus 44</th><td>44 m²</td><td>6,00 × 7,30 m</td><td class="price">33.000 €</td></tr>
+            <tr><th>GVMHausU 01</th><td>18 m²</td><td>1–2 fő</td><td class="price">19.200 €</td></tr>
+            <tr><th>GVMHausU 02</th><td>25 m²</td><td>1–2 fő</td><td class="price">26.400 €</td></tr>
+          </tbody>
+        </table>
+        <p class="note">A GVMHausU 01 / 02 modellek azonnal szállíthatók. A részletes adatlapok (műszaki adatok, alaprajzok) a gvmhaus.at főoldaláról tölthetők le.</p>
+
+        <p>
+          A teljes részletezés az egyedi írásos ajánlatban található.
+          <strong>Akár 70 %-kal kedvezőbb</strong>, mint a hagyományos kőműves építés azonos alapterületre.
+        </p>
+
+        <h3>Fizetési ütemezés (alap, eltérő megállapodás hiányában)</h3>
+        <ul>
+          <li><strong>30 %</strong> előleg a szerződéskötéskor (gyártáskezdés)</li>
+          <li><strong>60 %</strong> a szállításkész állapot bejelentésekor</li>
+          <li><strong>10 %</strong> a felépítést követő átadás után</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>5. Szavatosság és garancia</h2>
+        <p>Az osztrák jog szerinti törvényes szavatossági szabályok érvényesek (ABGB 922. és köv. §-ai, UGB):</p>
+        <ul>
+          <li><strong>3 év</strong> szavatosság ingatlan jellegű szerkezetekre (tartószerkezet, falszerkezet, tető, fixen beépített rendszerek)</li>
+          <li><strong>2 év</strong> szavatosság ingó alkatrészekre (eszközök, szaniterek, vasalat)</li>
+          <li>A hibákat az átadástól számított 14 napon belül írásban kell jelezni</li>
+          <li>Nem terjed ki: nem rendeltetésszerű használat, harmadik fél általi hibás felépítés, karbantartás hiánya, természetes elhasználódás</li>
+        </ul>
+        <p>
+          Egyes komponensekre (pl. szendvicspanelek, fűtőkészülékek) a gyártói garanciák
+          érvényesek – adatlapokat kérésre küldünk.
+        </p>
+
+        <div class="price-callout">
+          <h3>Készen áll egy konkrét ajánlatra?</h3>
+          <p>1–3 munkanapon belül kötelező érvényű ajánlatot adunk a kívánt modellre.</p>
+          <a class="btn-primary" href="mailto:info@gvmhaus.at?subject=Aj%C3%A1nlatk%C3%A9r%C3%A9s">Ajánlatot kérek →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="wrap">
+        <h2>6. Gyakori kérdések</h2>
+
+        <div class="faq-item">
+          <h4>Kell építési engedély?</h4>
+          <p>
+            Tartomány-, község-, használati idő- és felépítésmód-függő. Ausztriában a mobilházak
+            bizonyos feltételek mellett „ingó dolognak" minősülnek és engedélymentesek vagy
+            bejelentés-kötelesek – tartós lakhatás esetén általában építési bejelentés vagy
+            engedély szükséges. Javasoljuk, hogy szerződéskötés előtt érdeklődjön a községi
+            építési hatóságnál.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Áthelyezhető a ház később?</h4>
+          <p>
+            Igen. A szerkezet mobilitásra tervezve – tieflader és daru segítségével a GVMHaus
+            új helyszínre helyezhető. Feltétel: alkalmas behajtás a régi és új helyszínen,
+            valamint a közmű-csatlakozók leválasztása.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Mennyibe kerül a szállítás?</h4>
+          <p>
+            A szállítási költséget az egyedi ajánlat tartalmazza, és a felépítési helyszín
+            üzemtől való távolsága, valamint a megközelítés bonyolultsága határozza meg
+            (különleges engedélyek, kísérőautó). A pontos költséget a helyszín megadása után
+            tudjuk kalkulálni.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Mennyi a tényleges gyártási idő?</h4>
+          <p>
+            A választott konfigurációtól függ: standard modellek 30–60 nap, egyedileg
+            konfigurált modellek 60–90 nap. Azonnal szállítható modellek (pl. GVMHausU 01 / 02)
+            1–4 héten belül elérhetők.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Egész évben lakható?</h4>
+          <p>
+            Igen. A PIR szigetelés (40 kg/m³) és a többrétegű üvegezésű ablakok egész éves
+            használatra tervezettek. Az alapfelszereltség elektromos fűtést tartalmaz;
+            opcionálisan fűtőfunkciós klíma vagy infravörös fali panel kérhető.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Kombinálhatóak több modulok?</h4>
+          <p>
+            Igen. A modulok egymás mellé állíthatók és kapcsolóelemekkel egy nagyobb
+            lakóegységgé köthetők össze – pl. két GVMHaus 30 egymás mellett 60 m²-es
+            megoldásként. Bővítés utólagosan is lehetséges.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Mire mennyi a garancia?</h4>
+          <p>
+            A törvényes szavatosság 3 év az ingatlan jellegű szerkezetekre és 2 év az ingó
+            alkatrészekre. Egyes komponensekre (szendvicspanelek, eszközök) a megfelelő
+            gyártói garanciák érvényesek – adatlapokat kérésre küldünk.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      GVM Spedition GmbH &middot; Mobil precíziós házak &middot;
+      <a href="https://gvmhaus.at">gvmhaus.at</a>
+    </p>
+    <p style="margin-top:12px;font-size:0.82rem;max-width:720px;margin-left:auto;margin-right:auto;line-height:1.55;">
+      Elhelyezés: A mobil- és modulházak telepíthetősége a helyi építési és önkormányzati
+      előírásoktól függ, amelyek településenként eltérhetnek. A GVM Spedition GmbH nem
+      garantálja, hogy a ház bármely területen elhelyezhető – ezek előzetes ellenőrzése
+      a vevő felelőssége.
+    </p>
+  </footer>
+</body>
+</html>
