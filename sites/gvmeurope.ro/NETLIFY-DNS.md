@@ -38,7 +38,8 @@ GitHub → **Actions** → **Deploy gvmeurope.ro to Netlify** → **Run workflow
 
 ## 3. DNS — gvmeurope.ro → Netlify
 
-**Jelenlegi DNS:** `gvmeurope.ro` / `www` → `A 46.225.184.176` (Hetzner)  
+**Jelenlegi DNS:** `gvmeurope.ro` / `www` → `A` rekord a Hetzner szerverre
+(a pontos IP-t `dig gvmeurope.ro +short` adja meg)  
 **Nameserver:** `dns1.hu` / `dns2.hu` / `dns3.hu`
 
 Amíg ez így van, a böngésző a Hetzner-t látja, nem a Netlify-t.
@@ -58,4 +59,9 @@ majd a domain regisztrátornál (dns1.hu) állítsd a Netlify által kért rekor
 
 ## 5. Hetzner
 
-Opcionális / archív. DNS Netlify-ra állítása után a `46.225.184.176` már nem szolgálja a domaint. Lásd `HOSZTOLAS.md`.
+Opcionális / archív. DNS Netlify-ra állítása után a Hetzner szerver már nem szolgálja a domaint. Lásd `HOSZTOLAS.md`.
+
+Az átállás után a szerver IP-je **nem lesz többé DNS-ből felderíthető** — ezért
+sem ebbe a repóba, sem más publikus helyre ne kerüljön vissza. Ha a Hetzner
+szerver továbbra is fut, érdemes a tűzfalán is korlátozni: 80/443 csak a
+proxy felől, SSH csak ismert IP-ről.
