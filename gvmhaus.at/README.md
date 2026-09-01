@@ -11,11 +11,13 @@ jellemző webroot: `/var/www/gvmhaus`).
 | `hu/index.html` | https://gvmhaus.at/hu/ |
 | `faq.html` | https://gvmhaus.at/faq.html |
 | `hu/faq.html` | https://gvmhaus.at/hu/faq.html |
-| `gvmhaus-*.html` | modell-részletoldalak |
+| `chatbot.js` / `chatbot.css` | Widget minden oldalon (cache: `?v=20260901`) |
 
 Tartalom:
 - **Árak nem tartalmazzák a szállítást** (DE + HU) a kezdő- és modelloldalakon
 - **FAQ / GYIK** oldal + menüpont a navigációban
+
+- **Chatbot widget** — rövid, emberi válaszok alapból; műszaki részlet csak „részletek” / konkrét kérdésre
 
 ## Élesítés (Hetzner Cloud Console)
 
@@ -24,7 +26,7 @@ Tartalom:
 3. Futtasd:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rg191/gvm-europe-site/cursor/gvmhaus-elesites-9ef9/gvmhaus.at/deploy-hetzner.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rg191/gvm-europe-site/cursor/chatbot-kommunikacio-megfeleloseg-4aa6/gvmhaus.at/deploy-hetzner.sh | bash
 ```
 
 A script backupot készít (`*.bak-elesites-<időbélyeg>`), majd felülírja a fenti fájlokat,
@@ -32,7 +34,7 @@ A script backupot készít (`*.bak-elesites-<időbélyeg>`), majd felülírja a 
 
 ## Ellenőrzés
 
-- https://gvmhaus.at/ — szállítási megjegyzés a modellárak alatt
+- https://gvmhaus.at/ — chat: „Mit lehet tudni a szigetelésről?” → rövid válasz + „részletek” felajánlás
 - https://gvmhaus.at/faq.html — német GYIK
 - https://gvmhaus.at/hu/faq.html — magyar GYIK
 

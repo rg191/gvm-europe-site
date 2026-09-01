@@ -4,7 +4,7 @@
 #   curl -fsSL https://raw.githubusercontent.com/rg191/gvm-europe-site/cursor/gvmhaus-elesites-9ef9/gvmhaus.at/deploy-hetzner.sh | bash
 set -euo pipefail
 
-BRANCH="${BRANCH:-cursor/gvmhaus-elesites-9ef9}"
+BRANCH="${BRANCH:-cursor/chatbot-kommunikacio-megfeleloseg-4aa6}"
 BASE="https://raw.githubusercontent.com/rg191/gvm-europe-site/${BRANCH}/gvmhaus.at"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 WEBROOT=""
@@ -53,6 +53,8 @@ echo "==> Letöltés GitHubról..."
 for rel in \
   index.html \
   faq.html \
+  chatbot.js \
+  chatbot.css \
   gvmhaus-15.html \
   gvmhaus-30.html \
   gvmhaus-44.html \
@@ -68,6 +70,8 @@ echo "==> Telepítés (backup + overwrite)..."
 for rel in \
   index.html \
   faq.html \
+  chatbot.js \
+  chatbot.css \
   gvmhaus-15.html \
   gvmhaus-30.html \
   gvmhaus-44.html \
