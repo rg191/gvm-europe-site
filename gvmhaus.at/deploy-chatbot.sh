@@ -5,7 +5,16 @@
 set -euo pipefail
 
 BRANCH="${BRANCH:-cursor/chatbot-kommunikacio-megfeleloseg-4aa6}"
-BASE="https://raw.githubusercontent.com/rg191/gvm-europe-site/${BRANCH}/gvmhaus.at"
+BASE="${BASE:-https://cdn.jsdelivr.net/gh/rg191/gvm-europe-site@${BRANCH}/gvmhaus.at}"
+FALLBACK_BASE="https://raw.githubusercontent.com/rg191/gvm-europe-site/${BRANCH}/gvmhaus.at"
+
+fetch_file() {
+  local rel="$1" dest="$2"
+  if curl -fsSL "${BASE}/${rel}" -o "${dest}" 2>/dev/null; then
+    return 0
+  fi
+  curl -fsSL "${FALLBACK_BASE}/${rel}" -o "${dest}"
+}
 STAMP="$(date +%Y%m%d-%H%M%S)"
 WEBROOT=""
 
@@ -28,7 +37,7 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
 for rel in chatbot.js chatbot.css; do
-  curl -fsSL "${BASE}/${rel}" -o "${tmp}/${rel}"
+  fetch_file "${rel}" "${tmp}/${rel}"
   if [[ -f "${WEBROOT}/${rel}" ]]; then
     cp -a "${WEBROOT}/${rel}" "${WEBROOT}/${rel}.bak-chatbot-${STAMP}"
     echo "  backup: /${rel}.bak-chatbot-${STAMP}"
