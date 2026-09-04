@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publish-dir: sites/glogiai.hu/public
+          publish-dir: glogiai/public
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy glogiai.hu (${{ github.sha }})"

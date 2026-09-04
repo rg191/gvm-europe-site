@@ -6,11 +6,11 @@ A **GlogiAI** mesterséges intelligenciára épülő fuvarbörze és logisztikai
 ## Tartalom
 
 ```
+glogiai/public/             # GlogiAI landing (Netlify → glogiai.hu)
+├── index.html              # Főoldal (HU)
+├── sk/                     # Szlovák verzió
+└── en/                     # Angol verzió
 sites/
-├── glogiai.hu/public/      # GlogiAI landing (Netlify → glogiai.hu)
-│   ├── index.html          # Főoldal (HU)
-│   ├── sk/                 # Szlovák verzió
-│   └── en/                 # Angol verzió
 └── gvmeurope.ro/public/    # GVM Europe Románia (Hetzner → gvmeurope.ro)
     ├── index.html          # Román (RO)
     ├── hu/index.html       # Magyar
@@ -18,17 +18,18 @@ sites/
     └── static/logo.svg     # Helyi logó (nem külső URL)
 ```
 
-- **glogiai.hu** — Nyelvek: **HU / SK / EN**. Netlify deploy (`netlify.toml`).
+- **glogiai.hu** — Nyelvek: **HU / SK / EN**. Forrás: **`glogiai/public`**. Netlify deploy (`netlify.toml`). A `sites/glogiai.hu/public` szimlink a kompatibilitásért.
 - **gvmeurope.ro** — Nyelvek: **RO / HU / EN**. **Saját Netlify site** (nem a glogiai `genuine-banoffee`). Útmutató: `sites/gvmeurope.ro/NETLIFY-DNS.md`.
+- A glogiai.hu **nem** a loopmagazin-web / loopmagazin-site repóban van. Cloud Agent: ezt a `gvm-europe-site` klónt kell használni.
 
 Nincs build lépés — tiszta statikus HTML/CSS.
 
 ## Deploy
 
 Netlify (lásd `netlify.toml`): push a `main` branchre → GitHub Actions automatikusan deployol.
-Publish directory: `sites/glogiai.hu/public`.
+Publish directory: `glogiai/public`.
 
-**DNS beállítás:** Alex — lásd `sites/glogiai.hu/DNS-ALEX.md` (rövid összefoglaló: `sites/glogiai.hu/ALEX-UZENET.md`).
+**DNS beállítás:** Alex — lásd `glogiai/DNS-ALEX.md` (rövid összefoglaló: `glogiai/ALEX-UZENET.md`).
 
 ## Platform URL
 
