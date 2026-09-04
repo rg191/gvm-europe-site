@@ -1,7 +1,7 @@
 # glogiai.hu — GlogiAI platform (statikus oldal)
 
 A **GlogiAI** mesterséges intelligenciára épülő fuvarbörze és logisztikai platform bemutatkozó oldala.
-Üzemeltető: **GVM Europe Kft.**
+Üzemeltető: **G-TechPrime s.r.o.**
 
 ## Tartalom
 

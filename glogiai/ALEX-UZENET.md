@@ -14,7 +14,7 @@ Frissítettük a **glogiai.hu** bemutatkozó oldalt. A kód kész és éles — 
    → ide mutat: **https://app.glogiai.hu**
 
 2. **Szembetűnő Kapcsolat szekció** a főoldalon  
-   Elérhetőségek (GVM Europe Kft., cím, e-mailek) + gyors gombok.  
+   Elérhetőségek (G-TechPrime s.r.o., cím, e-mailek) + gyors gombok.  
    A menüben is van **Kapcsolat** link.
 
 3. **Bővített lábléc** (4 oszlop)  
