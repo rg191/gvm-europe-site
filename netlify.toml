@@ -18,3 +18,8 @@
   for = "/legal.css"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/pricing.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
