@@ -51,4 +51,4 @@ Ha a platform más IP-n vagy reverse proxy mögött fut, csak az `app` A rekordo
 
 ---
 
-Kérdés esetén: a repo `sites/glogiai.hu/public/` mappája a forrás, publish dir: `sites/glogiai.hu/public`.
+Kérdés esetén: a repo `glogiai/public/` mappája a forrás, publish dir: `glogiai/public`.

@@ -25,7 +25,7 @@ Frissítettük a **glogiai.hu** bemutatkozó oldalt. A kód kész és éles — 
 
 5. **Deploy**  
    - GitHub repo: `rg191/gvm-europe-site`  
-   - Publish mappa: `sites/glogiai.hu/public`  
+   - Publish mappa: `glogiai/public`  
    - Netlify site: `glogiai-hu.netlify.app`
 
 ---
@@ -83,6 +83,6 @@ Ha a platform más IP-n fut, csak az `app` A rekordot kell frissíteni — a HTM
 ## További dokumentáció
 
 - Részletes DNS útmutató: [`DNS-ALEX.md`](./DNS-ALEX.md)
-- GitHub link: https://github.com/rg191/gvm-europe-site/blob/main/sites/glogiai.hu/DNS-ALEX.md
+- GitHub link: https://github.com/rg191/gvm-europe-site/blob/main/glogiai/DNS-ALEX.md
 
 Ha valami nem stimmel (pl. az `app` nem tölt be HTTPS-sel), szólj — akkor megnézzük a platform szerver / proxy oldalt is.
