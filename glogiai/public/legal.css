@@ -76,6 +76,9 @@ strong{color:var(--white)}
 }
 .data-table th{color:var(--grey);font-weight:600;width:38%;white-space:nowrap}
 .data-table td{color:var(--white)}
+.phone-stack{display:flex;flex-direction:column;gap:.45rem;align-items:flex-start}
+.phone-stack a{display:block;line-height:1.35;text-decoration:none;border-bottom:1px solid rgba(232,99,26,.4)}
+.phone-stack a:hover{color:var(--orange-glow)}
 
 .note{
   background:var(--navy-mid);border:1px solid rgba(0,212,255,.18);

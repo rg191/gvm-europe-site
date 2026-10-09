@@ -166,6 +166,8 @@ section{position:relative;z-index:1;padding:6rem 2rem}
 .contact-info-item strong{color:var(--white);font-weight:600;font-size:1rem;line-height:1.45}
 .contact-info-item a{color:var(--white);text-decoration:none;transition:color .2s}
 .contact-info-item a:hover{color:var(--orange)}
+.contact-info-item .phone-stack{display:flex;flex-direction:column;gap:.4rem;align-items:flex-start;font-weight:600}
+.contact-info-item .phone-stack a{display:block;line-height:1.4}
 .contact-actions{position:relative;background:linear-gradient(155deg,rgba(26,32,85,.98),rgba(17,22,64,.95));border:1px solid rgba(232,99,26,.35);border-radius:20px;padding:2.25rem 2rem;box-shadow:0 20px 50px rgba(232,99,26,.12),0 8px 32px rgba(0,0,0,.35);overflow:hidden}
 .contact-actions::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--cyan),var(--orange))}
 .contact-actions h3{font-family:'Orbitron',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.75rem;color:#fff}
@@ -632,7 +634,7 @@ footer{text-align:left;padding:0}
         </div>
         <div class="contact-info-item">
           <div class="contact-icon" aria-hidden="true">&#128222;</div>
-          <div><span>Telefón</span><strong><a href="tel:+421917399464">0917 399 464</a> · <a href="tel:+421917398708">0917 398 708</a></strong></div>
+          <div><span>Telefón</span><strong><span class="phone-stack"><a href="tel:+421917399464">0917 399 464</a><a href="tel:+421917398708">0917 398 708</a></span></strong></div>
         </div>
       </div>
       <div class="contact-actions reveal">
