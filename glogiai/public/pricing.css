@@ -89,6 +89,8 @@ footer{text-align:left;padding:0;position:relative;z-index:1}
 .footer-col a{color:var(--grey);text-decoration:none;font-size:.82rem;transition:color .2s}
 .footer-col a:hover,.footer-col a[aria-current="page"]{color:var(--orange)}
 .footer-col li{color:var(--grey);font-size:.82rem;line-height:1.5}
+.footer-col .phone-stack{display:flex;flex-direction:column;gap:.7rem;align-items:flex-start}
+.footer-col .phone-stack a{display:block;line-height:1.45}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding:1.2rem 2rem;text-align:center}
 .footer-bottom p{color:var(--grey);font-size:.75rem;margin:0}
 
