@@ -22,12 +22,12 @@
 
 | Mi | Hol |
 |---|---|
-| **Szerver IP** | `46.225.184.176` |
+| **Szerver IP** | Hetzner konzol / jelszókezelő — publikus repóban nem tároljuk |
 | **Szerver útvonal** | `/srv/sites/gvmeurope.ro` |
 | **Port** | `9081` |
 
 ```bash
-ssh root@46.225.184.176
+ssh root@<szerver>
 /srv/sites/gvmeurope.ro/deploy.sh
 ```
 
@@ -51,7 +51,7 @@ A logó helyi SVG fájl: `public/static/logo.svg`
 ## Telepítés / frissítés
 
 ```bash
-ssh root@46.225.184.176
+ssh root@<szerver>
 /srv/sites/gvmeurope.ro/deploy.sh
 ```
 

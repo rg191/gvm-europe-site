@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# gvmeurope.ro deploy – futtasd a Hetzner szerveren (46.225.184.176)
+# gvmeurope.ro deploy – futtasd a Hetzner szerveren.
+# A szerver címét ez a fájl szándékosan nem tartalmazza (publikus repó);
+# lásd a Hetzner konzolt vagy a jelszókezelőt.
 set -euo pipefail
 
 SITE_DIR="/srv/sites/gvmeurope.ro"
